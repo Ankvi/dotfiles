@@ -33,5 +33,8 @@ export PATH=$PATH:/snap/bin
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$BIN_FOLDER
 
+# RUST
+export PATH=$PATH:$HOME/.cargo/bin
+
 export GITHUB_USERNAME=Ankvi
 export NODE_OPTIONS="--max-old-space-size=8192"
