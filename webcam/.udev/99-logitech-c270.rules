@@ -1,0 +1,1 @@
+SUBSYSTEM=="video4linux", KERNEL=="video[0-9]*", ATTR{index}=="0", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="0825", RUN+="/usr/bin/v4l2-ctl -d $devnode --set-ctrl=white_balance_automatic=0,white_balance_temperature=0"
