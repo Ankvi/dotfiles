@@ -1,6 +1,9 @@
 stow:
 	stow -t $(HOME) -v */
 
+stow/adopt:
+	stow -t $(HOME) -v --adopt */
+
 unstow:
 	stow -t $(HOME) -v --delete */
 

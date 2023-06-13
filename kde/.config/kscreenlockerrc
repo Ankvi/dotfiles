@@ -1,0 +1,9 @@
+[$Version]
+update_info=kscreenlocker.upd:0.1-autolock
+
+[Daemon]
+Autolock=false
+
+[Greeter][Wallpaper][org.kde.image][General]
+Image=/home/andreas/.local/share/wallpapers/Sweet-Wallpapers/Sweet-space.png
+PreviewImage=/home/andreas/.local/share/wallpapers/Sweet-Wallpapers/Sweet-space.png
