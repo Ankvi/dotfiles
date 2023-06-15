@@ -11,9 +11,13 @@ SATURDAY = 5
 TEAMS_APPIMAGE = "/opt/appimages/teams-for-linux.AppImage"
 SLACK = shutil.which("slack")
 ONEPASSWORD = shutil.which("1password")
+YAKUAKE = shutil.which("yakuake")
 
 if ONEPASSWORD is not None:
     subprocess.Popen([ONEPASSWORD])
+
+if YAKUAKE is not None:
+    subprocess.Popen([YAKUAKE])
 
 # If it's not the weekend, open work related programs
 if timestamp.weekday() < SATURDAY and timestamp.hour < 17:
