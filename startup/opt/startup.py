@@ -13,7 +13,7 @@ SLACK = shutil.which("slack")
 ONEPASSWORD = shutil.which("1password")
 
 if ONEPASSWORD is not None:
-    subprocess.Popen(["1password"])
+    subprocess.Popen([ONEPASSWORD])
 
 # If it's not the weekend, open work related programs
 if timestamp.weekday() < SATURDAY and timestamp.hour < 17:
