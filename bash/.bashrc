@@ -40,3 +40,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 
 export GITHUB_USERNAME=Ankvi
 export NODE_OPTIONS="--max-old-space-size=8192"
+
+if test -f /usr/share/bash-completion/bash_completion; then
+    . /usr/share/bash-completion/bash_completion
+fi
