@@ -2,11 +2,6 @@
 _k_friendly_name=Activity Manager
 switch-to-activity-c889cd15-9064-4220-ac70-5dd540f3ec16=none,none,Switch to activity "Default"
 
-[Alacritty.desktop]
-New=none,none,New Terminal
-_k_friendly_name=Alacritty
-_launch=Ctrl+Alt+T,none,Alacritty
-
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to Norwegian=none,none,Switch keyboard layout to Norwegian
 Switch to Next Keyboard Layout=Meta+Alt+K,none,Switch to Next Keyboard Layout
@@ -220,6 +215,12 @@ stopmedia=Media Stop,Media Stop,Stop media playback
 _k_friendly_name=Dolphin
 _launch=Meta+E,Meta+E,Dolphin
 
+[org.kde.konsole.desktop]
+NewTab=none,none,Open a New Tab
+NewWindow=none,none,Open a New Window
+_k_friendly_name=Konsole
+_launch=Ctrl+Alt+T,Ctrl+Alt+T,Konsole
+
 [org.kde.krunner.desktop]
 RunClipboard=Alt+Shift+F2,Alt+Shift+F2,Run command on clipboard contents
 _k_friendly_name=KRunner
@@ -284,4 +285,4 @@ screenlocker=none,none,Screen Locking
 
 [yakuake]
 _k_friendly_name=Yakuake
-toggle-window-state=Alt+Return,F12,Open/Retract Yakuake
+toggle-window-state=Alt+Return\tAlt+Num+Enter,F12,Open/Retract Yakuake

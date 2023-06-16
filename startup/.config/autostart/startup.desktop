@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=/usr/bin/python /home/andreas/opt/startup.py
+Exec=/usr/bin/python /home/andreas/.local/opt/startup.py
 Icon=dialog-scripts
 Name=startup
 Path=
