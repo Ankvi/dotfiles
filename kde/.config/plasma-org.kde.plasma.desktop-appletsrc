@@ -206,7 +206,7 @@ immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][26][Applets][72][Configuration][General]
-launchers=applications:systemsettings.desktop,preferred://browser,preferred://filemanager,applications:Alacritty.desktop,applications:code.desktop
+launchers=applications:systemsettings.desktop,preferred://browser,preferred://filemanager,applications:code.desktop
 
 [Containments][26][Applets][73]
 immutability=1
@@ -215,6 +215,7 @@ plugin=org.kde.plasma.panelspacer
 [Containments][26][Applets][74]
 immutability=1
 plugin=org.kde.plasma.kickoff
+transient=true
 
 [Containments][26][Applets][74][Configuration]
 PreloadWeight=100
@@ -229,7 +230,7 @@ DialogHeight=84
 DialogWidth=2560
 
 [Containments][26][General]
-AppletOrder=74;73;72;28;29;27
+AppletOrder=73;72;28;29;27
 
 [Containments][3]
 ItemGeometries-1920x1080=
@@ -269,6 +270,9 @@ wallpaperplugin=org.kde.image
 [Containments][30][Applets][31]
 immutability=1
 plugin=org.kde.plasma.notifications
+
+[Containments][30][Applets][31][Configuration]
+PreloadWeight=55
 
 [Containments][30][Applets][32]
 immutability=1
@@ -459,7 +463,7 @@ immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][75][Applets][77][Configuration][General]
-launchers=applications:systemsettings.desktop,preferred://browser,preferred://filemanager,applications:Alacritty.desktop
+launchers=applications:systemsettings.desktop,preferred://browser,preferred://filemanager
 
 [Containments][75][Applets][78]
 immutability=1
@@ -494,7 +498,7 @@ immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][80][Applets][82][Configuration][General]
-launchers=applications:systemsettings.desktop,preferred://browser,preferred://filemanager,applications:Alacritty.desktop
+launchers=applications:systemsettings.desktop,preferred://browser,preferred://filemanager
 
 [Containments][80][Applets][83]
 immutability=1
