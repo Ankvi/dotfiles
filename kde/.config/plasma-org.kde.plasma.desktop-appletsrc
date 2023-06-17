@@ -212,19 +212,6 @@ launchers=applications:systemsettings.desktop,preferred://browser,preferred://fi
 immutability=1
 plugin=org.kde.plasma.panelspacer
 
-[Containments][26][Applets][74]
-immutability=1
-plugin=org.kde.plasma.kickoff
-transient=true
-
-[Containments][26][Applets][74][Configuration]
-PreloadWeight=100
-popupHeight=568
-popupWidth=741
-
-[Containments][26][Applets][74][Configuration][General]
-favoritesPortedToKAstats=true
-
 [Containments][26][ConfigDialog]
 DialogHeight=84
 DialogWidth=2560
