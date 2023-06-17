@@ -1,6 +1,9 @@
 stow:
 	stow -t $(HOME) -v */
 
+stow/work:
+	stow -t $(HOME) -v alacritty bash nuget spotifyd startup webcam yarn
+
 stow/adopt:
 	stow -t $(HOME) -v --adopt */
 
