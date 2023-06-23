@@ -1,11 +1,21 @@
-stow:
-	stow -t $(HOME) -v */
+COMMON=bash nuget spotifyd startup webcam yarn rofi kde
+WORK=$(COMMON)
+DESKTOP=$(COMMON) arduino cura kde-desktop
 
-stow/work:
-	stow -t $(HOME) -v alacritty bash nuget spotifyd startup webcam yarn rofi
+stow/base:
+	stow -t $(HOME) -v stow-config
+
+stow: stow/base
+	stow -t $(HOME) -v $(DESKTOP)
+
+stow/work: stow/base
+	stow -t $(HOME) -v $(WORK)
 
 stow/adopt:
-	stow -t $(HOME) -v --adopt */
+	stow -t $(HOME) -v --adopt $(DESKTOP)
+
+stow/work/adopt:
+	stow -t $(HOME) -v --adopt $(WORK)
 
 unstow:
 	stow -t $(HOME) -v --delete */
