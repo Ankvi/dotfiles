@@ -2,18 +2,7 @@ export GIT_REPOSITORIES="$HOME/git"
 export ELKJOP_GIT_REPOSITORIES="$GIT_REPOSITORIES/github.com/elkjopnordic"
 
 # ALIASES
-alias grep='grep --color=auto'
-alias ls='ls --color=auto'
-alias ll='ls -l'
-alias lla='ls -la'
-alias la='ls -a'
-alias gitpfwl='git push --force-with-lease'
-alias start-redis='sudo service redis-server start'
-alias stop-redis='sudo service redis-server stop'
-alias list-used-ports='sudo lsof -i -P -n | grep LISTEN'
-alias cdfincalc='cd $ELKJOP_GIT_REPOSITORIES/FINS/FinanceCalculator'
-alias cdflash='cd $ELKJOP_GIT_REPOSITORIES/flash'
-alias webcam='qv4l2'
+. $HOME/.bash_aliases
 
 export PROFILE_PATH="$HOME/.profile"
 

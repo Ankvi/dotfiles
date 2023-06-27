@@ -1,5 +1,5 @@
 COMMON=bash nuget spotifyd startup webcam yarn rofi kde
-WORK=$(COMMON)
+WORK=$(COMMON) kde-laptop
 DESKTOP=$(COMMON) arduino cura kde-desktop
 
 stow/base:
