@@ -1,0 +1,18 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=/home/andreas/.config/polybar/launch.sh --kvist
+GenericName[en_US]=
+GenericName=
+Icon=dialog-scripts
+MimeType=
+Name[en_US]=launch.sh
+Name=launch.sh
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-AutostartScript=true
+X-KDE-SubstituteUID=false
+X-KDE-Username=

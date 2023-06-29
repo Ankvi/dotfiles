@@ -1,6 +1,17 @@
-COMMON=bash nuget spotifyd startup webcam yarn rofi kde
+########################################
+# Define the list of directories to
+# install
+########################################
+COMMON=bash nuget spotifyd startup webcam yarn rofi kde polybar
 WORK=$(COMMON) kde-laptop
-DESKTOP=$(COMMON) arduino cura kde-desktop
+DESKTOP=$(COMMON) arduino cura kde-desktop latte-dock-desktop
+
+
+
+
+########################################
+# Stow dotfiles
+########################################
 
 stow/base:
 	stow -t $(HOME) -v stow-config
@@ -11,14 +22,50 @@ stow: stow/base
 stow/work: stow/base
 	stow -t $(HOME) -v $(WORK)
 
+
+
+
+########################################
+# Previewing GNU Stow symlinks
+########################################
+
+stow/preview:
+	stow -t $(HOME) -v --simulate $(DESKTOP)
+
+stow/work/preview:
+	stow -t $(HOME) -v --simulate $(WORK)
+
+
+
+
+########################################
+# Copy files from system to dotfiles
+########################################
+
 stow/adopt:
 	stow -t $(HOME) -v --adopt $(DESKTOP)
 
 stow/work/adopt:
 	stow -t $(HOME) -v --adopt $(WORK)
 
+
+
+
+########################################
+# Removing GNU Stow symlinks
+########################################
+
 unstow:
 	stow -t $(HOME) -v --delete */
+
+
+
+
+########################################
+# Ignoring changes to certain files that
+# will contain secrets.
+# Do this before stowing files
+########################################
 
 untrack-files-with-secrets:
 	git update-index --assume-unchanged nuget/.nuget/NuGet/NuGet.Config

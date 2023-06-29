@@ -23,7 +23,6 @@ DialogWidth=720
 [Containments][1][General]
 ToolBoxButtonState=topcenter
 ToolBoxButtonX=752
-ToolBoxButtonY=26
 
 [Containments][1][Wallpaper][org.kde.image][General]
 Image=/home/andreas/.local/share/wallpapers/Sweet-Wallpapers/Sweet-space.png
@@ -171,62 +170,6 @@ ToolBoxButtonY=20
 Image=/home/andreas/Pictures/wallpaperflare.com_wallpaper.jpg
 SlidePaths=/home/andreas/.local/share/wallpapers/,/usr/share/wallpapers/
 
-[Containments][26]
-activityId=
-formfactor=2
-immutability=1
-lastScreen=0
-location=3
-plugin=org.kde.panel
-wallpaperplugin=org.kde.image
-
-[Containments][26][Applets][27]
-immutability=1
-plugin=org.kde.plasma.digitalclock
-
-[Containments][26][Applets][27][Configuration]
-PreloadWeight=55
-popupHeight=450
-popupWidth=396
-
-[Containments][26][Applets][27][Configuration][ConfigDialog]
-DialogHeight=540
-DialogWidth=720
-
-[Containments][26][Applets][28]
-immutability=1
-plugin=org.kde.plasma.panelspacer
-
-[Containments][26][Applets][29]
-immutability=1
-plugin=org.kde.plasma.systemtray
-
-[Containments][26][Applets][29][Configuration]
-PreloadWeight=100
-SystrayContainmentId=30
-
-[Containments][26][Applets][72]
-immutability=1
-plugin=org.kde.plasma.icontasks
-
-[Containments][26][Applets][72][Configuration][General]
-launchers=applications:systemsettings.desktop,preferred://browser,preferred://filemanager,applications:code.desktop,applications:microsoft-edge.desktop
-
-[Containments][26][Applets][73]
-immutability=1
-plugin=org.kde.plasma.panelspacer
-
-[Containments][26][Applets][85]
-immutability=1
-plugin=org.kde.plasma.lock_logout
-
-[Containments][26][ConfigDialog]
-DialogHeight=84
-DialogWidth=2560
-
-[Containments][26][General]
-AppletOrder=85;73;72;28;29;27
-
 [Containments][3]
 ItemGeometries-1920x1080=
 ItemGeometriesHorizontal=
@@ -267,22 +210,28 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][30][Applets][31][Configuration]
-PreloadWeight=55
+PreloadWeight=47
 
 [Containments][30][Applets][32]
 immutability=1
 plugin=org.kde.kscreen
 
+[Containments][30][Applets][32][Configuration]
+PreloadWeight=42
+
 [Containments][30][Applets][33]
 immutability=1
 plugin=org.kde.plasma.clipboard
+
+[Containments][30][Applets][33][Configuration]
+PreloadWeight=42
 
 [Containments][30][Applets][34]
 immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][30][Applets][34][Configuration]
-PreloadWeight=100
+PreloadWeight=92
 
 [Containments][30][Applets][34][Configuration][General]
 migrated=true
@@ -291,47 +240,74 @@ migrated=true
 immutability=1
 plugin=org.kde.plasma.vault
 
+[Containments][30][Applets][35][Configuration]
+PreloadWeight=42
+
 [Containments][30][Applets][36]
 immutability=1
 plugin=org.kde.plasma.manage-inputmethod
+
+[Containments][30][Applets][36][Configuration]
+PreloadWeight=42
 
 [Containments][30][Applets][37]
 immutability=1
 plugin=org.kde.plasma.keyboardlayout
 
+[Containments][30][Applets][37][Configuration]
+PreloadWeight=42
+
 [Containments][30][Applets][38]
 immutability=1
 plugin=org.kde.plasma.devicenotifier
 
+[Containments][30][Applets][38][Configuration]
+PreloadWeight=42
+
 [Containments][30][Applets][39]
 immutability=1
 plugin=org.kde.plasma.keyboardindicator
+
+[Containments][30][Applets][39][Configuration]
+PreloadWeight=42
 
 [Containments][30][Applets][40]
 immutability=1
 plugin=org.kde.plasma.mediacontroller
 
 [Containments][30][Applets][40][Configuration]
-PreloadWeight=55
+PreloadWeight=47
 
 [Containments][30][Applets][41]
 immutability=1
 plugin=org.kde.plasma.nightcolorcontrol
 
+[Containments][30][Applets][41][Configuration]
+PreloadWeight=42
+
 [Containments][30][Applets][42]
 immutability=1
 plugin=org.kde.plasma.battery
 
+[Containments][30][Applets][42][Configuration]
+PreloadWeight=42
+
 [Containments][30][Applets][43]
 immutability=1
 plugin=org.kde.plasma.networkmanagement
+
+[Containments][30][Applets][43][Configuration]
+PreloadWeight=47
 
 [Containments][30][Applets][87]
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][30][Applets][87][Configuration]
-PreloadWeight=70
+PreloadWeight=62
+
+[Containments][30][Configuration]
+PreloadWeight=42
 
 [Containments][30][General]
 extraItems=org.kde.plasma.notifications,org.kde.plasma.battery,org.kde.kscreen,org.kde.plasma.nightcolorcontrol,org.kde.plasma.clipboard,org.kde.plasma.volume,org.kde.plasma.vault,org.kde.plasma.mediacontroller,org.kde.plasma.manage-inputmethod,org.kde.plasma.bluetooth,org.kde.plasma.networkmanagement,org.kde.plasma.keyboardlayout,org.kde.plasma.devicenotifier,org.kde.plasma.keyboardindicator
@@ -464,17 +440,6 @@ wallpaperplugin=org.kde.image
 immutability=1
 plugin=org.kde.plasma.digitalclock
 
-[Containments][75][Applets][77]
-immutability=1
-plugin=org.kde.plasma.icontasks
-
-[Containments][75][Applets][77][Configuration][General]
-launchers=applications:systemsettings.desktop,preferred://browser,preferred://filemanager
-
-[Containments][75][Applets][78]
-immutability=1
-plugin=org.kde.plasma.panelspacer
-
 [Containments][75][Applets][79]
 immutability=1
 plugin=org.kde.plasma.panelspacer
@@ -484,7 +449,7 @@ DialogHeight=84
 DialogWidth=1080
 
 [Containments][75][General]
-AppletOrder=79;77;78;76
+AppletOrder=79;76
 
 [Containments][80]
 activityId=
@@ -504,17 +469,6 @@ PreloadWeight=55
 popupHeight=450
 popupWidth=396
 
-[Containments][80][Applets][82]
-immutability=1
-plugin=org.kde.plasma.icontasks
-
-[Containments][80][Applets][82][Configuration][General]
-launchers=applications:systemsettings.desktop,preferred://browser,preferred://filemanager
-
-[Containments][80][Applets][83]
-immutability=1
-plugin=org.kde.plasma.panelspacer
-
 [Containments][80][Applets][84]
 immutability=1
 plugin=org.kde.plasma.panelspacer
@@ -524,7 +478,7 @@ DialogHeight=84
 DialogWidth=1920
 
 [Containments][80][General]
-AppletOrder=84;82;83;81
+AppletOrder=84;81
 
 [Containments4Appletsts][7][Configuration][General]
 launchers=applications:systemsettings.desktop,applications:org.kde.discover.desktop,preferred://browser
