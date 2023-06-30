@@ -1,5 +1,6 @@
 [ActivityManager]
 _k_friendly_name=Activity Manager
+switch-to-activity-9b4ff236-0be6-4577-bca7-9d2aff7af066=none,none,Switch to activity "Default"
 switch-to-activity-c889cd15-9064-4220-ac70-5dd540f3ec16=none,none,Switch to activity "Default"
 
 [KDE Keyboard Layout Switcher]
@@ -287,7 +288,7 @@ ActiveWindowScreenShot=Meta+Print,Meta+Print,Capture Active Window
 CurrentMonitorScreenShot=none,none,Capture Current Monitor
 FullScreenScreenShot=Shift+Print,Shift+Print,Capture Entire Desktop
 OpenWithoutScreenshot=none,none,Launch Spectacle without capturing
-RectangularRegionScreenShot=Meta+Shift+Print\tMeta+Shift+S,Meta+Shift+Print,Capture Rectangular Region
+RectangularRegionScreenShot=Meta+Shift+S\tMeta+Shift+Print,Meta+Shift+Print,Capture Rectangular Region
 WindowUnderCursorScreenShot=Meta+Ctrl+Print,Meta+Ctrl+Print,Capture Window Under Cursor
 _k_friendly_name=Spectacle
 _launch=Print,Print,Launch Spectacle
@@ -337,8 +338,8 @@ switch to previous activity=none,,Switch to Previous Activity
 toggle do not disturb=none,none,Toggle do not disturb
 
 [rofi-2.desktop]
-_k_friendly_name=rofi
-_launch=Meta+Space,none,rofi
+_k_friendly_name=rofi -show run
+_launch=Meta+Space,none,rofi -show run
 
 [systemsettings.desktop]
 _k_friendly_name=System Settings
@@ -351,4 +352,4 @@ screenlocker=none,none,Screen Locking
 
 [yakuake]
 _k_friendly_name=Yakuake
-toggle-window-state=Alt+Return\tAlt+Num+Enter,F12,Open/Retract Yakuake
+toggle-window-state=Alt+Return,F12,Open/Retract Yakuake

@@ -134,7 +134,7 @@ immutability=1
 plugin=org.kde.kscreen
 
 [Containments][29][Applets][33][Configuration]
-PreloadWeight=55
+PreloadWeight=60
 
 [Containments][29][Applets][34]
 immutability=1
@@ -157,7 +157,7 @@ immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][29][Applets][38][Configuration]
-PreloadWeight=75
+PreloadWeight=95
 
 [Containments][29][Applets][38][Configuration][General]
 migrated=true
@@ -185,7 +185,7 @@ immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][29][Applets][46][Configuration]
-PreloadWeight=65
+PreloadWeight=75
 
 [Containments][29][Applets][49]
 immutability=1
@@ -201,6 +201,7 @@ knownItems=org.kde.plasma.vault,org.kde.plasma.manage-inputmethod,org.kde.plasma
 [Containments][43]
 ItemGeometries-1920x1200=
 ItemGeometries-2560x1440=
+ItemGeometries-3440x1440=
 ItemGeometriesHorizontal=
 activityId=9b4ff236-0be6-4577-bca7-9d2aff7af066
 formfactor=0
@@ -325,7 +326,7 @@ immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][56][Applets][59][Configuration][General]
-launchers=applications:systemsettings.desktop,applications:org.kde.discover.desktop,preferred://filemanager,preferred://browser,applications:code.desktop,applications:microsoft-edge.desktop
+launchers=applications:systemsettings.desktop,preferred://filemanager,preferred://browser,applications:code.desktop,applications:microsoft-edge.desktop
 
 [Containments][56][Applets][60]
 immutability=1
@@ -335,12 +336,16 @@ plugin=org.kde.plasma.panelspacer
 immutability=1
 plugin=org.kde.plasma.panelspacer
 
+[Containments][56][Applets][69]
+immutability=1
+plugin=org.kde.plasma.lock_logout
+
 [Containments][56][ConfigDialog]
 DialogHeight=84
 DialogWidth=2560
 
 [Containments][56][General]
-AppletOrder=61;59;60;57
+AppletOrder=69;61;59;60;57
 
 [Containments][62]
 activityId=
@@ -358,6 +363,9 @@ plugin=org.kde.plasma.digitalclock
 [Containments][62][Applets][64]
 immutability=1
 plugin=org.kde.plasma.icontasks
+
+[Containments][62][Applets][64][Configuration][General]
+launchers=applications:systemsettings.desktop,preferred://filemanager,preferred://browser
 
 [Containments][62][Applets][65]
 immutability=1
