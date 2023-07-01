@@ -9,6 +9,15 @@ Name_2=2
 Number=2
 Rows=1
 
+[Plugins]
+tilegapsEnabled=true
+
+[Script-tilegaps]
+gapLeft=11
+gapRight=11
+gapTop=0
+includeMaximized=true
+
 [TabBox]
 LayoutName=thumbnail_grid
 

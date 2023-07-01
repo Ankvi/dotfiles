@@ -76,3 +76,10 @@ track-files-with-secrets:
 	git update-index --no-assume-unchanged nuget/.nuget/NuGet/NuGet.Config
 	git update-index --no-assume-unchanged yarn/.yarnrc.yml
 	git update-index --no-assume-unchanged spotifyd/.config/spotifyd/spotifyd.conf
+
+########################################
+# (Re)activate polybar
+########################################
+
+polybar/start:
+	./polybar/.config/polybar/launch.sh --kvist

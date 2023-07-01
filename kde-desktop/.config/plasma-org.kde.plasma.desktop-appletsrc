@@ -188,7 +188,6 @@ DialogWidth=720
 [Containments][3][General]
 ToolBoxButtonState=topcenter
 ToolBoxButtonX=432
-ToolBoxButtonY=20
 
 [Containments][3][Wallpaper][org.kde.image][General]
 Image=/home/andreas/.local/share/wallpapers/Sweet-Wallpapers/Sweet-space.png
@@ -434,15 +433,18 @@ immutability=1
 lastScreen=1
 location=3
 plugin=org.kde.panel
+transient=true
 wallpaperplugin=org.kde.image
 
 [Containments][75][Applets][76]
 immutability=1
 plugin=org.kde.plasma.digitalclock
+transient=true
 
 [Containments][75][Applets][79]
 immutability=1
 plugin=org.kde.plasma.panelspacer
+transient=true
 
 [Containments][75][ConfigDialog]
 DialogHeight=84
@@ -458,11 +460,13 @@ immutability=1
 lastScreen=2
 location=3
 plugin=org.kde.panel
+transient=true
 wallpaperplugin=org.kde.image
 
 [Containments][80][Applets][81]
 immutability=1
 plugin=org.kde.plasma.digitalclock
+transient=true
 
 [Containments][80][Applets][81][Configuration]
 PreloadWeight=55
@@ -472,6 +476,7 @@ popupWidth=396
 [Containments][80][Applets][84]
 immutability=1
 plugin=org.kde.plasma.panelspacer
+transient=true
 
 [Containments][80][ConfigDialog]
 DialogHeight=84
