@@ -2,7 +2,7 @@
 # Define the list of directories to
 # install
 ########################################
-COMMON=bash nuget spotifyd startup webcam yarn rofi kde polybar
+COMMON=bash nuget spotifyd startup webcam yarn rofi kde polybar fonts
 WORK=$(COMMON) kde-laptop
 DESKTOP=$(COMMON) arduino cura kde-desktop latte-dock-desktop
 
