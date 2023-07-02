@@ -14,12 +14,11 @@ export OPT_FOLDER="$LOCAL_FOLDER/opt"
 export PULUMI_PATH=$HOME/.pulumi
 export PATH=$PATH:$PULUMI_PATH/bin
 
-# DOTNET
-export DOTNET_ROOT=$HOME/.dotnet
-export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
-
 # SNAP
 export PATH=$PATH:/snap/bin
+
+# DOTNET
+export DOTNET_ROOT=/usr/share/dotnet/
 
 # GENERAL
 export PATH=$PATH:$HOME/bin
