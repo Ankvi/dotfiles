@@ -1,31 +1,70 @@
 #!/usr/bin/env python
 
 import dbus
-import os
+from sys import argv
+
+DBUS_OBJECT_PATH = '/org/mpris/MediaPlayer2'
+DBUS_PROPERTIES_INTERFACE = 'org.freedesktop.DBus.Properties'
+DBUS_PLAYER_INTERFACE = 'org.mpris.MediaPlayer2.Player'
 
 class SpotifyModule:
     def __init__(self):
         self.bus = dbus.SessionBus()
-        self.spotifyd = self.bus.get_object('com.spotifyd.Bus', '/com/spotifyd/Controller')
-        self.spotifyd_interface = dbus.Interface(self.spotifyd, 'org.freedesktop.DBus.Properties')
+        self.icon = '%{F#EC7875}%{F-}'
+
+        for service in self.bus.list_names():
+            if "spotify" in service:
+                self.spotifyd_mpris_instance = service
+
+        if self.spotifyd_mpris_instance is None:
+            raise Exception('Spotify is not running')
+
+        self.spotifyd = self.bus.get_object(self.spotifyd_mpris_instance, DBUS_OBJECT_PATH)
+        self.properties = dbus.Interface(self.spotifyd, DBUS_PROPERTIES_INTERFACE)
+        self.player = dbus.Interface(self.spotifyd, DBUS_PLAYER_INTERFACE)
 
     def get_song_info(self):
-        metadata = self.spotifyd_interface.Get('org.freedesktop.DBus.Properties', 'Metadata')
-        title = metadata['mpris:trackid'].split(':')[2]
-        artist = metadata['xesam:artist'][0]
+        metadata = self.properties.Get(DBUS_PLAYER_INTERFACE, 'Metadata')
+        title = metadata.get('xesam:title', 'Unknown title')
+        artists = metadata.get('xesam:artist', ['Unknown artists'])
+        artist = ", ".join(artists)
         return f'{artist} - {title}'
 
-    def is_playing(self):
-        status = self.spotifyd_interface.Get('org.freedesktop.DBus.Properties', 'PlaybackStatus')
-        return status == 'Playing'
+    def get_status(self):
+        return self.properties.Get(DBUS_PLAYER_INTERFACE, 'PlaybackStatus')
 
-    def display_module(self):
-        if self.is_playing():
-            song_info = self.get_song_info()
-            print(f' {song_info}')  # Modify the icon and format as per your preference
-        else:
-            print('')  # Empty output when Spotify is not playing
+    def play_pause(self):
+        self.player.PlayPause()
+
+    def print(self, value):
+        print(f'{self.icon} {value}')
+
+    def print_song_info(self):
+        status = self.get_status()
+        match status:
+            case 'Playing':
+                song_info = self.get_song_info()
+                self.print(song_info)
+            case 'Paused':
+                song_info = self.get_song_info()
+                self.print(f'{song_info} (Paused)')
+            case _:
+                self.print('Stopped')
+
+    def run_command(self, command):
+        match command:
+            case 'play_pause':
+                self.play_pause()
+            case 'print_song_info':
+                self.print_song_info()
+            case _:
+                raise Exception('Invalid command')
 
 if __name__ == '__main__':
     spotify_module = SpotifyModule()
-    spotify_module.display_module()
+
+    if len(argv) < 2:
+        spotify_module.print_song_info()
+        exit()
+
+    spotify_module.run_command(argv[1])

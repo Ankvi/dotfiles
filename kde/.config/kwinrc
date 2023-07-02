@@ -10,7 +10,7 @@ Number=2
 Rows=1
 
 [Plugins]
-tilegapsEnabled=true
+tilegapsEnabled=false
 
 [Script-tilegaps]
 gapLeft=11
