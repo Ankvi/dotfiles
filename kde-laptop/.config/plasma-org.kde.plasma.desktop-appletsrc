@@ -27,8 +27,7 @@ PreloadWeight=0
 
 [Containments][23][General]
 ToolBoxButtonState=topcenter
-ToolBoxButtonX=752
-ToolBoxButtonY=24
+ToolBoxButtonX=432
 
 [Containments][23][Wallpaper][org.kde.image][General]
 Image=/home/andreas/Pictures/wallpaperflare.com_wallpaper.jpg
@@ -41,11 +40,13 @@ immutability=1
 lastScreen=0
 location=3
 plugin=org.kde.panel
+transient=true
 wallpaperplugin=org.kde.image
 
 [Containments][24][Applets][27]
 immutability=1
 plugin=org.kde.plasma.panelspacer
+transient=true
 
 [Containments][24][Applets][27][Configuration]
 immutability=1
@@ -62,6 +63,7 @@ length=1108
 [Containments][24][Applets][28]
 immutability=1
 plugin=org.kde.plasma.systemtray
+transient=true
 
 [Containments][24][Applets][28][Configuration]
 PreloadWeight=100
@@ -74,6 +76,7 @@ PreloadWeight=0
 [Containments][24][Applets][39]
 immutability=1
 plugin=org.kde.plasma.digitalclock
+transient=true
 
 [Containments][24][Applets][39][Configuration]
 immutability=1
@@ -84,14 +87,17 @@ PreloadWeight=0
 [Containments][24][Applets][48]
 immutability=1
 plugin=org.kde.plasma.panelspacer
+transient=true
 
 [Containments][24][Applets][67]
 immutability=1
 plugin=org.kde.plasma.lock_logout
+transient=true
 
 [Containments][24][Applets][71]
 immutability=1
 plugin=org.kde.plasma.systemmonitor.memory
+transient=true
 
 [Containments][24][Applets][71][Configuration]
 CurrentPreset=org.kde.plasma.systemmonitor
@@ -126,6 +132,7 @@ totalSensors=["memory/physical/usedPercent"]
 [Containments][24][Applets][73]
 immutability=1
 plugin=org.kde.plasma.systemmonitor.cpucore
+transient=true
 
 [Containments][24][Applets][73][Configuration]
 CurrentPreset=org.kde.plasma.systemmonitor
@@ -151,7 +158,7 @@ totalSensors=["cpu/all/usage"]
 
 [Containments][24][ConfigDialog]
 DialogHeight=84
-DialogWidth=2560
+DialogWidth=1920
 
 [Containments][24][Configuration]
 PreloadWeight=0
