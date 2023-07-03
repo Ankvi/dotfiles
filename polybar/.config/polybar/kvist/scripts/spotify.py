@@ -10,7 +10,6 @@ DBUS_PLAYER_INTERFACE = 'org.mpris.MediaPlayer2.Player'
 class SpotifyModule:
     def __init__(self):
         self.bus = dbus.SessionBus()
-        self.icon = '%{F#EC7875}%{F-}'
 
         for service in self.bus.list_names():
             if "spotify" in service:
@@ -36,20 +35,17 @@ class SpotifyModule:
     def play_pause(self):
         self.player.PlayPause()
 
-    def print(self, value):
-        print(f'{self.icon} {value}')
-
     def print_song_info(self):
         status = self.get_status()
         match status:
             case 'Playing':
                 song_info = self.get_song_info()
-                self.print(song_info)
+                print(song_info)
             case 'Paused':
                 song_info = self.get_song_info()
-                self.print(f'{song_info} (Paused)')
+                print(f'{song_info} (Paused)')
             case _:
-                self.print('Stopped')
+                print('Stopped')
 
     def run_command(self, command):
         match command:
