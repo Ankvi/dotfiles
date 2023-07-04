@@ -57,10 +57,13 @@ class SpotifyModule:
                 raise Exception('Invalid command')
 
 if __name__ == '__main__':
-    spotify_module = SpotifyModule()
+    try:
+        spotify_module = SpotifyModule()
 
-    if len(argv) < 2:
-        spotify_module.print_song_info()
-        exit()
+        if len(argv) < 2:
+            spotify_module.print_song_info()
+            exit()
 
-    spotify_module.run_command(argv[1])
+        spotify_module.run_command(argv[1])
+    except:
+        print('Could not connect to Spotify')
