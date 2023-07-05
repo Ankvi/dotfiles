@@ -431,3 +431,4 @@ launchers=applications:systemsettings.desktop,applications:org.kde.discover.desk
 
 [ScreenMapping]
 itemsOnDisabledScreens=
+screenMapping=
