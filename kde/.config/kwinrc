@@ -66,5 +66,8 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 [Tiling][cc526982-d56c-5c42-81cc-f32d26666e14]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Tiling][f92210dd-440a-5155-94c9-e634baafbe76]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [org.kde.kdecoration2]
 theme=__aurorae__svg__Sweet-Dark-transparent

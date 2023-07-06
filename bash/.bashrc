@@ -35,3 +35,4 @@ if test -f /usr/share/bash-completion/bash_completion; then
 fi
 
 export OPENCV_LOG_LEVEL=ERROR
+export POLYBAR_CONFIG_PATH="$HOME/.config/polybar"

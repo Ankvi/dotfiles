@@ -3,6 +3,15 @@
 import dbus
 from sys import argv
 
+class SpotifyNotRunningError(Exception):
+    pass
+
+class CouldNotConnectToSpotifyError(Exception):
+    pass
+
+class InvalidCommandError(Exception):
+    pass
+
 DBUS_OBJECT_PATH = '/org/mpris/MediaPlayer2'
 DBUS_PROPERTIES_INTERFACE = 'org.freedesktop.DBus.Properties'
 DBUS_PLAYER_INTERFACE = 'org.mpris.MediaPlayer2.Player'
@@ -16,9 +25,12 @@ class SpotifyModule:
                 self.spotifyd_mpris_instance = service
 
         if self.spotifyd_mpris_instance is None:
-            raise Exception('Spotify is not running')
+            raise SpotifyNotRunningError
 
-        self.spotifyd = self.bus.get_object(self.spotifyd_mpris_instance, DBUS_OBJECT_PATH)
+        self.spotifyd = self.bus.get_object(self.spotifyd_mpris_instance, DBUS_OBJECT_PATH, False)
+        if self.spotifyd is None:
+            raise CouldNotConnectToSpotifyError
+
         self.properties = dbus.Interface(self.spotifyd, DBUS_PROPERTIES_INTERFACE)
         self.player = dbus.Interface(self.spotifyd, DBUS_PLAYER_INTERFACE)
 
@@ -54,7 +66,7 @@ class SpotifyModule:
             case 'print_song_info':
                 self.print_song_info()
             case _:
-                raise Exception('Invalid command')
+                raise InvalidCommandError
 
 if __name__ == '__main__':
     try:
@@ -65,5 +77,11 @@ if __name__ == '__main__':
             exit()
 
         spotify_module.run_command(argv[1])
-    except:
+    except SpotifyNotRunningError:
+        print('Spotify is not running')
+    except CouldNotConnectToSpotifyError:
         print('Could not connect to Spotify')
+    except InvalidCommandError:
+        print('Invalid command')
+    except:
+        print('Unknown error')

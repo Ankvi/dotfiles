@@ -1,8 +1,0 @@
-[Desktop Entry]
-Exec=/home/andreas/.config/polybar/launch.sh --kvist
-Icon=dialog-scripts
-Name=launch.sh
-Path=
-Type=Application
-Terminal=true
-X-KDE-AutostartScript=true

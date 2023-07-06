@@ -1,3 +1,6 @@
 {
-    "editor.fontFamily": "'NotoMono Nerd Font Mono', 'monospace', 'feather'"
+    "editor.fontFamily": "'NotoMono Nerd Font Mono', 'monospace','feather', 'Material Icons'",
+    "files.exclude": {
+        "**/bin": false
+    }
 }
