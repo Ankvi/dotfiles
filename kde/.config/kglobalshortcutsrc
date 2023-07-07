@@ -115,8 +115,8 @@ Walk Through Desktop List=none,,Walk Through Desktop List
 Walk Through Desktop List (Reverse)=none,,Walk Through Desktop List (Reverse)
 Walk Through Desktops=none,,Walk Through Desktops
 Walk Through Desktops (Reverse)=none,,Walk Through Desktops (Reverse)
-Walk Through Windows=Alt+Tab,Alt+Tab,Walk Through Windows
-Walk Through Windows (Reverse)=Alt+Shift+Backtab,Alt+Shift+Backtab,Walk Through Windows (Reverse)
+Walk Through Windows=none,Alt+Tab,Walk Through Windows
+Walk Through Windows (Reverse)=none,Alt+Shift+Backtab,Walk Through Windows (Reverse)
 Walk Through Windows Alternative=none,,Walk Through Windows Alternative
 Walk Through Windows Alternative (Reverse)=none,,Walk Through Windows Alternative (Reverse)
 Walk Through Windows of Current Application=Alt+-,Alt+`,Walk Through Windows of Current Application
@@ -340,6 +340,10 @@ toggle do not disturb=none,,Toggle do not disturb
 [rofi-2.desktop]
 _k_friendly_name=rofi -show run
 _launch=Meta+Space,none,rofi -show run
+
+[rofi-3.desktop]
+_k_friendly_name=rofi -show window
+_launch=Alt+Tab,none,rofi -show window
 
 [systemsettings.desktop]
 _k_friendly_name=System Settings
