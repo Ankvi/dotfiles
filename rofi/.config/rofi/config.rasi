@@ -59,9 +59,9 @@ configuration {
 /*	pid: "/run/user/1000/rofi.pid";*/
 	display-window: "";
 /*	display-windowcd: ;*/
-/*	display-run: ;*/
+	display-run: "";
 /*	display-ssh: ;*/
-/*	display-drun: ;*/
+	display-drun: "";
 	display-combi: "";
 /*	display-keys: ;*/
 /*	display-filebrowser: ;*/
@@ -150,4 +150,4 @@ configuration {
       sorting-method:    "name";
   }
 }
-@theme "~/.local/share/rofi/themes/rounded-purple-dark.rasi"
+@theme "rounded-purple-dark"

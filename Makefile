@@ -4,7 +4,7 @@
 ########################################
 COMMON=bash nuget spotifyd startup webcam yarn rofi kde polybar fonts
 WORK=$(COMMON) kde-laptop
-DESKTOP=$(COMMON) arduino cura kde-desktop latte-dock-desktop
+DESKTOP=$(COMMON) arduino cura kde-desktop
 
 
 
