@@ -55,9 +55,13 @@ class SpotifyModule:
                 print(song_info)
             case 'Paused':
                 song_info = self.get_song_info()
-                print(f'{song_info} (Paused)')
+                print(song_info)
+                # print(f'{song_info} (Paused)')
             case _:
                 print('Stopped')
+
+    def print_is_playing_icon(self):
+        print("" if self.get_status() == 'Playing' else "")
 
     def run_command(self, command):
         match command:
@@ -65,6 +69,12 @@ class SpotifyModule:
                 self.play_pause()
             case 'print_song_info':
                 self.print_song_info()
+            case 'print_is_playing_icon':
+                self.print_is_playing_icon()
+            case 'next':
+                self.player.Next()
+            case 'previous':
+                self.player.Previous()
             case _:
                 raise InvalidCommandError
 
