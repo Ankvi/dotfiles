@@ -41,7 +41,7 @@ def start_if_not_running(name, command = None):
 
 start_if_not_running(ONEPASSWORD)
 start_if_not_running(YAKUAKE)
-start_if_not_running(POLYBAR, "~/.config/polybar/kvist/launch.sh")
+# start_if_not_running(POLYBAR, "~/.polybar/launch.sh")
 
 # If it's not the weekend, open work related programs
 if timestamp.weekday() < SATURDAY and timestamp.hour < 17:

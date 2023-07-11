@@ -35,7 +35,7 @@ if test -f /usr/share/bash-completion/bash_completion; then
 fi
 
 export OPENCV_LOG_LEVEL=ERROR
-export POLYBAR_CONFIG_PATH="$HOME/.config/polybar"
+export POLYBAR_CONFIG_PATH="$HOME/.polybar"
 
 # Enable the subsequent settings only in interactive sessions
 case $- in

@@ -58,7 +58,7 @@ class SpotifyModule:
                 print(song_info)
                 # print(f'{song_info} (Paused)')
             case _:
-                print('Stopped')
+                print('Spotify')
 
     def print_is_playing_icon(self):
         print("" if self.get_status() == 'Playing' else "")

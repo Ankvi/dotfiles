@@ -82,4 +82,4 @@ track-files-with-secrets:
 ########################################
 
 polybar/start:
-	./polybar/.config/polybar/launch.sh --kvist
+	./polybar/.polybar/launch.sh

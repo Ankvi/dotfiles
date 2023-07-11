@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Color files
-PFILE="$HOME/.config/polybar/kvist/colors.ini"
-RFILE="$HOME/.config/polybar/kvist/scripts/rofi/colors.rasi"
+PFILE="$HOME/.polybar/colors.ini"
+RFILE="$HOME/.polybar/scripts/rofi/colors.rasi"
 
 # Change colors
 change_color() {

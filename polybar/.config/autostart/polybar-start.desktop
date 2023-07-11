@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=polybar-start
+Exec=/home/andreas/.local/bin/polybar-start
 Icon=dialog-scripts
 Name=Start Polybar
 Path=
