@@ -3,7 +3,7 @@
 # install
 ########################################
 COMMON=bash nuget spotifyd startup webcam yarn rofi fonts
-WORK=$(COMMON)
+WORK=$(COMMON) i3
 DESKTOP=$(COMMON) arduino cura kde polybar kde-desktop
 
 
