@@ -10,11 +10,13 @@ Number=2
 Rows=1
 
 [Plugins]
-tilegapsEnabled=false
+tilegapsEnabled=true
 
 [Script-tilegaps]
-gapLeft=11
-gapRight=11
+gapBottom=5
+gapLeft=5
+gapMid=5
+gapRight=5
 gapTop=0
 includeMaximized=true
 

@@ -17,4 +17,5 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 #   done
 # else
 polybar -q main -c "$DIR"/config.ini &
+# polybar -q systemtray -c "$DIR"/config.ini &
 # fi
