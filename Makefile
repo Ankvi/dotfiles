@@ -2,8 +2,8 @@
 # Define the list of directories to
 # install
 ########################################
-COMMON=bash nuget spotifyd startup webcam yarn rofi fonts
-WORK=$(COMMON) i3
+COMMON=bash nuget spotifyd startup webcam yarn rofi fonts wallpapers gtk
+WORK=$(COMMON) i3 alacritty
 DESKTOP=$(COMMON) arduino cura kde polybar kde-desktop
 
 
