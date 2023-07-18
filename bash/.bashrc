@@ -24,6 +24,8 @@ export DOTNET_ROOT=/usr/share/dotnet/
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$BIN_FOLDER
 
+export TERM=alacritty
+
 # RUST
 export PATH=$PATH:$HOME/.cargo/bin
 

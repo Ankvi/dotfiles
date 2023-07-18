@@ -11,11 +11,11 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch the bar for each connected monitor
-# if type "xrandr"; then
-#   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-#     MONITOR=$m polybar -q main -c "$DIR"/config.ini &
-#   done
-# else
+if type "xrandr"; then
+  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    MONITOR=$m polybar -q main -c "$DIR"/config.ini &
+  done
+else
 polybar -q main -c "$DIR"/config.ini &
 # polybar -q systemtray -c "$DIR"/config.ini &
-# fi
+fi

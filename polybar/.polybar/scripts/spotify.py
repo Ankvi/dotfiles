@@ -9,6 +9,9 @@ class SpotifyNotRunningError(Exception):
 class CouldNotConnectToSpotifyError(Exception):
     pass
 
+class MultipleSpotifyInstancesError(Exception):
+    pass
+
 class InvalidCommandError(Exception):
     pass
 
@@ -22,6 +25,8 @@ class SpotifyModule:
 
         for service in self.bus.list_names():
             if "spotify" in service:
+                if self.spotifyd_mpris_instance is not None:
+                    raise MultipleSpotifyInstancesError
                 self.spotifyd_mpris_instance = service
 
         if self.spotifyd_mpris_instance is None:
@@ -50,12 +55,12 @@ class SpotifyModule:
     def print_song_info(self):
         status = self.get_status()
         match status:
-            case 'Playing':
+            case 'Playing' | 'Paused':
                 song_info = self.get_song_info()
                 print(song_info)
-            case 'Paused':
-                song_info = self.get_song_info()
-                print(song_info)
+            # case 'Paused':
+            #     song_info = self.get_song_info()
+            #     print(song_info)
                 # print(f'{song_info} (Paused)')
             case _:
                 print('Spotify')
@@ -75,6 +80,8 @@ class SpotifyModule:
                 self.player.Next()
             case 'previous':
                 self.player.Previous()
+            case 'status':
+                print(self.get_status())
             case _:
                 raise InvalidCommandError
 
@@ -93,5 +100,7 @@ if __name__ == '__main__':
         print('Could not connect to Spotify')
     except InvalidCommandError:
         print('Invalid command')
+    except MultipleSpotifyInstancesError:
+        print('Multiple Spotifyd instances found')
     except:
         print('Unknown error')
