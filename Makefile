@@ -3,7 +3,7 @@
 # install
 ########################################
 COMMON=bash nuget spotifyd startup webcam yarn rofi fonts wallpapers gtk
-WORK=$(COMMON) i3 alacritty
+WORK=$(COMMON) i3 alacritty picom
 DESKTOP=$(COMMON) arduino cura kde polybar kde-desktop
 
 

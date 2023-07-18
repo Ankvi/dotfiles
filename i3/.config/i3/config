@@ -18,32 +18,21 @@ set $lock i3lock
 # is used in the bar {} block below.
 font pango:monospace 8
 
-exec_always setxkbmap -layout no
+exec --no-startup-id setxkbmap -layout no
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+exec --no-startup-id xinput set-prop "ELAN0673:00 04F3:3188 Touchpad" "libinput Tapping Enabled" 1
 
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
+exec_always --no-startup-id picom &
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
+exec_always feh --no-fehbg --bg-scale $bg
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
+exec_always --no-startup-id killall -q spotifyd && spotifyd
+
+exec_always $HOME/.polybar/launch.sh
+
 exec --no-startup-id xss-lock --transfer-sleep-lock -- $lock --nofork
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
-
-# Wallpaper
-exec_always feh --no-fehbg --bg-scale $background
-
-# Start Spotify daemon
-exec --no-startup-id spotifyd
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -68,9 +57,6 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
-exec_always --no-startup-id $HOME/.polybar/launch.sh
-
-exec xinput set-prop "ELAN0673:00 04F3:3188 Touchpad" "libinput Tapping Enabled" 1
 
 # Custom keybindings
 bindsym $mod+t exec $term
@@ -83,16 +69,16 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 
 # Task switcher
-bindsym Mod1+Tab exec --no-startup-id rofi-task-switch
+bindsym Mod1+Tab exec rofi-task-switch
 
 # Browsers
-bindsym $mod+d exec --no-startup-id wmctrl -xa google-chrome || google-chrome-stable || google-chrome &
-bindsym $mod+Ctrl+d exec --no-startup-id google-chrome-stable || google-chrome &
-bindsym $mod+c exec --no-startup-id wmctrl -xa code || code &
-bindsym $mod+Ctrl+c exec --no-startup-id code &
-bindsym $mod+x exec --no-startup-id wmctrl -xa microsoft-edge || microsoft-edge-stable || microsoft-edge &
-bindsym $mod+Ctrl+x exec --no-startup-id microsoft-edge-stable || microsoft-edge &
-bindsym $mod+Alt+x exec --no-startup-id microsoft-edge-stable --profile-directory="Profile 1" || microsoft-edge --profile-directory="Profile 1" &
+bindsym $mod+d exec wmctrl -xa google-chrome || google-chrome-stable || google-chrome &
+bindsym $mod+Ctrl+d exec google-chrome-stable || google-chrome &
+bindsym $mod+c exec wmctrl -xa code || code &
+bindsym $mod+Ctrl+c exec code &
+bindsym $mod+x exec wmctrl -xa microsoft-edge || microsoft-edge-stable || microsoft-edge &
+bindsym $mod+Ctrl+x exec microsoft-edge-stable || microsoft-edge &
+bindsym $mod+Alt+x exec microsoft-edge-stable --profile-directory="Profile 1" || microsoft-edge --profile-directory="Profile 1" &
 
 
 bindsym $mod+l exec $lock
@@ -187,12 +173,6 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
@@ -215,10 +195,10 @@ bar {
 
 # GAPS
 
-gaps inner 5
+gaps inner 8
 gaps outer 0
 
 # BORDERS
 
-default_border pixel 1
-default_floating_border pixel 1
+default_floating_border pixel 0
+default_border pixel 0
