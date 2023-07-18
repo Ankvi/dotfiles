@@ -23,6 +23,8 @@ class SpotifyModule:
     def __init__(self):
         self.bus = dbus.SessionBus()
 
+        self.spotifyd_mpris_instance = None
+
         for service in self.bus.list_names():
             if "spotify" in service:
                 if self.spotifyd_mpris_instance is not None:
@@ -58,10 +60,6 @@ class SpotifyModule:
             case 'Playing' | 'Paused':
                 song_info = self.get_song_info()
                 print(song_info)
-            # case 'Paused':
-            #     song_info = self.get_song_info()
-            #     print(song_info)
-                # print(f'{song_info} (Paused)')
             case _:
                 print('Spotify')
 
