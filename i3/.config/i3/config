@@ -11,28 +11,12 @@
 
 set $mod Mod4
 set $term alacritty
-set $bg $HOME/Pictures/wallpapers/background.jpg
+set $bg $HOME/Pictures/wallpapers/background.png
 set $lock i3lock
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
-
-exec --no-startup-id setxkbmap -layout no
-
-exec --no-startup-id xinput set-prop "ELAN0673:00 04F3:3188 Touchpad" "libinput Tapping Enabled" 1
-
-exec_always --no-startup-id picom &
-
-exec_always feh --no-fehbg --bg-scale $bg
-
-exec_always --no-startup-id killall -q spotifyd && spotifyd
-
-exec_always $HOME/.polybar/launch.sh
-
-exec --no-startup-id xss-lock --transfer-sleep-lock -- $lock --nofork
-
-exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -61,9 +45,6 @@ tiling_drag modifier titlebar
 # Custom keybindings
 bindsym $mod+t exec $term
 bindsym $mod+space exec rofi -show combi
-
-# start a terminal
-bindsym $mod+Return exec $term
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -202,3 +183,30 @@ gaps outer 0
 
 default_floating_border pixel 0
 default_border pixel 0
+
+# COMMANDS
+
+exec --no-startup-id setxkbmap -layout no
+
+exec --no-startup-id xinput set-prop "ELAN0673:00 04F3:3188 Touchpad" "libinput Tapping Enabled" 1
+
+exec_always --no-startup-id picom &
+
+exec_always --no-startup-id dunst &
+
+exec_always --no-startup-id feh --no-fehbg --bg-scale $bg
+
+exec_always --no-startup-id $HOME/.polybar/launch.sh
+
+exec --no-startup-id xss-lock --transfer-sleep-lock -- $lock --nofork
+
+exec --no-startup-id nm-applet
+
+for_window [title="scratchTerm"] border none
+for_window [title="scratchTerm"] floating enable sticky enable
+for_window [title="scratchTerm"] move scratchpad
+for_window [title="scratchTerm"] resize set 1700 1024
+
+exec --no-startup-id $term --title "scratchTerm" &
+
+bindsym $mod+Return exec dropWindow 1024 "scratchTerm" -t=15 -s=16 -r

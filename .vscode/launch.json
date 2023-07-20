@@ -19,6 +19,15 @@
             "program": "${workspaceFolder}/spotifyd/.local/bin/spotifyctl",
             "console": "integratedTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "Debug i3 dropWindow",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/i3/.local/bin/dropWindow",
+            "args": ["1024", "scratchTerm", "-t=15", "-s=16", "-r"],
+            "console": "integratedTerminal",
+            "justMyCode": true
         }
     ]
 }

@@ -24,6 +24,9 @@ class SpotifyModule:
         self.bus = dbus.SessionBus()
 
         self.spotifyd_mpris_instance = None
+        self.spotifyd = None
+        self.properties = None
+        self.player = None
 
         for service in self.bus.list_names():
             if "spotify" in service:
@@ -31,17 +34,17 @@ class SpotifyModule:
                     raise MultipleSpotifyInstancesError
                 self.spotifyd_mpris_instance = service
 
-        if self.spotifyd_mpris_instance is None:
-            raise SpotifyNotRunningError
+        if self.spotifyd_mpris_instance is not None:
+            self.spotifyd = self.bus.get_object(self.spotifyd_mpris_instance, DBUS_OBJECT_PATH, False)
 
-        self.spotifyd = self.bus.get_object(self.spotifyd_mpris_instance, DBUS_OBJECT_PATH, False)
-        if self.spotifyd is None:
-            raise CouldNotConnectToSpotifyError
-
-        self.properties = dbus.Interface(self.spotifyd, DBUS_PROPERTIES_INTERFACE)
-        self.player = dbus.Interface(self.spotifyd, DBUS_PLAYER_INTERFACE)
+        if self.spotifyd is not None:
+            self.properties = dbus.Interface(self.spotifyd, DBUS_PROPERTIES_INTERFACE)
+            self.player = dbus.Interface(self.spotifyd, DBUS_PLAYER_INTERFACE)
 
     def get_song_info(self):
+        if self.properties is None:
+            raise CouldNotConnectToSpotifyError
+
         metadata = self.properties.Get(DBUS_PLAYER_INTERFACE, 'Metadata')
         title = metadata.get('xesam:title', 'Unknown title')
         artists = metadata.get('xesam:artist', ['Unknown artists'])
@@ -49,10 +52,10 @@ class SpotifyModule:
         return f'{artist} - {title}'
 
     def get_status(self):
-        return self.properties.Get(DBUS_PLAYER_INTERFACE, 'PlaybackStatus')
+        if self.properties is None:
+            raise CouldNotConnectToSpotifyError
 
-    def play_pause(self):
-        self.player.PlayPause()
+        return self.properties.Get(DBUS_PLAYER_INTERFACE, 'PlaybackStatus')
 
     def print_song_info(self):
         status = self.get_status()
@@ -64,24 +67,10 @@ class SpotifyModule:
                 print('Spotify')
 
     def print_is_playing_icon(self):
-        print("" if self.get_status() == 'Playing' else "")
-
-    def run_command(self, command):
-        match command:
-            case 'play_pause':
-                self.play_pause()
-            case 'print_song_info':
-                self.print_song_info()
-            case 'print_is_playing_icon':
-                self.print_is_playing_icon()
-            case 'next':
-                self.player.Next()
-            case 'previous':
-                self.player.Previous()
-            case 'status':
-                print(self.get_status())
-            case _:
-                raise InvalidCommandError
+        try:
+            print("" if self.get_status() == 'Playing' else "")
+        except CouldNotConnectToSpotifyError:
+            print("")
 
 if __name__ == '__main__':
     try:
@@ -91,7 +80,21 @@ if __name__ == '__main__':
             spotify_module.print_song_info()
             exit()
 
-        spotify_module.run_command(argv[1])
+        command = argv[1]
+        match command:
+            case 'play_pause':
+                spotify_module.player.PlayPause()
+            case 'print_song_info':
+                spotify_module.print_song_info()
+            case 'print_is_playing_icon':
+                spotify_module.print_is_playing_icon()
+            case 'next':
+                spotify_module.player.Next()
+            case 'previous':
+                spotify_module.player.Previous()
+            case 'status':
+                print(spotify_module.get_status())
+
     except SpotifyNotRunningError:
         print('Spotify is not running')
     except CouldNotConnectToSpotifyError:
