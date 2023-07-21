@@ -167,24 +167,31 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# i3 BAR
+################################################
+# HIDE i3 BAR
+################################################
 
 bar {
     mode invisible
     tray_output none
 }
 
+################################################
 # GAPS
-
+################################################
 gaps inner 8
 gaps outer 0
 
+################################################
 # BORDERS
+################################################
 
 default_floating_border pixel 0
 default_border pixel 0
 
-# COMMANDS
+################################################
+# SETTINGS, SERVICES, DAEMONS, ETC
+################################################
 
 exec --no-startup-id setxkbmap -layout no
 
@@ -202,6 +209,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- $lock --nofork
 
 exec --no-startup-id nm-applet
 
+################################################
+# DROPDOWN TERMINAL
+################################################
+
 for_window [title="scratchTerm"] border none
 for_window [title="scratchTerm"] floating enable sticky enable
 for_window [title="scratchTerm"] move scratchpad
@@ -210,3 +221,9 @@ for_window [title="scratchTerm"] resize set 1700 1024
 exec --no-startup-id $term --title "scratchTerm" &
 
 bindsym $mod+Return exec dropWindow 1024 "scratchTerm" -t=15 -s=16 -r
+
+################################################
+# APPLICATIONS
+################################################
+
+exec --no-startup-id 1password --silent
