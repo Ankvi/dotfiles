@@ -11,9 +11,6 @@ SATURDAY = 5
 # Define programs
 TEAMS_APPIMAGE = "/opt/appimages/teams-for-linux.AppImage"
 SLACK = "slack"
-ONEPASSWORD = "1password"
-YAKUAKE = "yakuake"
-POLYBAR = "polybar"
 
 def is_process_running(name):
     for proc in psutil.process_iter(attrs=['pid', 'name']):
@@ -39,9 +36,6 @@ def start_if_not_running(name, command = None):
     if not is_process_running(name):
         subprocess.Popen([command if command is not None else program])
 
-start_if_not_running(ONEPASSWORD)
-start_if_not_running(YAKUAKE)
-# start_if_not_running(POLYBAR, "~/.polybar/launch.sh")
 
 # If it's not the weekend, open work related programs
 if timestamp.weekday() < SATURDAY and timestamp.hour < 17:
@@ -49,3 +43,5 @@ if timestamp.weekday() < SATURDAY and timestamp.hour < 17:
 
     start_appimage_if_not_running(TEAMS_APPIMAGE)
     start_if_not_running(SLACK)
+else:
+    print("You're not supposed to work at this hour. STOP IT")

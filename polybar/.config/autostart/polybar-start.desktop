@@ -1,7 +1,0 @@
-[Desktop Entry]
-Exec=/home/andreas/.local/bin/polybar-start
-Icon=dialog-scripts
-Name=Start Polybar
-Path=
-Type=Application
-X-KDE-AutostartScript=true

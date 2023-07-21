@@ -230,3 +230,4 @@ bindsym $mod+Return exec dropWindow 1024 "scratchTerm" -t=15 -s=16 -r
 ################################################
 
 exec --no-startup-id 1password --silent
+exec --no-startup-id start-work-applications
