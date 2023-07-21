@@ -46,6 +46,9 @@ tiling_drag modifier titlebar
 bindsym $mod+t exec $term
 bindsym $mod+space exec rofi -show combi
 
+# Screenshotting
+bindsym $mod+Shift+s exec flameshot gui
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
