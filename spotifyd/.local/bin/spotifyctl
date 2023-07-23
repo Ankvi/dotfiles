@@ -103,5 +103,5 @@ if __name__ == '__main__':
         print('Invalid command')
     except MultipleSpotifyInstancesError:
         print('Multiple Spotifyd instances found')
-    except:
-        print('Unknown error')
+    except Exception as e:
+        print(f'Unknown error: {e}')

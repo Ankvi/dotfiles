@@ -2,5 +2,8 @@
     "editor.fontFamily": "'NotoMono Nerd Font Mono', 'monospace','feather', 'Material Icons'",
     "files.exclude": {
         "**/bin": false
+    },
+    "files.associations": {
+        "**/i3/config": "i3",
     }
 }

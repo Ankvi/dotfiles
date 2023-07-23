@@ -201,6 +201,8 @@ default_border pixel 0
 # SETTINGS, SERVICES, DAEMONS, ETC
 ################################################
 
+#exec autorandr --load $(autorandr | grep "detected" | cut -d " " -f1)
+
 exec_always --no-startup-id setxkbmap -layout no
 
 exec_always --no-startup-id xinput set-prop "ELAN0673:00 04F3:3188 Touchpad" "libinput Tapping Enabled" 1
@@ -209,7 +211,7 @@ exec_always --no-startup-id picom &
 
 exec_always --no-startup-id dunst &
 
-exec_always --no-startup-id feh --no-fehbg --bg-scale $bg
+exec_always --no-startup-id python $OPT_FOLDER/set-wallpapers.py
 
 exec_always --no-startup-id $HOME/.polybar/launch.sh
 
