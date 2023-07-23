@@ -1,0 +1,2 @@
+require("ankvi")
+print("hello")
