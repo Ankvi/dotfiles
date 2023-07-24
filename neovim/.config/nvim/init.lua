@@ -1,2 +1,1 @@
 require("ankvi")
-print("hello")

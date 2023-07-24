@@ -11,6 +11,7 @@
 
 set $mod Mod4
 set $alt Mod1
+set $altgr Mod5
 set $term alacritty
 set $bg $HOME/Pictures/wallpapers/background.png
 set $lock i3lock
@@ -223,14 +224,14 @@ exec --no-startup-id nm-applet
 # DROPDOWN TERMINAL
 ################################################
 
-for_window [title="scratchTerm"] border none
-for_window [title="scratchTerm"] floating enable sticky enable
-for_window [title="scratchTerm"] move scratchpad
-for_window [title="scratchTerm"] resize set 1700 1024
+for_window [title="dropdownTerminal"] border none
+for_window [title="dropdownTerminal"] floating enable sticky enable
+for_window [title="dropdownTerminal"] move scratchpad
+for_window [title="dropdownTerminal"] resize set 1700 1024
 
-exec --no-startup-id $term --title "scratchTerm" &
+exec --no-startup-id $term --title "dropdownTerminal" &
 
-bindsym $mod+Return exec dropWindow 1024 "scratchTerm" -t=15 -s=16 -r
+bindsym $mod+Return exec dropWindow 1024 "dropdownTerminal" -t=15 -s=16 -r
 
 ################################################
 # APPLICATIONS

@@ -33,4 +33,10 @@ fi
 
 autorandr --load $(autorandr | grep "detected" | cut -d " " -f1)
 
+xmodmap -e 'keycode 108 = Hyper_R'
+xmodmap -e 'add mod5 = Hyper_R'
+
+xmodmap -e 'keykode 135 = Menu'
+xmodmap -e 'add mod3 = Menu'
+
 exec i3
