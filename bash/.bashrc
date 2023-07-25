@@ -1,5 +1,5 @@
 export GIT_REPOSITORIES="$HOME/git"
-export GIT_EDITOR="vim"
+export GIT_EDITOR='\vim'
 export ELKJOP_GIT_REPOSITORIES="$GIT_REPOSITORIES/github.com/elkjopnordic"
 
 # ALIASES
