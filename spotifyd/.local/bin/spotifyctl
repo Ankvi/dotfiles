@@ -3,63 +3,96 @@
 import dbus
 from sys import argv
 
+
 class SpotifyNotRunningError(Exception):
     pass
+
 
 class CouldNotConnectToSpotifyError(Exception):
     pass
 
+
 class MultipleSpotifyInstancesError(Exception):
     pass
 
+
 class InvalidCommandError(Exception):
     pass
+
 
 DBUS_OBJECT_PATH = '/org/mpris/MediaPlayer2'
 DBUS_PROPERTIES_INTERFACE = 'org.freedesktop.DBus.Properties'
 DBUS_PLAYER_INTERFACE = 'org.mpris.MediaPlayer2.Player'
 
+
 class SpotifyModule:
     def __init__(self):
-        self.bus = dbus.SessionBus()
+        self.__bus = dbus.SessionBus()
 
-        self.spotifyd_mpris_instance = None
-        self.spotifyd = None
-        self.properties = None
-        self.player = None
+        self.__spotifyd = None
+        self.__properties = None
+        self.__player = None
 
-        for service in self.bus.list_names():
+        self.__spotifyd_mpris_instance = None
+
+        for service in self.__bus.list_names():
             if "spotify" in service:
-                if self.spotifyd_mpris_instance is not None:
+                if self.__spotifyd_mpris_instance is not None:
                     raise MultipleSpotifyInstancesError
-                self.spotifyd_mpris_instance = service
+                self.__spotifyd_mpris_instance = service
 
-        if self.spotifyd_mpris_instance is not None:
-            self.spotifyd = self.bus.get_object(self.spotifyd_mpris_instance, DBUS_OBJECT_PATH, False)
+    def get_spotifyd(self):
+        if self.__spotifyd_mpris_instance is None:
+            raise SpotifyNotRunningError
 
-        if self.spotifyd is not None:
-            self.properties = dbus.Interface(self.spotifyd, DBUS_PROPERTIES_INTERFACE)
-            self.player = dbus.Interface(self.spotifyd, DBUS_PLAYER_INTERFACE)
+        if self.__spotifyd is None:
+            self.__spotifyd = self.__bus.get_object(
+                self.__spotifyd_mpris_instance,
+                DBUS_OBJECT_PATH,
+                False
+            )
 
-    def get_song_info(self):
-        if self.properties is None:
+        if self.__spotifyd is None:
             raise CouldNotConnectToSpotifyError
 
-        metadata = self.properties.Get(DBUS_PLAYER_INTERFACE, 'Metadata')
+        return self.__spotifyd
+
+    def get_properties(self):
+        if self.__properties is None:
+            self.__properties = dbus.Interface(
+                self.get_spotifyd(),
+                DBUS_PROPERTIES_INTERFACE
+            )
+
+        if self.__properties is None:
+            raise CouldNotConnectToSpotifyError
+
+        return self.__properties
+
+    def get_player(self):
+        if self.__player is None:
+            self.__player = dbus.Interface(
+                self.get_spotifyd(),
+                DBUS_PLAYER_INTERFACE
+            )
+
+        if self.__player is None:
+            raise CouldNotConnectToSpotifyError
+
+        return self.__player
+
+    def get_song_info(self):
+        metadata = self.get_properties().Get(DBUS_PLAYER_INTERFACE, 'Metadata')
         title = metadata.get('xesam:title', 'Unknown title')
         artists = metadata.get('xesam:artist', ['Unknown artists'])
         artist = ", ".join(artists)
         return f'{artist} - {title}'
 
     def get_status(self):
-        if self.properties is None:
-            raise CouldNotConnectToSpotifyError
-
-        return self.properties.Get(DBUS_PLAYER_INTERFACE, 'PlaybackStatus')
+        return self.get_properties().Get(DBUS_PLAYER_INTERFACE, 'PlaybackStatus')
 
     def print_song_info(self):
-        status = self.get_status()
-        match status:
+        match self.get_status():
             case 'Playing' | 'Paused':
                 song_info = self.get_song_info()
                 print(song_info)
@@ -72,6 +105,7 @@ class SpotifyModule:
         except CouldNotConnectToSpotifyError:
             print("")
 
+
 if __name__ == '__main__':
     try:
         spotify_module = SpotifyModule()
@@ -83,15 +117,15 @@ if __name__ == '__main__':
         command = argv[1]
         match command:
             case 'play_pause':
-                spotify_module.player.PlayPause()
+                spotify_module.get_player().PlayPause()
             case 'print_song_info':
                 spotify_module.print_song_info()
             case 'print_is_playing_icon':
                 spotify_module.print_is_playing_icon()
             case 'next':
-                spotify_module.player.Next()
+                spotify_module.get_player().Next()
             case 'previous':
-                spotify_module.player.Previous()
+                spotify_module.get_player().Previous()
             case 'status':
                 print(spotify_module.get_status())
 
