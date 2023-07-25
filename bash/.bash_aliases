@@ -6,7 +6,6 @@ alias la='ls -a'
 
 # GIT
 alias gitpfwl='git push --force-with-lease'
-alias gitpub="git push --set-upstream origin $(git branch --show-current)"
 
 # REDIS
 alias start-redis='sudo service redis-server start'
