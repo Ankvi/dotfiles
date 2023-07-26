@@ -6,10 +6,12 @@ wallpapersPath = "$HOME/Pictures/wallpapers/"
 portraitPath = os.path.expandvars(wallpapersPath + "background-portrait.jpg")
 landscapePath = os.path.expandvars(wallpapersPath + "background.png")
 
+
 def is_landscape(rect: i3ipc.Rect) -> bool:
     result = rect.width > rect.height
     print(result)
     return result
+
 
 connection = i3ipc.Connection()
 

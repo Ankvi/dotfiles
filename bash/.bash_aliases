@@ -6,6 +6,7 @@ alias la='ls -a'
 
 # GIT
 alias gitpfwl='git push --force-with-lease'
+alias lgit='lazygit'
 
 # REDIS
 alias start-redis='sudo service redis-server start'
