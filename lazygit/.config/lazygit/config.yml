@@ -1,2 +1,7 @@
 os:
   editPreset: 'nvim'
+
+keybinding:
+  universal:
+    nextTab: 'æ'
+    prevTab: 'ø'
