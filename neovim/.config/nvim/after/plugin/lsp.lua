@@ -44,7 +44,7 @@ lsp.setup_nvim_cmp({
 })
 
 lsp.on_attach(function(client, bufnr)
-    local opts = {buffer = bufnr, remap = false}
+    local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -57,7 +57,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-    vim.keymap.set({"n", "x"}, "<F3>", function()
+    vim.keymap.set({ "n", "x" }, "<F3>", function()
         vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
     end, opts)
 end)
@@ -66,15 +66,4 @@ lsp.setup()
 
 vim.diagnostic.config({
     virtual_text = true
-})
-
-lsp.format_on_save({
-    format_opts = {
-        async = false,
-        timeout_ms = 10000
-    },
-    servers = {
-        ['lua_ls'] = {'lua'},
-        ['tsserver'] = {'typescript'}
-    }
 })

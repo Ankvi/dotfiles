@@ -46,19 +46,23 @@ tiling_drag modifier titlebar
 
 # Custom keybindings
 bindsym $mod+t exec $term
-bindsym $mod+space exec rofi -show combi
+bindsym $mod+space exec --no-startup-id rofi -show combi
 
 # Screenshotting
-bindsym $mod+Shift+s exec flameshot gui
+bindsym $mod+Shift+s exec --no-startup-id flameshot gui
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # Task switcher
-bindsym $alt+Tab exec rofi-task-switch
+bindsym $alt+Tab exec --no-startup-id rofi-task-switch
 
 # Power menu
-bindsym $mod+Escape exec rofi-power-menu
+bindsym $mod+Escape exec --no-startup-id rofi-power-menu
+
+# Slack/Teams
+bindsym $mod+m exec wmctrl -xa slack || slack &
+bindsym $mod+n exec wmctrl -xa teams-for-linux || /opt/appimages/teams-for-linux.AppImage &
 
 # Browsers
 bindsym $mod+d exec wmctrl -xa google-chrome || google-chrome-stable || google-chrome &
