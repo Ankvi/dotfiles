@@ -3,20 +3,21 @@ return {
     branch = 'v2.x',
     dependencies = {
         -- LSP Support
-        {'neovim/nvim-lspconfig'},             -- Required
-        {"nvim-telescope/telescope.nvim" },
-        {                                      -- Optional
+        { 'neovim/nvim-lspconfig' }, -- Required
+        { "nvim-telescope/telescope.nvim" },
+        {                            -- Optional
             'williamboman/mason.nvim',
             build = function()
                 pcall(vim.api.nvim_command, 'MasonUpdate')
             end,
         },
-        {'williamboman/mason-lspconfig.nvim'}, -- Optional
+        { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
         -- Autocompletion
-        {'hrsh7th/nvim-cmp'},     -- Required
-        {'hrsh7th/cmp-nvim-lsp'}, -- Required
-        {'L3MON4D3/LuaSnip'},     -- Required
+        { 'hrsh7th/nvim-cmp' },     -- Required
+        { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+        { 'L3MON4D3/LuaSnip' },     -- Required
+        { 'jose-elias-alvarez/typescript.nvim' }
     },
     config = function()
         local lsp = require("lsp-zero")
@@ -34,6 +35,8 @@ return {
             "vimls",
             "yamlls"
         })
+
+        lsp.skip_server_setup({ "tsserver" })
 
         lsp.configure("lua_ls", {
             settings = {
@@ -89,6 +92,18 @@ return {
 
         vim.diagnostic.config({
             virtual_text = true
+        })
+
+        local typescript = require("typescript")
+        typescript.setup({
+            server = {
+                on_attach = function(_, bufnr)
+                    local opts = { buffer = bufnr }
+                    vim.keymap.set("n", "<leader>ci", typescript.actions.organizeImports, opts)
+                    vim.keymap.set("n", "<leader>am", typescript.actions.addMissingImports, opts)
+                    vim.keymap.set("n", "<leader>ru", typescript.actions.removeUnused, opts)
+                end
+            }
         })
     end
 }
