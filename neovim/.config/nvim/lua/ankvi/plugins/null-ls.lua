@@ -2,30 +2,33 @@ return {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
         local null_ls = require("null-ls")
+        local diagnostics = null_ls.builtins.diagnostics
+        local formatting = null_ls.builtins.formatting
+
         local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
         null_ls.setup({
             sources = {
-                null_ls.builtins.diagnostics.markdownlint,
-                null_ls.builtins.formatting.markdownlint,
-                null_ls.builtins.diagnostics.luacheck,
-                null_ls.builtins.formatting.lua_format,
-                null_ls.builtins.diagnostics.eslint,
-                null_ls.builtins.diagnostics.actionlint,
-                null_ls.builtins.diagnostics.pylint,
-                null_ls.builtins.formatting.black,
-                null_ls.builtins.formatting.isort,
+                diagnostics.markdownlint,
+                formatting.markdownlint,
+                diagnostics.luacheck,
+                formatting.stylua,
+                diagnostics.eslint,
+                diagnostics.actionlint,
+                diagnostics.pylint,
+                formatting.black,
+                formatting.isort,
 
-                null_ls.builtins.diagnostics.shellcheck,
+                diagnostics.shellcheck,
 
-                null_ls.builtins.formatting.csharpier,
-                --null_ls.builtins.formatting.eslint,
-                null_ls.builtins.formatting.prettier,
-                null_ls.builtins.formatting.stylelint,
-                null_ls.builtins.formatting.yamlfmt
+                formatting.csharpier,
+                --formatting.eslint,
+                formatting.prettier,
+                formatting.stylelint,
+                formatting.yamlfmt
             },
             -- you can reuse a shared lspconfig on_attach callback here
-            on_attach = function(client, bufnr)
-                if client.supports_method("textDocument/formatting") then
+            on_attach = function(current_client, bufnr)
+                if current_client.supports_method("textDocument/formatting") then
                     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
                     vim.api.nvim_create_autocmd("BufWritePre", {
                         group = augroup,
@@ -34,6 +37,14 @@ return {
                             -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
                             -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
                             vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+
+                            --vim.lsp.buf.format({
+                             --   async = false,
+                              --  timeout_ms = 10000,
+                               -- filter =  function(client)
+                               --     return client.name == "null-ls"
+                               -- end
+                            --})
                         end,
                     })
                 end

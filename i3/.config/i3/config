@@ -64,6 +64,9 @@ bindsym $mod+Escape exec --no-startup-id rofi-power-menu
 bindsym $mod+m exec wmctrl -xa slack || slack &
 bindsym $mod+n exec wmctrl -xa teams-for-linux || /opt/appimages/teams-for-linux.AppImage &
 
+# Spotify
+bindsym $mod+p exec --no-startup-id $term -e spt
+
 # Browsers
 bindsym $mod+d exec wmctrl -xa google-chrome || google-chrome-stable || google-chrome &
 bindsym $mod+Ctrl+d exec google-chrome-stable || google-chrome &

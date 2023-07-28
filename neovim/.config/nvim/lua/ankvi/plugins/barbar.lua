@@ -11,4 +11,9 @@ return {
         -- insert_at_start = true,
         -- …etc.
     },
+    config = function()
+        vim.keymap.set("n", "<A-,>", vim.cmd.bprevious)
+        vim.keymap.set("n", "<A-.>", vim.cmd.bnext)
+        vim.keymap.set("n", "<A-c>", vim.cmd.bd)
+    end
 }
