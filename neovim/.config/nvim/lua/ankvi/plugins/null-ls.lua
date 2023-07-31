@@ -12,7 +12,6 @@ return {
                 formatting.markdownlint,
                 diagnostics.luacheck,
                 formatting.stylua,
-                diagnostics.eslint,
                 diagnostics.actionlint,
                 diagnostics.pylint,
                 formatting.black,
@@ -22,6 +21,18 @@ return {
 
                 formatting.csharpier,
                 --formatting.eslint,
+                diagnostics.eslint.with({
+                    condition = function(utils)
+                        return not utils.root_has_file('.pnp.cjs')
+                    end
+                }),
+                diagnostics.eslint.with({
+                    command = 'yarn',
+                    args = { 'eslint', '-f', 'json', '--stdin', '--stdin-filename', '$FILENAME' },
+                    condition = function(utils)
+                        return utils.root_has_file('.pnp.cjs')
+                    end
+                }),
                 formatting.prettier,
                 formatting.stylelint,
                 formatting.yamlfmt
@@ -39,11 +50,11 @@ return {
                             vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
 
                             --vim.lsp.buf.format({
-                             --   async = false,
-                              --  timeout_ms = 10000,
-                               -- filter =  function(client)
-                               --     return client.name == "null-ls"
-                               -- end
+                            --   async = false,
+                            --  timeout_ms = 10000,
+                            -- filter =  function(client)
+                            --     return client.name == "null-ls"
+                            -- end
                             --})
                         end,
                     })
