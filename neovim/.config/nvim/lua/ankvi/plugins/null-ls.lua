@@ -10,7 +10,6 @@ return {
             sources = {
                 diagnostics.markdownlint,
                 formatting.markdownlint,
-                diagnostics.luacheck,
                 formatting.stylua,
                 diagnostics.actionlint,
                 diagnostics.pylint,

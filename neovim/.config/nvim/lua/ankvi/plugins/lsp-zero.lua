@@ -27,8 +27,9 @@ return {
 
         lsp.ensure_installed({
             "tsserver",
+            "omnisharp",
             "eslint",
-            "csharp_ls",
+            -- "csharp_ls",
             "html",
             "jsonls",
             "lua_ls",
@@ -37,7 +38,7 @@ return {
             "yamlls"
         })
 
-        -- lsp.skip_server_setup({ "tsserver" })
+        lsp.skip_server_setup({ "omnisharp" })
 
         lsp.configure("lua_ls", {
             settings = {
@@ -95,7 +96,14 @@ return {
             virtual_text = true
         })
 
-        -- local lspconfig = require("lspconfig")
+        local lspconfig = require("lspconfig")
+        lspconfig.omnisharp.setup({
+            capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+            on_attach = function(_, bufnr)
+                vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+            end,
+            cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.loop.getpid()) }
+        })
         -- lspconfig.tsserver
 
         -- local typescript = require("typescript")
