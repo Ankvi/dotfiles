@@ -34,6 +34,10 @@ install_development_packages() {
         kubectl k9s
 }
 
+install_aur_packages() {
+    yay x11-emoji-picker-git
+}
+
 install_yay() {
     pacman -S --needed git base-devel
     mkdir -p ~/git/aur
