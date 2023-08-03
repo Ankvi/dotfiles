@@ -4,41 +4,43 @@ import i3ipc
 import time
 import argparse
 
-parser = argparse.ArgumentParser(description='Move a window in i3 to or out of the scratchpad like a curtain')
+parser = argparse.ArgumentParser(
+    description='Move a window in i3 to or out of the scratchpad like a curtain')
 parser.add_argument('distance',
-        help='Distance that the window should drop down (height of window+borders)',
-        type=int)
+                    help='Distance that the window should drop down (height of window+borders)',
+                    type=int)
 parser.add_argument('name',
-        help='Name of window to move',
-        type=str)
+                    help='Name of window to move',
+                    type=str)
 parser.add_argument('-t', '--ticks',
-        action='store',
-        nargs=1,
-        dest='ticks',
-        default=[15],
-        metavar='N',
-        help='Number of updates the program should do before the window settles into position',
-        type=int)
+                    action='store',
+                    nargs=1,
+                    dest='ticks',
+                    default=[15],
+                    metavar='N',
+                    help='Number of updates the program should do before the window settles into position',
+                    type=int)
 parser.add_argument('-s', '--sleep-time',
-        action='store',
-        nargs=1,
-        dest='sleep_time',
-        default=[16],
-        metavar='ms',
-        help='Time to wait between program ticks',
-        type=float)
+                    action='store',
+                    nargs=1,
+                    dest='sleep_time',
+                    default=[16],
+                    metavar='ms',
+                    help='Time to wait between program ticks',
+                    type=float)
 parser.add_argument('-c', '--use-class',
-        action='store_true',
-        dest='use_class',
-        help='Should the name parameter be passed as a window class instead of a window title')
+                    action='store_true',
+                    dest='use_class',
+                    help='Should the name parameter be passed as a window class instead of a window title')
 parser.add_argument('-p', '--use-primary',
-        action='store_true',
-        dest='use_primary',
-        help='Drop down the window on primary screen instead of current')
+                    action='store_true',
+                    dest='use_primary',
+                    help='Drop down the window on primary screen instead of current')
 parser.add_argument('-r', '--resize',
-        action='store_true',
-        dest='resize',
-        help='Should the window be resized to fit the width of the target screen')
+                    action='store_true',
+                    dest='resize',
+                    help='Should the window be resized to fit the width of the target screen')
+
 
 def is_multi_screen(connection):
     outputs = connection.get_outputs()
@@ -48,6 +50,7 @@ def is_multi_screen(connection):
     if output_counter > 1:
         return True
     return False
+
 
 def get_current_offset(connection):
     offset = 0
@@ -61,6 +64,7 @@ def get_current_offset(connection):
             offset = output.rect.x
     return offset
 
+
 def get_primary_offset(connection):
     offset = 0
     if not is_multi_screen(connection):
@@ -72,6 +76,7 @@ def get_primary_offset(connection):
             print(output.name)
     return offset
 
+
 def is_running(container):
     # Check if the program is already running for the chosen window by making
     # some assumptions about window positions
@@ -79,6 +84,7 @@ def is_running(container):
     y_pos = container.rect.y
     if y_pos < 0:
         return True
+
 
 def check_if_shown(container):
     current_container = container
@@ -90,6 +96,7 @@ def check_if_shown(container):
         return True
     else:
         return False
+
 
 def get_target_width(connection, use_primary):
     width = 0
@@ -108,13 +115,14 @@ def get_target_width(connection, use_primary):
                 width = output.rect.width
         return width
 
+
 def move_window(distance,
-        name,
-        ticks,
-        sleep_time,
-        use_class,
-        use_primary,
-        resize):
+                name,
+                ticks,
+                sleep_time,
+                use_class,
+                use_primary,
+                resize):
 
     i3c = i3ipc.Connection()
     tree = i3c.get_tree()
@@ -136,16 +144,17 @@ def move_window(distance,
     if resize:
         width = get_target_width(i3c, use_primary)
         height = distance
-        resize_command = "[id=" + container_id + "] resize set " + str(width) + " " + str(height)
+        resize_command = "[id=" + container_id + \
+            "] resize set " + str(width) + " " + str(height)
         i3c.command(resize_command)
 
     show_command = "[id=" + container_id + "] scratchpad show"
-    x_pos=0
+    x_pos = 0
     if is_multi_screen(i3c):
         if use_primary:
-            x_pos=get_primary_offset(i3c)
+            x_pos = get_primary_offset(i3c)
         else:
-            x_pos=get_current_offset(i3c)
+            x_pos = get_current_offset(i3c)
 
     if not is_shown:
         i3c.command(show_command)
@@ -154,11 +163,13 @@ def move_window(distance,
             y_pos = int((-distance)+x*mov_per_tick)
         else:
             y_pos = int(-x*mov_per_tick)
-        move_command = "[id=" + container_id + "] move absolute position "+ str(x_pos) + " "+ str(y_pos)
+        move_command = "[id=" + container_id + \
+            "] move absolute position " + str(x_pos) + " " + str(y_pos)
         i3c.command(move_command)
         time.sleep(sleep_time)
     if is_shown:
         i3c.command(show_command)
+
 
 def check_args(args):
     if args.distance and args.distance < 1:
@@ -168,13 +179,14 @@ def check_args(args):
     if args.sleep_time and args.sleep_time[0] < 1:
         parser.error("Sleep Time must be a positive integer")
 
-if __name__== '__main__':
+
+if __name__ == '__main__':
     args = parser.parse_args()
     check_args(args)
     move_window(args.distance,
-            args.name,
-            args.ticks[0],
-            args.sleep_time[0]/1000,
-            args.use_class,
-            args.use_primary,
-            args.resize)
+                args.name,
+                args.ticks[0],
+                args.sleep_time[0]/1000,
+                args.use_class,
+                args.use_primary,
+                args.resize)

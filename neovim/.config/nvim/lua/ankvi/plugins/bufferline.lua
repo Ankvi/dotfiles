@@ -1,7 +1,13 @@
 return {
     'akinsho/bufferline.nvim',
     dependencies = {
-        'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+        {
+            'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+            config = function() require("nvim-web-devicons").setup({
+                override = {},
+                default = true
+            }) end
+        }
     },
     version = "*",
     config = function()
