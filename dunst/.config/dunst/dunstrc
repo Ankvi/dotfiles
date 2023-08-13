@@ -453,3 +453,6 @@
 #    set_stack_tag = "volume"
 #
 # vim: ft=cfg
+[microsoft-teams-sound]
+   body = "<a href=\"https://teams.microsoft.com/\">teams.microsoft.com</a>"
+   script = ~/.local/opt/play_notification_sound.sh

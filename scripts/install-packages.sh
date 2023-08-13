@@ -4,7 +4,7 @@ install_base_packages() {
     sudo pacman -S base-devel networkmanager networkmanager-dmenu neofetch vi vim neovim \
         man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji \
         ttf-iosevka-nerd dkms linux-headers flameshot thunderbird wmctrl arandr \
-        autorandr pcmanfm-gtk3 ripgrep lazygit xclip
+        autorandr pcmanfm-gtk3 ripgrep lazygit xclip bashtop
 }
 
 install_python_packages() {
@@ -35,14 +35,32 @@ install_development_packages() {
 }
 
 install_aur_packages() {
-    yay x11-emoji-picker-git
+    yay x11-emoji-picker-git snapd teams-for-linux-appimage google-chrome microsoft-edge-stable-bin spotify-tui \
+        visual-studio-code-bin 1password cura-bin azure-cli nordvpn-bin
+}
+
+install_arduino() {
+    curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=$BIN_FOLDER sh
+}
+
+install_rust() {
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 }
 
 install_yay() {
     pacman -S --needed git base-devel
     mkdir -p ~/git/aur
-    cd ~/git/aur
+    cd ~/git/aur || echo "Could not create AUR folder. Exiting" && exit
     git clone https://aur.archlinux.org/yay.git
-    cd yay
+    cd yay || echo "Could not enter yay folder. Exiting" && exit
     makepkg -si
 }
+
+subcommand=$1
+
+install_${subcommand}
+
+if [ $? = 127 ]; then
+    echo "Command not recognized"
+    exit
+fi
