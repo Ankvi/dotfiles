@@ -1,14 +1,8 @@
 return {
 	"neovim/nvim-lspconfig",
-	-- "VonHeikemen/lsp-zero.nvim",
-	-- branch = "v2.x",
-	-- "VonHeikemen/lsp-zero.nvim",
-	-- branch = "v2.x",
 	dependencies = {
-		-- LSP Support
-		-- { "neovim/nvim-lspconfig" }, -- Required
 		{ "nvim-telescope/telescope.nvim" },
-		{ -- Optional
+		{
 			"williamboman/mason.nvim",
 			build = function()
 				pcall(vim.api.nvim_command, "MasonUpdate")
@@ -16,9 +10,8 @@ return {
 		},
 		{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
-		-- Autocompletion
-		{ "hrsh7th/nvim-cmp" }, -- Required
-		{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+		{ "hrsh7th/nvim-cmp" },
+		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "hrsh7th/cmp-buffer" },
 		{ "hrsh7th/cmp-path" },
 		{ "hrsh7th/cmp-cmdline" },
@@ -28,33 +21,18 @@ return {
 			version = "2.*",
 			build = "make install_jsregexp",
 			dependencies = { "rafamadriz/friendly-snippets", "saadparwaiz1/cmp_luasnip" },
-		}, -- Required
+		},
 		{ "jose-elias-alvarez/typescript.nvim" },
 		{ "lbrayner/vim-rzip" },
-		-- { "edKotinsky/Arduino.nvim" }
+		{
+			"windwp/nvim-autopairs",
+			event = "InsertEnter",
+			opts = {},
+		},
 	},
 	config = function()
-		-- local lsp = require("lsp-zero")
-
-		-- lsp.preset({})
-
-		-- local arduino = require("arduino")
-		-- arduino.setup({
-		--     default_fqbn = "arduino:avr:micro",
-		--
-		--     --Path to clangd (all paths must be full)
-		--     clangd = require("mason-core.path").bin_prefix "clangd",
-		--
-		--     --Path to arduino-cli
-		--     arduino = table.concat({ vim.fn.getenv("BIN_FOLDER"), "arduino-cli"}, "/"),
-		--
-		--     --Data directory of arduino-cli
-		--     arduino_config_dir = "$HOME/.arduino15",
-		-- })
-		--
 		local servers = {
 			arduino_language_server = {
-				-- on_new_config = arduino.on_new_config
 				cmd = {
 					"arduino-language-server",
 					"-cli-config",
@@ -69,7 +47,6 @@ return {
 				cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.loop.getpid()) },
 			},
 			eslint = {},
-			-- csharp_ls,
 			html = {},
 			jsonls = {},
 			lua_ls = {
@@ -147,7 +124,13 @@ return {
 				vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
 				vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 				vim.keymap.set({ "n", "x" }, "<F3>", function()
-					vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+					vim.lsp.buf.format({
+						async = false,
+						timeout_ms = 10000,
+						filter = function(client)
+							return client.name == "null-ls"
+						end,
+					})
 				end, opts)
 			end,
 		})
@@ -155,15 +138,21 @@ return {
 		local cmp = require("cmp")
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
+		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
 		cmp.setup({
-			snippet = function(args)
-				require("luasnip").lsp_expand(args.body)
-			end,
+			snippet = {
+				expand = function(args)
+					require("luasnip").lsp_expand(args.body)
+				end,
+			},
 			preselect = "item",
 			mapping = cmp.mapping.preset.insert({
-				["<S-Tab>"] = cmp.mapping.select_prev_item(cmp_select),
-				["<Tab>"] = cmp.mapping.select_next_item(cmp_select),
-				["<CR>"] = cmp.mapping.confirm({ selected = true }),
+				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+				["<Tab>"] = cmp.mapping.confirm({ selected = true }),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
 			}),
@@ -193,8 +182,6 @@ return {
 			}),
 		})
 
-		-- lsp.setup()
-
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		vim.diagnostic.config({
@@ -202,39 +189,13 @@ return {
 		})
 
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
-		-- local on_attach = function(_, bufnr)
-		--     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-		-- end
 		local common_setup_args = {
 			capabilities = capabilities,
-			-- on_attach = on_attach,
 		}
 
 		local lspconfig = require("lspconfig")
-
-		--       lspconfig.omnisharp.setup(vim.tbl_extend("force", common_setup_args, {
-		-- 	cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.loop.getpid()) },
-		-- }))
-		--
-		--       lspconfig.clangd.setup(vim.tbl_extend("force", common_setup_args, {
-		--
-		--       }))
-
 		for name, opts in pairs(servers) do
 			lspconfig[name].setup(vim.tbl_extend("force", common_setup_args, opts))
 		end
-		-- lspconfig.tsserver
-
-		-- local typescript = require("typescript")
-		-- typescript.setup({
-		--     server = {
-		--         on_attach = function(_, bufnr)
-		--             local opts = { buffer = bufnr }
-		--             vim.keymap.set("n", "<leader>ci", typescript.actions.organizeImports, opts)
-		--             vim.keymap.set("n", "<leader>am", typescript.actions.addMissingImports, opts)
-		--             vim.keymap.set("n", "<leader>ru", typescript.actions.removeUnused, opts)
-		--         end
-		--     }
-		-- })
 	end,
 }

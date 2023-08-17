@@ -20,7 +20,22 @@ return {
 				name = "launch - netcoredbg",
 				request = "launch",
 				program = function()
-					return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+                    local filePath = vim.fn.expand("%")
+                    local pathParts = vim.split(filePath, "/")
+                    local currentPath = vim.fn.getcwd()
+                    for _, part in pairs(pathParts) do
+                        currentPath = vim.fn.join({ currentPath, part }, "/")
+                        local projectFilePath = vim.fn.glob(currentPath .. "/*.csproj")
+                        if projectFilePath ~= "" then
+                            print(currentPath, projectFilePath)
+                            local projectFileName = vim.fn.trim(projectFilePath, currentPath, 1)
+                            local projectName = vim.fn.trim(projectFileName, ".csproj", 2)
+                            -- print(projectFileName, projectName)
+                            local dllPath = vim.fn.glob(currentPath .. "/bin/**/" .. projectName .. ".dll")
+                            -- print("Found dll file: " .. dllPath)
+                            return dllPath
+                        end
+                    end
 				end,
 			},
 		}
