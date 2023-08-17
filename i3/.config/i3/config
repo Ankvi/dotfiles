@@ -213,7 +213,6 @@ default_border pixel 0
 # SETTINGS, SERVICES, DAEMONS, ETC
 ################################################
 
-#exec autorandr --load $(autorandr | grep "detected" | cut -d " " -f1)
 
 exec_always --no-startup-id setxkbmap -layout no
 
