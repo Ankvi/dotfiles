@@ -3,8 +3,8 @@
 @import "colors.rasi"
 
 * {
-    background-color:       @bg;
-    text-color:             @fg;
+    background-color:       @background;
+    text-color:             @primary;
 	font:				 	"Iosevka Nerd Font 10";
 }
 
@@ -13,12 +13,12 @@ window {
     padding:    			25px;
     border:					0px 0px 1px 0px;
     border-radius:          0px;
-    border-color:           @se;
+    border-color:           @tertiary;
     location:               center;
     y-offset:               -2em;
 }
 
 entry {
     expand: 				true;
-    text-color:				@ac;
+    text-color:				@secondary;
 }

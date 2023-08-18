@@ -29,6 +29,9 @@ return {
 			event = "InsertEnter",
 			opts = {},
 		},
+		{
+			"Hoffs/omnisharp-extended-lsp.nvim",
+		},
 	},
 	config = function()
 		local servers = {
@@ -42,9 +45,16 @@ return {
 				},
 			},
 			clangd = {},
+            dockerls = {},
 			tsserver = {},
 			omnisharp = {
-				cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.loop.getpid()) },
+				cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+				-- enable_roslyn_analyzers = true,
+				enable_import_completion = true,
+				organize_imports_on_format = true,
+				handlers = {
+					["textDocument/definition"] = require("omnisharp_extended").handler,
+				},
 			},
 			eslint = {},
 			html = {},
