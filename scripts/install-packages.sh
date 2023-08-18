@@ -31,7 +31,7 @@ install_i3_packages() {
 
 install_development_packages() {
     sudo pacman -S nodejs npm aspnet-runtime aspnet-runtime-6.0 dotnet-sdk dotnet-sdk-6.0 \
-        kubectl k9s
+        kubectl k9s docker docker-compose docker-buildx
 }
 
 install_aur_packages() {
