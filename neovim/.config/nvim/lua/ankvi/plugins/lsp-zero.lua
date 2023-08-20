@@ -32,8 +32,12 @@ return {
 		{
 			"Hoffs/omnisharp-extended-lsp.nvim",
 		},
+		{
+			"b0o/schemastore.nvim",
+		},
 	},
 	config = function()
+		local schemastore = require("schemastore")
 		local servers = {
 			arduino_language_server = {
 				cmd = {
@@ -45,7 +49,7 @@ return {
 				},
 			},
 			clangd = {},
-            dockerls = {},
+			dockerls = {},
 			tsserver = {},
 			omnisharp = {
 				cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
@@ -58,7 +62,16 @@ return {
 			},
 			eslint = {},
 			html = {},
-			jsonls = {},
+			jsonls = {
+				settings = {
+					json = {
+						schemas = schemastore.json.schemas(),
+						validate = {
+							enable = true,
+						},
+					},
+				},
+			},
 			lua_ls = {
 				on_init = function(client)
 					local path = client.workspace_folders[1].name
@@ -97,7 +110,17 @@ return {
 			},
 			pylsp = {},
 			vimls = {},
-			yamlls = {},
+			yamlls = {
+				settings = {
+					yaml = {
+						schemaStore = {
+							enable = false,
+							url = "",
+						},
+						schemas = schemastore.yaml.schemas(),
+					},
+				},
+			},
 		}
 
 		require("mason").setup()
@@ -109,7 +132,7 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
-				vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+				-- vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 				local opts = { buffer = ev.buf, remap = true }
 
 				local telescope = require("telescope.builtin")
@@ -130,6 +153,7 @@ return {
 				vim.keymap.set("n", "ød", vim.diagnostic.goto_next, opts)
 				vim.keymap.set("n", "æd", vim.diagnostic.goto_prev, opts)
 				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+				vim.keymap.set("v", "<leader>ca", "<cmd>'<,'>lua vim.lsp.buf.code_action()<CR>", opts)
 				vim.keymap.set("i", "<C-f>", vim.lsp.buf.code_action, opts)
 				vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
 				vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
@@ -160,6 +184,8 @@ return {
 			},
 			preselect = "item",
 			mapping = cmp.mapping.preset.insert({
+				["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
+				["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
 				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 				["<Tab>"] = cmp.mapping.confirm({ selected = true }),
@@ -192,10 +218,16 @@ return {
 			}),
 		})
 
-		require("luasnip.loaders.from_vscode").lazy_load()
+		-- require("luasnip.loaders.from_vscode").lazy_load()
 
 		vim.diagnostic.config({
-			virtual_text = true,
+			virtual_text = {
+				prefix = "●",
+			},
+			update_in_insert = true,
+			float = {
+				source = "always", -- Or "if_many"
+			},
 		})
 
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()

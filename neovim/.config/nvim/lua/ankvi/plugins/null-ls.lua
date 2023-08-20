@@ -19,19 +19,18 @@ return {
 				diagnostics.shellcheck,
 
 				-- ARDUINO/C++
-				null_ls.builtins.formatting.astyle.with({
+				formatting.astyle.with({
 					filtypes = { "arduino" },
 				}),
-				null_ls.builtins.formatting.clang_format.with({
+				formatting.clang_format.with({
 					disabled_filetypes = { "cs" },
 				}),
-				null_ls.builtins.diagnostics.cpplint,
+				diagnostics.cpplint,
 
 				-- .NET DEVELOPMENT
 				formatting.csharpier,
 
 				-- WEB DEVELOPMENT
-				diagnostics.eslint_d,
 				formatting.prettierd,
 				formatting.stylelint,
 				formatting.yamlfmt,

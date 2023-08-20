@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 alias ll='ls -l'
@@ -11,6 +13,10 @@ alias lgit='lazygit'
 # REDIS
 alias start-redis='sudo service redis-server start'
 alias stop-redis='sudo service redis-server stop'
+
+# Mounting USB storage devices
+alias mount-3d-sd-card='sudo mount -o gid=andreas,fmask=113,dmask=002 UUID="18F3-DE3E" /media/usb-drive/'
+alias unmount-3d-sd-card='sudo umount UUID="18F3-DE3E"'
 
 # OTHER SHIT
 alias list-used-ports='sudo lsof -i -P -n | grep LISTEN'
