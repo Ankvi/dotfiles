@@ -188,7 +188,9 @@ return {
 				["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
 				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-				["<Tab>"] = cmp.mapping.confirm({ selected = true }),
+				["<Tab>"] = cmp.mapping.confirm({
+                    select = true
+                }),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
 			}),
@@ -230,7 +232,7 @@ return {
 			},
 		})
 
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 		local common_setup_args = {
 			capabilities = capabilities,
 		}
