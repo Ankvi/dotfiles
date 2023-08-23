@@ -1,6 +1,6 @@
-vim.scriptencoding = 'utf-8'
-vim.opt.encoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
+vim.scriptencoding = "utf-8"
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
 
 vim.opt.guicursor = ""
 vim.opt.nu = true
@@ -28,7 +28,17 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.clipboard:append("unnamedplus")
-vim.opt.wildignore:append { '*/node_modules/*' }
+vim.opt.wildignore:append({ "*/node_modules/*" })
 vim.opt.updatetime = 50
 --vim.opt.colorcolumn = "80"
 vim.g.mapleader = " "
+
+vim.diagnostic.config({
+	virtual_text = {
+		prefix = "●",
+	},
+	update_in_insert = true,
+	float = {
+		source = "always", -- Or "if_many"
+	},
+})

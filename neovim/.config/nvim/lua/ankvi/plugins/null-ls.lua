@@ -28,7 +28,7 @@ return {
 				diagnostics.cpplint,
 
 				-- .NET DEVELOPMENT
-				formatting.csharpier,
+				-- formatting.csharpier,
 
 				-- WEB DEVELOPMENT
 				formatting.prettierd,
