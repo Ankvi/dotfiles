@@ -19,92 +19,13 @@ return {
 		{ "hrsh7th/cmp-nvim-lsp" }
 	},
 	config = function()
-		local schemastore = require("schemastore")
-		local servers = {
-			arduino_language_server = {
-				cmd = {
-					"arduino-language-server",
-					"-cli-config",
-					"$HOME/.arduino15/arduino-cli.yaml",
-					"-fqbn",
-					"arduino:avr:micro",
-				},
-			},
-			clangd = {},
-			dockerls = {},
-			tsserver = {},
-			omnisharp = {
-				cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
-				-- enable_roslyn_analyzers = true,
-				enable_import_completion = true,
-				organize_imports_on_format = true,
-				handlers = {
-					["textDocument/definition"] = require("omnisharp_extended").handler,
-				},
-			},
-			eslint = {},
-			html = {},
-			jsonls = {
-				settings = {
-					json = {
-						schemas = schemastore.json.schemas(),
-						validate = {
-							enable = true,
-						},
-					},
-				},
-			},
-			lua_ls = {
-				on_init = function(client)
-					local path = client.workspace_folders[1].name
-					if
-						not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc")
-					then
-						client.config.settings = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-							telemetry = { enable = false },
-							runtime = {
-								version = "LuaJIT",
-								-- path = runtime_path,
-							},
-							diagnostics = {
-								globals = { "vim" },
-							},
-							workspace = {
-								checkThirdParty = false,
-								library = {
-									vim.fn.expand("$VIMRUNTIME/lua"),
-									vim.fn.stdpath("config") .. "/lua",
-								},
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-						})
-
-						client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
-					end
-					return true
-				end,
-			},
-			pylsp = {},
-			vimls = {},
-			yamlls = {
-				settings = {
-					yaml = {
-						schemaStore = {
-							enable = false,
-							url = "",
-						},
-						schemas = schemastore.yaml.schemas(),
-					},
-				},
-			},
-		}
+        local servers = require("ankvi.plugins.lsp.servers")
 
 		require("mason").setup()
 		require("mason-lspconfig").setup({
-			ensure_installed = vim.tbl_keys(servers),
-			automatic_installation = true,
+			automatic_installation = {
+                exclude = servers.exclude_install
+            },
 		})
 
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -147,7 +68,7 @@ return {
 		}
 
 		local lspconfig = require("lspconfig")
-		for name, opts in pairs(servers) do
+		for name, opts in pairs(servers.configs) do
 			lspconfig[name].setup(vim.tbl_extend("force", common_setup_args, opts))
 		end
 	end,
