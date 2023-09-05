@@ -24,7 +24,7 @@ return {
 					require("telescope.themes").get_cursor(),
 				},
 				file_browser = {
-					theme = "dropdown",
+					-- theme = "dropdown",
                     hijack_netrw = true,
 					hidden = {
 						file_browser = true,

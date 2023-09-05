@@ -4,7 +4,7 @@ install_base_packages() {
     sudo pacman -S base-devel networkmanager networkmanager-dmenu neofetch vi vim neovim \
         man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji \
         ttf-iosevka-nerd dkms linux-headers flameshot thunderbird wmctrl arandr \
-        autorandr pcmanfm-gtk3 ripgrep lazygit xclip bashtop
+        autorandr pcmanfm-gtk3 ripgrep lazygit xclip bashtop numlockx
 }
 
 install_python_packages() {

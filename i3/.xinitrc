@@ -33,6 +33,8 @@ fi
 
 autorandr --load $(autorandr | grep "detected" | cut -d " " -f1)
 
+numlockx &
+
 xmodmap -e 'keycode 108 = Hyper_R'
 xmodmap -e 'add mod5 = Hyper_R'
 

@@ -2,6 +2,7 @@ local M = {}
 
 M.configs = {
 	arduino_language_server = require("ankvi.plugins.lsp.servers.arduino").options,
+    bashls = {},
 	clangd = {},
 	dockerls = {},
 	tsserver = {},
