@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 export GIT_REPOSITORIES="$HOME/git"
 export GIT_EDITOR='\vim'
 export ELKJOP_GIT_REPOSITORIES="$GIT_REPOSITORIES/github.com/elkjopnordic"
@@ -39,6 +41,14 @@ fi
 
 export OPENCV_LOG_LEVEL=ERROR
 export POLYBAR_CONFIG_PATH="$HOME/.polybar"
+
+# pnpm
+export PNPM_HOME="/home/andreas/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
 # Enable the subsequent settings only in interactive sessions
 case $- in
@@ -183,3 +193,7 @@ source "$OSH"/oh-my-bash.sh
 # Example aliases
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH

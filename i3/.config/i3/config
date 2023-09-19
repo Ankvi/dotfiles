@@ -66,7 +66,7 @@ bindsym $mod+period exec --no-startup-id emoji-picker
 
 # Slack/Teams
 bindsym $mod+m exec wmctrl -xa slack || slack &
-bindsym $mod+n exec wmctrl -xa teams-for-linux || wmctrl -a "Microsoft Teams" || /opt/appimages/teams-for-linux.AppImage &
+bindsym $mod+n exec wmctrl -xa teams-for-linux || wmctrl -xa crx__cifhbcnohmdccbgoicgdjpfamggdegmo.Microsoft-edge || /opt/appimages/teams-for-linux.AppImage &
 
 # Spotify
 bindsym $mod+p exec --no-startup-id $term -e spt
@@ -76,7 +76,7 @@ bindsym $mod+d exec wmctrl -xa google-chrome || google-chrome-stable || google-c
 bindsym $mod+Ctrl+d exec google-chrome-stable || google-chrome &
 bindsym $mod+c exec wmctrl -xa code || code &
 bindsym $mod+Ctrl+c exec code &
-bindsym $mod+x exec wmctrl -a "Microsoft Edge" || microsoft-edge-stable || microsoft-edge &
+bindsym $mod+x exec wmctrl -xa microsoft-edge.Microsoft-edge || microsoft-edge-stable || microsoft-edge &
 bindsym $mod+Ctrl+x exec wmctrl -a "Elkjøp - Microsoft Edge" || microsoft-edge-stable || microsoft-edge &
 bindsym $mod+Alt+x exec wmctrl -a "Netlight - Microsoft Edge" || microsoft-edge-stable --profile-directory="Profile 1" || microsoft-edge --profile-directory="Profile 1" &
 
