@@ -16,7 +16,7 @@ return {
 			builtin.grep_string({ search = vim.fn.input("Grep > ") })
 		end, {})
 		vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
-		vim.keymap.set("n", "<leader>pb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", {})
+		vim.keymap.set("n", "<leader>pv", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", {})
 
 		telescope.setup({
 			extensions = {
@@ -24,7 +24,7 @@ return {
 					require("telescope.themes").get_cursor(),
 				},
 				file_browser = {
-					-- theme = "dropdown",
+					theme = "ivy",
                     hijack_netrw = true,
 					hidden = {
 						file_browser = true,

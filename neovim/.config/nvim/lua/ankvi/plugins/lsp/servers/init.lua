@@ -11,7 +11,8 @@ M.configs = {
 	html = {},
 	jsonls = require("ankvi.plugins.lsp.servers.json").options,
 	lua_ls = require("ankvi.plugins.lsp.servers.lua").options,
-	pylsp = {},
+	-- pylsp = {},
+    pyright = require("ankvi.plugins.lsp.servers.pyright").options,
 	vimls = {},
 	yamlls = require("ankvi.plugins.lsp.servers.yaml").options,
 }

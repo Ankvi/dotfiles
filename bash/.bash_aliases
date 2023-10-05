@@ -18,6 +18,10 @@ alias stop-redis='sudo service redis-server stop'
 alias mount-3d-sd-card='sudo mount -o gid=andreas,fmask=113,dmask=002 UUID="18F3-DE3E" /media/usb-drive/'
 alias unmount-3d-sd-card='sudo umount UUID="18F3-DE3E"'
 
+# Mounting Raspberry PI Pico
+alias mount-rpi='sudo mount -o gid=andreas,fmask=113,dmask=002 LABEL="CIRCUITPY" /media/pico/'
+alias unmount-rpi='sudo umount LABEL="CIRCUITPY"'
+
 # OTHER SHIT
 alias list-used-ports='sudo lsof -i -P -n | grep LISTEN'
 alias cdfincalc='cd $ELKJOP_GIT_REPOSITORIES/FINS/FinanceCalculator'
