@@ -10,8 +10,11 @@ return {
             renderer = {
                 group_empty = true
             },
+            filters = {
+                git_ignored = false
+            }
         })
 
-        vim.keymap.set("n", "<leader>pt", "<CMD>NvimTreeToggle<CR>")
+        vim.keymap.set("n", "<leader>pt", "<CMD>NvimTreeFocus<CR>")
     end
 }
