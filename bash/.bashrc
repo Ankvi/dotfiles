@@ -2,10 +2,12 @@
 
 export GIT_REPOSITORIES="$HOME/git"
 export GIT_EDITOR='\vim'
+export EDITOR='vim'
+export OPENER='rifle'
 export ELKJOP_GIT_REPOSITORIES="$GIT_REPOSITORIES/github.com/elkjopnordic"
 
 # ALIASES
-. $HOME/.bash_aliases
+. "$HOME"/.bash_aliases
 
 export PROFILE_PATH="$HOME/.profile"
 
