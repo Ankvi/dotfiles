@@ -19,7 +19,7 @@ return {
 		{ "hrsh7th/cmp-nvim-lsp" }
 	},
 	config = function()
-        local servers = require("ankvi.plugins.lsp.servers")
+        local servers = require("ankvi.plugins.lsp.lspconfig.servers")
 
 		require("mason").setup()
 		require("mason-lspconfig").setup({

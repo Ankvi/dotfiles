@@ -12,5 +12,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("ankvi.plugins")
+local lazy = require("lazy")
+lazy.setup({
+    { import = "ankvi.plugins"},
+    { import = "ankvi.plugins.lsp" }
+})
 

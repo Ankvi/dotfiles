@@ -1,3 +1,5 @@
 NuGet.Config
 .yarnrc.yml
 .luarc.json
+
+lazygit/.config/lazygit/state.yml
