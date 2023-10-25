@@ -33,7 +33,7 @@ return {
 				end,
 			},
 			preselect = "item",
-			mapping = cmp.mapping.preset.insert({
+			mapping = {
 				["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
 				["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
 				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
@@ -41,7 +41,7 @@ return {
 				["<Tab>"] = cmp.mapping.confirm({ selected = true }),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
-			}),
+			},
 			sources = {
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
