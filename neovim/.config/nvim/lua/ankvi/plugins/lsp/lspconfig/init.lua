@@ -2,13 +2,6 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
         { "nvim-telescope/telescope.nvim" },
-        {
-            "williamboman/mason.nvim",
-            build = function()
-                pcall(vim.api.nvim_command, "MasonUpdate")
-            end,
-        },
-        { "williamboman/mason-lspconfig.nvim" },
         { "lbrayner/vim-rzip" },
         {
             "Hoffs/omnisharp-extended-lsp.nvim",
@@ -20,13 +13,6 @@ return {
     },
     config = function()
         local servers = require("ankvi.plugins.lsp.lspconfig.servers")
-
-        require("mason").setup()
-        require("mason-lspconfig").setup({
-            automatic_installation = {
-                exclude = servers.exclude_install
-            },
-        })
 
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
