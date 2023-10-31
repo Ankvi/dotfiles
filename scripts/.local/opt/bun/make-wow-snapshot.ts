@@ -9,7 +9,7 @@ try {
     console.log(`Making WoW backup with message:\n${commitMessage}`);
 
     const commitProcess = Bun.spawn(["git", "commit", "-am", commitMessage], {
-        cwd: directory
+        cwd: directory,
     });
 
     const exitCode = await commitProcess.exited;
@@ -18,7 +18,7 @@ try {
     }
 
     await Bun.spawn(["git", "push"], {
-        cwd: directory
+        cwd: directory,
     }).exited;
 } catch (error) {
     console.error("WoW WTF backup failed with error:");

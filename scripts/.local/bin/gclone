@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+bun "$HOME"/.local/opt/bun/git.ts clone "$@"
