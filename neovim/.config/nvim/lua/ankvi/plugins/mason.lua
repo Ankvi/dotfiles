@@ -20,21 +20,23 @@ return {
 			},
 		})
 
-		require("mason-tool-installer").setup({
-			ensure_installed = {
-				-- LINTERS --
-				"actionlint",
-				"cpplint",
-				"markdownlint",
-				"pylint",
-				"shellcheck",
+		local tools = vim.tbl_extend("keep", vim.tbl_keys(servers.configs), {
+			-- LINTERS --
+			"actionlint",
+			"cpplint",
+			"markdownlint",
+			"pylint",
+			"shellcheck",
 
-				-- FORMATTERS --
-				"black",
-				"clang-format",
-				"prettierd",
-				"stylua",
-			},
+			-- FORMATTERS --
+			"black",
+			"clang-format",
+			"prettierd",
+			"stylua",
+		})
+
+		require("mason-tool-installer").setup({
+			ensure_installed = tools,
 		})
 	end,
 }

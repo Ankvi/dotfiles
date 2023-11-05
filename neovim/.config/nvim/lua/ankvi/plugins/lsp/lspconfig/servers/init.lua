@@ -18,7 +18,6 @@ M.configs = {
 }
 
 M.exclude_install = {
-    "omnisharp"
 }
 
 return M
