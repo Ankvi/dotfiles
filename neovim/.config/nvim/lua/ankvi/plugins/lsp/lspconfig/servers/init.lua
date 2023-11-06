@@ -9,6 +9,7 @@ M.configs = {
 	eslint = {},
 	html = {},
 	jsonls = require("ankvi.plugins.lsp.lspconfig.servers.json").options,
+    lemminx = {},
 	lua_ls = require("ankvi.plugins.lsp.lspconfig.servers.lua").options,
     omnisharp = require("ankvi.plugins.lsp.lspconfig.servers.omnisharp").options,
     pyright = require("ankvi.plugins.lsp.lspconfig.servers.pyright").options,
