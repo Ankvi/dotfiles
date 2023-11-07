@@ -1,8 +1,6 @@
-local M = {}
-
 local schemastore = require("schemastore")
 
-M.options = {
+local M = {
 	settings = {
 		yaml = {
 			schemaStore = {
