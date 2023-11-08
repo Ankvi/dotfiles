@@ -14,7 +14,7 @@ set $alt Mod1
 set $altgr Mod5
 set $term alacritty
 set $bg $HOME/Pictures/wallpapers/background.png
-set $lock i3lock
+set $lock swaylock
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -219,15 +219,15 @@ exec_always --no-startup-id setxkbmap -layout no
 
 exec_always --no-startup-id xinput set-prop "ELAN0673:00 04F3:3188 Touchpad" "libinput Tapping Enabled" 1
 
-exec_always --no-startup-id killall picom; picom &
+exec_always --no-startup-id picom &
 
-exec_always --no-startup-id killall dunst; dunst &
+exec_always --no-startup-id dunst &
 
 exec_always --no-startup-id python $OPT_FOLDER/set-wallpapers.py
 
-exec_always --no-startup-id $HOME/.polybar/launch.sh
+# exec_always --no-startup-id $HOME/.polybar/launch.sh
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- $lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- $lock --nofork
 
 exec --no-startup-id nm-applet
 
