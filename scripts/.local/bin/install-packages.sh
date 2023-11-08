@@ -3,8 +3,8 @@
 install_base_packages() {
     sudo pacman -S base-devel networkmanager networkmanager-dmenu neofetch vi vim neovim \
         man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji \
-        ttf-iosevka-nerd dkms linux-headers flameshot thunderbird wmctrl arandr \
-        autorandr pcmanfm-gtk3 ripgrep lazygit xclip bashtop numlockx
+        ttf-jetbrains-mono-nerd dkms linux-headers flameshot thunderbird wmctrl \
+        pcmanfm-gtk3 ripgrep lazygit xclip bashtop numlockx dunst
 }
 
 install_python_packages() {
@@ -21,12 +21,22 @@ install_nvidia_driver_packages_open_source() {
 }
 
 install_intel_driver_packages() {
-    sudo pacman -S xf86-video-intel mesa
+    sudo pacman -S mesa
+}
+
+install_x11_packages() {
+    sudo pacman -S xinit xrandr arandr autorandr
 }
 
 install_i3_packages() {
+    install_x11_packages
+
     sudo pacman -S xorg-server i3-wm i3lock xss-lock alacritty breeze-gtk \
-        feh xorg-xinput xorg-xinit picom dunst
+        feh xorg-xinput xorg-xinit picom
+}
+
+install_sway_packages() {
+    sudo pacman -S sway
 }
 
 install_development_packages() {
@@ -54,6 +64,23 @@ install_yay() {
     git clone https://aur.archlinux.org/yay.git
     cd yay || echo "Could not enter yay folder. Exiting" && exit
     makepkg -si
+}
+
+install_desktop_packages() {
+    install_base_packages
+    install_development_packages
+    install_yay
+    install_nvidia_driver_packages_proprietary
+    install_i3_packages
+    install_aur_packages
+}
+
+install_laptop_packages() {
+    install_base_packages
+    install_development_packages
+    install_intel_driver_packages
+    install_yay
+    install_sway_packages
 }
 
 subcommand=$1
