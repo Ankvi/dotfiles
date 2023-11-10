@@ -1,4 +1,9 @@
-local schemastore = require("schemastore")
+local ok, schemastore = pcall(require, "schemastore")
+
+if not ok then
+    print("Plugin 'schemastore' could not be found")
+    return nil
+end
 
 local M = {
 	settings = {
