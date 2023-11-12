@@ -1,0 +1,2 @@
+#!/usr/bin/env bash 
+bun "$HOME/.local/opt/bun/make-wow-snapshot.ts"
