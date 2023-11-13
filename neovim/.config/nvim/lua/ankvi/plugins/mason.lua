@@ -20,7 +20,7 @@ return {
 			},
 		})
 
-		local tools = vim.tbl_extend("keep", vim.tbl_keys(servers.configs), {
+		local tools = {--vim.tbl_extend("keep", vim.tbl_keys(servers.get_server_configs()), {
 			-- LINTERS --
 			"actionlint",
 			"cpplint",
@@ -33,7 +33,7 @@ return {
 			"clang-format",
 			"prettierd",
 			"stylua",
-		})
+		}
 
 		require("mason-tool-installer").setup({
 			ensure_installed = tools,

@@ -13,9 +13,16 @@ return {
 			"b0o/schemastore.nvim",
 		},
 		{ "hrsh7th/cmp-nvim-lsp" },
+		{
+			"williamboman/mason.nvim",
+			dependencies = {
+				"williamboman/mason-lspconfig.nvim",
+			},
+		},
 	},
 	config = function()
 		local servers = require("ankvi.plugins.lsp.lspconfig.servers")
+		local configs = servers.get_server_configs()
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -53,7 +60,7 @@ return {
 		}
 
 		local lspconfig = require("lspconfig")
-		for name, opts in pairs(servers.configs) do
+		for name, opts in pairs(configs) do
 			lspconfig[name].setup(vim.tbl_extend("force", common_setup_args, opts))
 		end
 	end,
