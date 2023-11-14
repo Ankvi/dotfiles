@@ -36,7 +36,7 @@ install_i3_packages() {
 }
 
 install_sway_packages() {
-    sudo pacman -S sway swaylock swayidle wl-clipboard xorg-xwayland grim
+    sudo pacman -S sway swaylock swayidle wl-clipboard xorg-xwayland grim xdg-desktop-portal xdg-desktop-portal-wlr
 }
 
 install_development_packages() {
