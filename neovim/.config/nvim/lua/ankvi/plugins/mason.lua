@@ -27,6 +27,7 @@ return {
 			"markdownlint",
 			"pylint",
 			"shellcheck",
+            "stylelint",
 
 			-- FORMATTERS --
 			"black",

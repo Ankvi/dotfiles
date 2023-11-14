@@ -33,13 +33,18 @@ connection = i3ipc.Connection()
 
 outputs = connection.get_outputs()
 
-command = ["feh", "--no-fehbg"]
+wayland = os.getenv("WAYLAND_DISPLAY") != ""
+command = ["feh", "--no-fehbg"] if not wayland else ["swaybg", "--mode", "fit"]
 
 for output in filter(lambda o: o.active, outputs):
     wallpaper = get_random_wallpaper(output.rect)
     if wallpaper is None:
         continue
-    command.append("--bg-fill")
+    
+    if not wayland:
+        command.append("--bg-fill")
+    else:
+        command.append("--image")
     command.append(wallpaper)
 
 Popen(command)

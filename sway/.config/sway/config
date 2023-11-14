@@ -29,21 +29,23 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym $mod+$alt+m exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brightnessctl set +10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl set 10- # decrease screen brightness
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+floating_modifier $mod normal
 
-# move tiling windows via drag & drop by left-clicking into the title bar,
-# or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
-
+# Set idle times
+exec swayidle -w \
+    timeout 300 'swaylock -f -c 000000' \
+    timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+    before-sleep 'swaylock -f -c 000000'
 
 # Custom keybindings
 bindsym $mod+t exec $term
@@ -165,7 +167,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Ctrl+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Ctrl+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -214,20 +216,21 @@ default_border pixel 0
 # SETTINGS, SERVICES, DAEMONS, ETC
 ################################################
 
+input "type:keyboard" {
+    xkb_layout no 
+    # xkb_variant ,nodeadkeys
+    # xkb_options grp:alt_shift_toggle
+}
 
-exec_always --no-startup-id setxkbmap -layout no
-
-exec_always --no-startup-id xinput set-prop "ELAN0673:00 04F3:3188 Touchpad" "libinput Tapping Enabled" 1
-
-# exec_always --no-startup-id picom &
+input "1267:12680:ELAN0673:00_04F3:3188_Touchpad" {
+    tap enabled
+}
 
 exec_always --no-startup-id dunst &
 
 exec_always --no-startup-id python $OPT_FOLDER/set-wallpapers.py
 
-# exec_always --no-startup-id $HOME/.polybar/launch.sh
-
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- $lock --nofork
+exec_always --no-startup-id waybar-start 
 
 exec --no-startup-id nm-applet
 
