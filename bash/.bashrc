@@ -41,6 +41,10 @@ if test -f /usr/share/bash-completion/bash_completion; then
     . /usr/share/bash-completion/bash_completion
 fi
 
+if test -f "$LOCAL_FOLDER/share/window-manager-config.sh"; then
+    . "$LOCAL_FOLDER/share/window-manager-config.sh"
+fi
+
 export OPENCV_LOG_LEVEL=ERROR
 export POLYBAR_CONFIG_PATH="$HOME/.polybar"
 
