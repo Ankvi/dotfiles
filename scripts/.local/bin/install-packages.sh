@@ -4,7 +4,8 @@ install_base_packages() {
     sudo pacman -S base-devel networkmanager networkmanager-dmenu neofetch vi vim neovim \
         man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji \
         ttf-jetbrains-mono-nerd dkms linux-headers flameshot thunderbird wmctrl \
-        pcmanfm-gtk3 ripgrep lazygit bashtop numlockx dunst
+        pcmanfm-gtk3 ripgrep lazygit bashtop numlockx dunst alacritty polkit xdg-desktop-portal \
+        xdg-desktop-portal-gtk
 }
 
 install_python_packages() {
@@ -31,12 +32,12 @@ install_x11_packages() {
 install_i3_packages() {
     install_x11_packages
 
-    sudo pacman -S xorg-server i3-wm i3lock xss-lock alacritty breeze-gtk \
+    sudo pacman -S xorg-server i3-wm i3lock xss-lock breeze-gtk \
         feh xorg-xinput xorg-xinit picom xclip
 }
 
 install_sway_packages() {
-    sudo pacman -S sway swaylock swayidle wl-clipboard xorg-xwayland grim xdg-desktop-portal xdg-desktop-portal-wlr
+    sudo pacman -S sway swaylock swayidle swaybg wl-clipboard xorg-xwayland grim xdg-desktop-portal-wlr
 }
 
 install_development_packages() {

@@ -33,7 +33,7 @@ connection = i3ipc.Connection()
 
 outputs = connection.get_outputs()
 
-wayland = os.getenv("WAYLAND_DISPLAY") != ""
+wayland = os.getenv("WAYLAND_DISPLAY") !=  None
 command = ["feh", "--no-fehbg"] if not wayland else ["swaybg", "--mode", "fit"]
 
 for output in filter(lambda o: o.active, outputs):
