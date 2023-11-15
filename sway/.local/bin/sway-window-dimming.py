@@ -15,8 +15,18 @@
 import signal
 import sys
 from typing import Optional
+from os import getpid, kill
+import psutil
 
 import i3ipc
+
+for proc in psutil.process_iter():
+    try:
+        if __file__ in proc.cmdline() and proc.pid != getpid():
+            print("Terminating existing dimming script")
+            kill(proc.pid, signal.SIGTERM)
+    except psutil.ZombieProcess:
+        pass
 
 ACTIVE_TRANSPARENCY_VALUE: str = '0.9'
 TRANSPARENCY_VALUE: str = '0.8'
@@ -45,11 +55,20 @@ def on_window_focus(ipc: i3ipc.connection.Connection,
     focused = event.container
     workspace = ipc.get_tree().find_focused().workspace().num
 
+    # for w in ipc.get_tree():
+    #     if w.id != focused.id and w.workspace().num == workspace:
+    #         w.command("opacity " + TRANSPARENCY_VALUE)
+    #     else:
+    #         w.command("opacity 1.0")
+    #
+
     # https://github.com/swaywm/sway/issues/2859
     if focused.id != g_prev_focused.id:
         focused.command('opacity 1.0')
         if workspace == g_prev_workspace:
             g_prev_focused.command('opacity ' + TRANSPARENCY_VALUE)
+        else:
+            g_prev_focused.command('opacity 1.0')
         g_prev_focused = focused
         g_prev_workspace = workspace
 

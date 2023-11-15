@@ -33,6 +33,12 @@ vim.opt.updatetime = 50
 --vim.opt.colorcolumn = "80"
 vim.g.mapleader = " "
 
+vim.filetype.add({
+    pattern = {
+        [".*/sway/config.d/.*%.conf"] = "swayconfig"
+    }
+})
+
 vim.diagnostic.config({
 	virtual_text = {
 		prefix = "●",

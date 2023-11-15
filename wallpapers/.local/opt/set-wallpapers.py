@@ -1,11 +1,12 @@
-import i3ipc
-from subprocess import Popen
 import os
 import random
+from subprocess import Popen
 
-wallpapersPath = "$HOME/Pictures/wallpapers/"
-portraitPath = os.path.expandvars(wallpapersPath + "background-portrait.jpg")
-landscapePath = os.path.expandvars(wallpapersPath + "background.png")
+import i3ipc
+
+WALLPAPERS_PATH = "$HOME/Pictures/wallpapers/"
+portraitPath = os.path.expandvars(WALLPAPERS_PATH + "background-portrait.jpg")
+landscapePath = os.path.expandvars(WALLPAPERS_PATH + "background.png")
 
 
 def is_landscape(rect: i3ipc.Rect) -> bool:
@@ -14,9 +15,9 @@ def is_landscape(rect: i3ipc.Rect) -> bool:
     return result
 
 
-def get_random_wallpaper(rect: i3ipc.Rect) -> str:
+def get_random_wallpaper(rect: i3ipc.Rect) -> str | None:
     folderName = os.path.expandvars(
-        f'{wallpapersPath}{rect.width}x{rect.height}')
+        f'{WALLPAPERS_PATH}{rect.width}x{rect.height}')
     isFolder = os.path.isdir(folderName)
     if isFolder is None:
         return None
@@ -44,7 +45,7 @@ for output in filter(lambda o: o.active, outputs):
     if not wayland:
         command.append("--bg-fill")
     else:
-        command.append("--image")
+        command.extend(["--output", output.name, "--image"])
     command.append(wallpaper)
 
 Popen(command)

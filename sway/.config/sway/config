@@ -49,88 +49,6 @@ exec swayidle -w \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -f -c 000000'
 
-# Custom keybindings
-bindsym $mod+t exec $term
-bindsym $mod+space exec --no-startup-id rofi -show combi
-
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# Task switcher
-bindsym $alt+Tab exec --no-startup-id rofi-task-switch
-
-# Power menu
-bindsym $mod+Escape exec --no-startup-id rofi-power-menu
-
-# Emoji picker
-bindsym $mod+period exec --no-startup-id emoji-picker
-
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-
-# switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Ctrl+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
 ################################################
 # HIDE i3 BAR
 ################################################
@@ -169,7 +87,7 @@ input "1267:12680:ELAN0673:00_04F3:3188_Touchpad" {
 
 exec_always --no-startup-id dunst &
 
-exec_always --no-startup-id python $OPT_FOLDER/set-wallpapers.py
+exec_always --no-startup-id killall swaybg; python $OPT_FOLDER/set-wallpapers.py &
 
 exec_always --no-startup-id waybar-start 
 
@@ -181,14 +99,14 @@ exec --no-startup-id nm-applet
 # DROPDOWN TERMINAL
 ################################################
 
-for_window [title="dropdownTerminal"] border none
-for_window [title="dropdownTerminal"] floating enable sticky enable
-for_window [title="dropdownTerminal"] move scratchpad
-for_window [title="dropdownTerminal"] resize set 1700 1024
-
-exec --no-startup-id $term --title "dropdownTerminal" &
-
-bindsym $mod+Return exec dropWindow 1024 "dropdownTerminal" -t=15 -s=16 -r
+# for_window [title="dropdownTerminal"] border none
+# for_window [title="dropdownTerminal"] floating enable sticky enable
+# for_window [title="dropdownTerminal"] move scratchpad
+# for_window [title="dropdownTerminal"] resize set 1700 1024
+#
+# exec --no-startup-id $term --title "dropdownTerminal" &
+#
+# bindsym $mod+Return exec dropWindow 1024 "dropdownTerminal" -t=15 -s=16 -r
 
 ################################################
 # APPLICATIONS
