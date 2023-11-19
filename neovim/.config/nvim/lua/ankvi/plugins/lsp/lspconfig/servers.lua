@@ -13,6 +13,7 @@ local get_server_configs = function()
 			},
 		},
 		bashls = {},
+        biome = {},
 		clangd = {},
 		csharp_ls = {
 			root_dir = lspconfig_util.root_pattern("*.sln"),
