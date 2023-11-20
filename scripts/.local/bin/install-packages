@@ -8,6 +8,10 @@ install_base_packages() {
         xdg-desktop-portal-gtk
 }
 
+install_keyring_packages() {
+    sudo pacman -S gnome-keyring seahorse
+}
+
 install_python_packages() {
     sudo pacman -S python-dotenv python-dbus python-os python-requests \
         python-i3ipc python-psutil
