@@ -75,16 +75,6 @@ default_border pixel 0
 # SETTINGS, SERVICES, DAEMONS, ETC
 ################################################
 
-input "type:keyboard" {
-    xkb_layout no 
-    # xkb_variant ,nodeadkeys
-    # xkb_options grp:alt_shift_toggle
-}
-
-input "1267:12680:ELAN0673:00_04F3:3188_Touchpad" {
-    tap enabled
-}
-
 exec_always --no-startup-id dunst &
 
 exec_always --no-startup-id killall swaybg; python $OPT_FOLDER/set-wallpapers.py &
