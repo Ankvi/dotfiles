@@ -30,14 +30,14 @@ install_intel_driver_packages() {
 }
 
 install_x11_packages() {
-    sudo pacman -S xinit xrandr arandr autorandr
+    sudo pacman -S xorg-server xorg-xinit xorg-xinput xclip xrandr arandr autorandr
 }
 
 install_i3_packages() {
     install_x11_packages
 
-    sudo pacman -S xorg-server i3-wm i3lock xss-lock breeze-gtk \
-        feh xorg-xinput xorg-xinit picom xclip
+    sudo pacman -S i3-wm i3lock xss-lock breeze-gtk \
+        feh picom
 }
 
 install_sway_packages() {
