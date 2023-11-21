@@ -38,8 +38,6 @@ stow/work/preview:
 	stow -t $(HOME) -v --simulate $(WORK)
 
 
-
-
 ########################################
 # Copy files from system to dotfiles
 ########################################
@@ -51,16 +49,12 @@ stow/work/adopt:
 	stow -t $(HOME) -v --adopt $(WORK)
 
 
-
-
 ########################################
 # Removing GNU Stow symlinks
 ########################################
 
 unstow:
 	stow -t $(HOME) -v --delete */
-
-
 
 
 ########################################
@@ -85,3 +79,4 @@ track-files-with-secrets:
 
 polybar/start:
 	./polybar/.polybar/launch.sh
+

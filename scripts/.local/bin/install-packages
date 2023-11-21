@@ -2,10 +2,15 @@
 
 install_base_packages() {
     sudo pacman -S base-devel networkmanager networkmanager-dmenu neofetch vi vim neovim \
-        man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji \
+        man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji gtk4 \
         ttf-jetbrains-mono-nerd dkms linux-headers flameshot thunderbird wmctrl \
         pcmanfm-gtk3 ripgrep lazygit bashtop numlockx dunst alacritty polkit xdg-desktop-portal \
-        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gtk pipewire-pulse pamixer pavucontrol grub efibootmgr \
+        bluez bluez-utils firefox calc
+}
+
+install_intel_cpu_packages() {
+    sudo pacman -S intel-ucode
 }
 
 install_keyring_packages() {
@@ -30,28 +35,41 @@ install_intel_driver_packages() {
 }
 
 install_x11_packages() {
-    sudo pacman -S xorg-server xorg-xinit xorg-xinput xclip xrandr arandr autorandr
+    sudo pacman -S xorg-server xorg-xinit xorg-xinput xclip xrandr arandr autorandr xorg-xev
 }
 
 install_i3_packages() {
     install_x11_packages
 
-    sudo pacman -S i3-wm i3lock xss-lock breeze-gtk \
-        feh picom
+    sudo pacman -S i3-wm i3lock xss-lock breeze-gtk feh picom polybar
+}
+
+install_wayland_packages() {
+    sudo pacman -S xorg-xwayland wl-clipboard grim 
 }
 
 install_sway_packages() {
-    sudo pacman -S sway swaylock swayidle swaybg wl-clipboard xorg-xwayland grim xdg-desktop-portal-wlr
+    install_wayland_packages
+
+    sudo pacman -S sway swaylock swayidle swaybg xdg-desktop-portal-wlr
 }
 
 install_development_packages() {
     sudo pacman -S nodejs npm aspnet-runtime aspnet-runtime-6.0 dotnet-sdk dotnet-sdk-6.0 \
-        kubectl k9s docker docker-compose docker-buildx
+        kubectl k9s docker docker-compose docker-buildx jre-openjdk
 }
 
 install_aur_packages() {
-    yay x11-emoji-picker-git snapd teams-for-linux-appimage google-chrome microsoft-edge-stable-bin spotify-tui \
+    yay snapd teams-for-linux-appimage google-chrome microsoft-edge-stable-bin spotify-tui \
         visual-studio-code-bin 1password cura-bin azure-cli nordvpn-bin
+}
+
+install_x11_aur_packages() {
+    yay x11-emoji-picker-git
+}
+
+install_wayland_aur_pacakges() {
+    yay wdisplays
 }
 
 install_arduino() {
@@ -60,6 +78,10 @@ install_arduino() {
 
 install_rust() {
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+}
+
+install_bun() {
+    curl -fsSL https://bun.sh/install | bash
 }
 
 install_yay() {
