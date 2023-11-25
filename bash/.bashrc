@@ -48,6 +48,8 @@ fi
 export OPENCV_LOG_LEVEL=ERROR
 export POLYBAR_CONFIG_PATH="$HOME/.polybar"
 
+export GTK_THEME='Catppuccin-Mocha-Standard-Lavender-Dark:dark'
+
 # pnpm
 export PNPM_HOME="/home/andreas/.local/share/pnpm"
 case ":$PATH:" in
