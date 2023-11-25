@@ -6,7 +6,7 @@ install_base_packages() {
         ttf-jetbrains-mono-nerd dkms linux-headers flameshot thunderbird wmctrl \
         pcmanfm-gtk3 ripgrep lazygit bashtop numlockx dunst alacritty polkit xdg-desktop-portal \
         xdg-desktop-portal-gtk pipewire-pulse pamixer pavucontrol grub efibootmgr \
-        bluez bluez-utils firefox calc
+        bluez bluez-utils firefox calc gnome-themes-extra
 }
 
 install_intel_cpu_packages() {
@@ -61,14 +61,16 @@ install_development_packages() {
 
 install_aur_packages() {
     yay snapd teams-for-linux-appimage google-chrome microsoft-edge-stable-bin spotify-tui \
-        visual-studio-code-bin 1password cura-bin azure-cli nordvpn-bin
+        visual-studio-code-bin 1password cura-bin azure-cli nordvpn-bin catppuccin-gtk-theme-mocha
 }
 
 install_x11_aur_packages() {
+    install_aur_packages
     yay x11-emoji-picker-git
 }
 
 install_wayland_aur_pacakges() {
+    install_aur_packages
     yay wdisplays
 }
 
@@ -84,6 +86,17 @@ install_bun() {
     curl -fsSL https://bun.sh/install | bash
 }
 
+install_pulumi() {
+    curl -fsSL https://get.pulumi.com | sh
+}
+
+install_extras() {
+    install_arduino
+    install_rust
+    install_bun
+    install_pulumi
+}
+
 install_yay() {
     pacman -S --needed git base-devel
     mkdir -p ~/git/aur
@@ -95,19 +108,23 @@ install_yay() {
 
 install_desktop_packages() {
     install_base_packages
+    install_intel_cpu_packages
     install_development_packages
     install_yay
     install_nvidia_driver_packages_proprietary
     install_i3_packages
     install_aur_packages
+    install_extras
 }
 
 install_laptop_packages() {
     install_base_packages
+    install_intel_cpu_packages
     install_development_packages
     install_intel_driver_packages
     install_yay
     install_sway_packages
+    install_extras
 }
 
 subcommand=$1
