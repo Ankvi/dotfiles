@@ -94,7 +94,9 @@ local get_server_configs = function()
 				},
 			},
 		},
-		tailwindcss = {},
+		tailwindcss = {
+            root_dir = lspconfig_util.root_pattern("tailwind.config.js")
+        },
 		vimls = {},
 		yamlls = {
 			settings = {
