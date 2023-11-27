@@ -13,9 +13,10 @@ local get_server_configs = function()
 			},
 		},
 		bashls = {},
-        -- biome = {
-        --     root_dir = lspconfig_util.root_pattern("biome.json")
-        -- },
+        biome = {
+            root_dir = lspconfig_util.root_pattern("biome.json"),
+            single_file_support = false
+        },
 		clangd = {},
 		csharp_ls = {
 			root_dir = lspconfig_util.root_pattern("*.sln"),
