@@ -2,9 +2,9 @@
 # Define the list of directories to
 # install
 ########################################
-COMMON=bash nuget spotifyd startup webcam yarn rofi fonts wallpapers vim i3 alacritty dunst neovim git lazygit scripts gtk
+COMMON=bash nuget spotifyd startup webcam yarn rofi wallpapers vim i3 alacritty dunst neovim git lazygit scripts gtk
 WORK=$(COMMON) sway
-DESKTOP=$(COMMON) arduino cura
+DESKTOP=$(COMMON) arduino cura fonts
 
 
 ########################################

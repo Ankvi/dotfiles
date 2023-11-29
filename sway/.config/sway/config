@@ -66,7 +66,7 @@ exec_always --no-startup-id killall swaybg; python $OPT_FOLDER/set-wallpapers.py
 exec_always --no-startup-id waybar-start 
 
 # exec_always --no-startup-id sway-window-dimming.py &
-exec_always --no-startup-id i3-sway-ipc-bun window-dimming &
+exec_always --no-startup-id i3-sway-ipc-bun window-dimming start &
 
 exec --no-startup-id nm-applet
 
