@@ -1,12 +1,9 @@
-import { cp, exists, readdir, unlink } from "node:fs/promises";
-import { basename } from "node:path";
+import { cp, exists, unlink } from "node:fs/promises";
 import { exit } from "node:process";
 
 const DOWNLOAD_LOCATION = `${Bun.env.HOME}/Downloads/wowup-latest`;
 const WOWUP_REPOSITORY = "https://github.com/WowUp/WowUp.CF";
 const INSTALL_FOLDER = Bun.env.OPT_FOLDER;
-
-const getAppImageName = (version: string) => `WowUp-CF-${version}.AppImage`;
 
 export async function installWowUp() {
     const releasesCommand = Bun.spawn([
@@ -74,12 +71,14 @@ export async function installWowUp() {
     }
 
     const link = Bun.which("wowup");
+
     if (link) {
         console.log("Found wowup command:", link);
-    } else {
-        console.log("No wowup command found. Creating");
-        await Bun.spawn(["ln", "-s", `${INSTALL_FOLDER}/wowup`, "wowup"], {
-            cwd: Bun.env.BIN_FOLDER,
-        }).exited;
+        return;
     }
+
+    console.log("No wowup command found. Creating");
+    await Bun.spawn(["ln", "-s", `${INSTALL_FOLDER}/wowup`, "wowup"], {
+        cwd: Bun.env.BIN_FOLDER,
+    }).exited;
 }

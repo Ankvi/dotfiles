@@ -40,6 +40,7 @@
   "omnisharp-extended-lsp.nvim": { "branch": "main", "commit": "53edfb413a54c9e55dcddc9e9fa4977a897e4425" },
   "plenary.nvim": { "branch": "master", "commit": "366b0837486f60ae0e7550c15de8ff66d057c4cd" },
   "schemastore.nvim": { "branch": "main", "commit": "54a4ea14b70cd3fc9db8217bb4ac9e1f78bfa390" },
+  "suda.vim": { "branch": "master", "commit": "8b0fc3711760195aba104e2d190cff9af8267052" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "d7c453396a043c265bef1227920628e7b811ff30" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "c261d903a78c2cda47a5e44488621f10f9dd7fcf" },
   "telescope.nvim": { "branch": "master", "commit": "776b509f80dd49d8205b9b0d94485568236d1192" },
