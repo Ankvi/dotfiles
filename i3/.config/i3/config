@@ -211,13 +211,6 @@ default_floating_border pixel 0
 default_border pixel 0
 
 ################################################
-# SCREEN RESOLUTION
-################################################
-
-exec xrandr --output DP-0 --mode 5120x1440 --primary --rate 239.76 --pos 0x1440
-exec xrandr --output HDMI-0 --mode 2560x1440 --rate 59.95 --pos 1280x0
-
-################################################
 # SETTINGS, SERVICES, DAEMONS, ETC
 ################################################
 

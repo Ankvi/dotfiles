@@ -32,6 +32,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # autorandr --load $(autorandr | grep "detected" | cut -d " " -f1)
+xrandr --output DP-0 --mode 5120x1440 --primary --rate 239.76 --pos 0x1440 --output HDMI-0 --mode 2560x1440 --rate 59.95 --right-of DP-0
 
 numlockx &
 

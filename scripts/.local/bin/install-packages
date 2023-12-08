@@ -71,9 +71,13 @@ install_development_packages() {
         kubectl k9s docker docker-compose docker-buildx jre-openjdk
 }
 
+install_wifi_card_drivers() {
+    yay -S rtl8812au-aircrack-ng-dkms-git
+}
+
 install_aur_packages() {
     echo "Installing AUR packages"
-    yay snapd teams-for-linux-appimage google-chrome microsoft-edge-stable-bin spotify-tui \
+    yay -S snapd teams-for-linux-appimage google-chrome microsoft-edge-stable-bin spotify-tui \
         visual-studio-code-bin 1password cura-bin azure-cli nordvpn-bin catppuccin-gtk-theme-mocha \
         wowup-cf-bin
 }
@@ -81,13 +85,13 @@ install_aur_packages() {
 install_x11_aur_packages() {
     echo "Installing X11 AUR packages"
     install_aur_packages
-    yay x11-emoji-picker-git
+    yay -S x11-emoji-picker-git
 }
 
 install_wayland_aur_pacakges() {
     echo "Installing wayland AUR packages"
     install_aur_packages
-    yay wdisplays
+    yay -S wdisplays
 }
 
 install_arduino() {
