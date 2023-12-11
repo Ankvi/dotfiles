@@ -72,8 +72,8 @@ bindsym $mod+n exec wmctrl -xa teams-for-linux || wmctrl -xa crx__cifhbcnohmdccb
 bindsym $mod+p exec --no-startup-id $term -e spt
 
 # Browsers
-bindsym $mod+d exec wmctrl -xa google-chrome || google-chrome-stable || google-chrome &
-bindsym $mod+Ctrl+d exec google-chrome-stable || google-chrome &
+bindsym $mod+d exec wmctrl -xa brave-browser || brave &
+bindsym $mod+Ctrl+d exec brave & 
 bindsym $mod+c exec wmctrl -xa code || code &
 bindsym $mod+Ctrl+c exec code &
 bindsym $mod+x exec wmctrl -xa microsoft-edge.Microsoft-edge || microsoft-edge-stable || microsoft-edge &
