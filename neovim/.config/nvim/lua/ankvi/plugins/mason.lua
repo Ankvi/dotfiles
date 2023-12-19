@@ -34,6 +34,7 @@ return {
 			"clang-format",
 			"prettierd",
 			"stylua",
+            "shfmt"
 		}
 
 		require("mason-tool-installer").setup({
