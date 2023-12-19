@@ -1,164 +1,175 @@
 #!/usr/bin/env bash
 
 install_base_packages() {
-    echo "Installing base packages"
-    sudo pacman -S base-devel networkmanager networkmanager-dmenu neofetch vi vim neovim \
-        man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji gtk4 \
-        ttf-jetbrains-mono-nerd dkms linux-headers flameshot thunderbird wmctrl \
-        pcmanfm-gtk3 ripgrep lazygit bashtop numlockx dunst alacritty polkit xdg-desktop-portal \
-        xdg-desktop-portal-gtk pipewire-pulse pamixer pavucontrol grub efibootmgr \
-        bluez bluez-utils firefox calc gnome-themes-extra acpid
+	echo "Installing base packages"
+	sudo pacman -S base-devel networkmanager networkmanager-dmenu neofetch vi vim neovim \
+		man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji gtk4 \
+		ttf-jetbrains-mono-nerd dkms linux-headers flameshot thunderbird wmctrl \
+		pcmanfm-gtk3 ripgrep lazygit bashtop numlockx dunst alacritty polkit xdg-desktop-portal \
+		xdg-desktop-portal-gtk pipewire-pulse pamixer pavucontrol grub efibootmgr \
+		bluez bluez-utils firefox calc gnome-themes-extra acpid
 }
 
 install_intel_cpu_packages() {
-    echo "Installing Intel CPU packages"
-    sudo pacman -S intel-ucode
+	echo "Installing Intel CPU packages"
+	sudo pacman -S intel-ucode
 }
 
 install_keyring_packages() {
-    echo "Installing keyring packages"
-    sudo pacman -S gnome-keyring seahorse
+	echo "Installing keyring packages"
+	sudo pacman -S gnome-keyring seahorse
 }
 
 install_python_packages() {
-    echo "Installing python packages"
-    sudo pacman -S python-dotenv python-dbus python-os python-requests \
-        python-i3ipc python-psutil
+	echo "Installing python packages"
+	sudo pacman -S python-dotenv python-dbus python-os python-requests \
+		python-i3ipc python-psutil
 }
 
 install_nvidia_driver_packages_proprietary() {
-    echo "Installing proprietary Nvidia packages"
-    sudo pacman -S nvidia nvidia-utils
+	echo "Installing proprietary Nvidia packages"
+	sudo pacman -S nvidia nvidia-utils
 }
 
 install_nvidia_driver_packages_open_source() {
-    echo "Installing open sourced Nvidia packages"
-    sudo pacman -S xf86-video-nouveau mesa
+	echo "Installing open sourced Nvidia packages"
+	sudo pacman -S xf86-video-nouveau mesa
 }
 
 install_intel_driver_packages() {
-    echo "Installing Intel GPU packages"
-    sudo pacman -S mesa
+	echo "Installing Intel GPU packages"
+	sudo pacman -S mesa
 }
 
 install_x11_packages() {
-    echo "Installing X11 packages"
-    sudo pacman -S xorg-server xorg-xinit xorg-xinput xclip xrandr arandr autorandr xorg-xev
+	echo "Installing X11 packages"
+	sudo pacman -S xorg-server xorg-xinit xorg-xinput xclip xrandr arandr autorandr xorg-xev
 }
 
 install_i3_packages() {
-    echo "Installing i3-wm packages"
-    install_x11_packages
+	echo "Installing i3-wm packages"
+	install_x11_packages
 
-    sudo pacman -S i3-wm i3lock xss-lock breeze-gtk feh picom polybar
+	sudo pacman -S i3-wm i3lock xss-lock breeze-gtk feh picom polybar
 }
 
 install_wayland_packages() {
-    echo "Installing wayland packages"
-    sudo pacman -S xorg-xwayland wl-clipboard grim 
+	echo "Installing wayland packages"
+	sudo pacman -S xorg-xwayland wl-clipboard grim
 }
 
 install_sway_packages() {
-    echo "Installing sway wm packages"
-    install_wayland_packages
+	echo "Installing sway wm packages"
+	install_wayland_packages
 
-    sudo pacman -S sway swaylock swayidle swaybg xdg-desktop-portal-wlr
+	sudo pacman -S sway swaylock swayidle swaybg xdg-desktop-portal-wlr
 }
 
 install_development_packages() {
-    echo "Installing software development packages"
-    sudo pacman -S nodejs npm aspnet-runtime aspnet-runtime-6.0 dotnet-sdk dotnet-sdk-6.0 \
-        kubectl k9s docker docker-compose docker-buildx jre-openjdk
+	echo "Installing software development packages"
+    echo "Techs: .NET, Node.JS, Docker, Kubernetes, Java"
+	sudo pacman -S \
+        nodejs npm \
+
+        # Docker/Kubernetes
+        kubectl k9s docker docker-compose docker-buildx \
+
+        # .NET
+        aspnet-runtime aspnet-runtime-6.0 aspnet-runtime-7.0 \
+		dotnet-sdk dotnet-sdk-6.0 dotnet-sdk-7.0 \
+
+        # Java
+        jre-openjdk
 }
 
 install_wifi_card_drivers() {
-    yay -S rtl8812au-aircrack-ng-dkms-git
+	yay -S rtl8812au-aircrack-ng-dkms-git
 }
 
 install_aur_packages() {
-    echo "Installing AUR packages"
-    yay -S snapd teams-for-linux-appimage google-chrome microsoft-edge-stable-bin spotify-tui \
-        visual-studio-code-bin 1password cura-bin azure-cli nordvpn-bin catppuccin-gtk-theme-mocha \
-        wowup-cf-bin
+	echo "Installing AUR packages"
+	yay -S snapd teams-for-linux-appimage google-chrome microsoft-edge-stable-bin spotify-tui \
+		visual-studio-code-bin 1password cura-bin azure-cli nordvpn-bin catppuccin-gtk-theme-mocha \
+		wowup-cf-bin
 }
 
 install_x11_aur_packages() {
-    echo "Installing X11 AUR packages"
-    install_aur_packages
-    yay -S x11-emoji-picker-git
+	echo "Installing X11 AUR packages"
+	install_aur_packages
+	yay -S x11-emoji-picker-git
 }
 
 install_wayland_aur_pacakges() {
-    echo "Installing wayland AUR packages"
-    install_aur_packages
-    yay -S wdisplays
+	echo "Installing wayland AUR packages"
+	install_aur_packages
+	yay -S wdisplays
 }
 
 install_arduino() {
-    echo "Installing the Arduino CLI"
-    curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=$BIN_FOLDER sh
+	echo "Installing the Arduino CLI"
+	curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=$BIN_FOLDER sh
 }
 
 install_rust() {
-    echo "Installing Rust"
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	echo "Installing Rust"
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 }
 
 install_bun() {
-    echo "Installing bun.js"
-    curl -fsSL https://bun.sh/install | bash
+	echo "Installing bun.js"
+	curl -fsSL https://bun.sh/install | bash
 }
 
 install_pulumi() {
-    echo "Installing Pulumi"
-    curl -fsSL https://get.pulumi.com | sh
+	echo "Installing Pulumi"
+	curl -fsSL https://get.pulumi.com | sh
 }
 
 install_extras() {
-    install_arduino
-    install_rust
-    install_bun
-    install_pulumi
+	install_arduino
+	install_rust
+	install_bun
+	install_pulumi
 }
 
 install_yay() {
-    echo "Installing yay"
-    pacman -S --needed git base-devel
-    mkdir -p ~/git/aur
-    cd ~/git/aur || echo "Could not create AUR folder. Exiting" && exit
-    git clone https://aur.archlinux.org/yay.git
-    cd yay || echo "Could not enter yay folder. Exiting" && exit
-    makepkg -si
+	echo "Installing yay"
+	pacman -S --needed git base-devel
+	mkdir -p ~/git/aur
+	cd ~/git/aur || echo "Could not create AUR folder. Exiting" && exit
+	git clone https://aur.archlinux.org/yay.git
+	cd yay || echo "Could not enter yay folder. Exiting" && exit
+	makepkg -si
 }
 
 install_desktop_packages() {
-    echo "Installing desktop packages"
-    install_base_packages
-    install_intel_cpu_packages
-    install_development_packages
-    install_yay
-    install_nvidia_driver_packages_proprietary
-    install_i3_packages
-    install_aur_packages
-    install_extras
+	echo "Installing desktop packages"
+	install_base_packages
+	install_intel_cpu_packages
+	install_development_packages
+	install_yay
+	install_nvidia_driver_packages_proprietary
+	install_i3_packages
+	install_aur_packages
+	install_extras
 }
 
 install_laptop_packages() {
-    echo "Installing laptop packages"
-    install_base_packages
-    install_intel_cpu_packages
-    install_development_packages
-    install_intel_driver_packages
-    install_yay
-    install_sway_packages
-    install_extras
+	echo "Installing laptop packages"
+	install_base_packages
+	install_intel_cpu_packages
+	install_development_packages
+	install_intel_driver_packages
+	install_yay
+	install_sway_packages
+	install_extras
 }
 
 subcommand=$1
 
-install_${subcommand}
+install_"${subcommand}"
 
 if [ $? = 127 ]; then
-    echo "Command not recognized"
-    exit
+	echo "Command not recognized"
+	exit
 fi

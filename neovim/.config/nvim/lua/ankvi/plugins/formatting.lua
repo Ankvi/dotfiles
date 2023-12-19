@@ -6,6 +6,7 @@ return {
 
         conform.setup({
             formatters_by_ft = {
+                sh = { "shfmt" },
                 markdown = { "prettierd" },
                 javascript = { "prettierd" },
                 javascriptreact = { "prettierd" },
