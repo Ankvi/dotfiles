@@ -1,2 +1,20 @@
-#!/usr/bin/env bash 
-bun "$HOME/.local/opt/bun/make-wow-snapshot.ts"
+#!/usr/bin/env bash
+GITHUB_PATH="github.com/Ankvi/linux-scripts"
+SCRIPTS_FOLDER="$GIT_REPOSITORIES/$GITHUB_PATH"
+if [ ! -d "$SCRIPTS_FOLDER" ]; then
+	echo "No scripts folder. Cloning"
+    git clone "git@github.com:Ankvi/linux-scripts" "$SCRIPTS_FOLDER"
+    bun install
+fi
+
+cd "$SCRIPTS_FOLDER" || exit
+if [ ! -d node_modules ]; then
+    bun install
+fi
+
+
+if ! command -v linux-scripts &> /dev/null; then
+    bun link
+fi
+
+linux-scripts make-wow-snapshot
