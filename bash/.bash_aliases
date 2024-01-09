@@ -33,3 +33,5 @@ alias dotfiles='cd ~/git/github.com/Ankvi/dotfiles'
 
 alias warcraft='cd /home/andreas/Games/battlenet/drive_c/Program\ Files\ \(x86\)/World\ of\ Warcraft'
 
+alias connect-headset='bluetoothctl connect 88:C9:E8:62:4A:BC'
+alias disconnect-headset='bluetoothctl disconnect 88:C9:E8:62:4A:BC'
