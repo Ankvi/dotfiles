@@ -4,7 +4,7 @@
 ########################################
 COMMON=bash spotifyd startup webcam wallpapers vim alacritty dunst neovim git lazygit scripts gtk
 WORK=$(COMMON) sway
-DESKTOP=$(COMMON) arduino cura i3
+DESKTOP=$(COMMON) arduino cura i3 sway
 
 
 ########################################

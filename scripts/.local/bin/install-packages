@@ -2,7 +2,7 @@
 
 install_base_packages() {
 	echo "Installing base packages"
-	sudo pacman -S base-devel networkmanager networkmanager-dmenu neofetch vi vim neovim \
+	sudo pacman -S --needed base-devel networkmanager networkmanager-dmenu neofetch vi vim neovim \
 		man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji gtk4 \
 		ttf-jetbrains-mono-nerd dkms linux-headers flameshot thunderbird wmctrl \
 		pcmanfm-gtk3 ripgrep lazygit bashtop numlockx dunst alacritty polkit xdg-desktop-portal \
@@ -12,73 +12,67 @@ install_base_packages() {
 
 install_intel_cpu_packages() {
 	echo "Installing Intel CPU packages"
-	sudo pacman -S intel-ucode
+	sudo pacman -S --needed intel-ucode
 }
 
 install_keyring_packages() {
 	echo "Installing keyring packages"
-	sudo pacman -S gnome-keyring seahorse
+	sudo pacman -S --needed gnome-keyring seahorse
 }
 
 install_python_packages() {
 	echo "Installing python packages"
-	sudo pacman -S python-dotenv python-dbus python-os python-requests \
+	sudo pacman -S --needed python-dotenv python-dbus python-os python-requests \
 		python-i3ipc python-psutil
 }
 
 install_nvidia_driver_packages_proprietary() {
 	echo "Installing proprietary Nvidia packages"
-	sudo pacman -S nvidia nvidia-utils
+	sudo pacman -S --needed nvidia nvidia-utils
 }
 
 install_nvidia_driver_packages_open_source() {
 	echo "Installing open sourced Nvidia packages"
-	sudo pacman -S xf86-video-nouveau mesa
+	sudo pacman -S --needed xf86-video-nouveau mesa
 }
 
 install_intel_driver_packages() {
 	echo "Installing Intel GPU packages"
-	sudo pacman -S mesa
+	sudo pacman -S --needed mesa
 }
 
 install_x11_packages() {
 	echo "Installing X11 packages"
-	sudo pacman -S xorg-server xorg-xinit xorg-xinput xclip xrandr arandr autorandr xorg-xev
+	sudo pacman -S --needed xorg-server xorg-xinit xorg-xinput xclip xrandr arandr autorandr xorg-xev
 }
 
 install_i3_packages() {
 	echo "Installing i3-wm packages"
 	install_x11_packages
 
-	sudo pacman -S i3-wm i3lock xss-lock breeze-gtk feh picom polybar
+	sudo pacman -S --needed i3-wm i3lock xss-lock breeze-gtk feh picom polybar
 }
 
 install_wayland_packages() {
 	echo "Installing wayland packages"
-	sudo pacman -S xorg-xwayland wl-clipboard grim
+	sudo pacman -S --needed xorg-xwayland wl-clipboard grim wofi slurp waybar
 }
 
 install_sway_packages() {
 	echo "Installing sway wm packages"
 	install_wayland_packages
 
-	sudo pacman -S sway swaylock swayidle swaybg xdg-desktop-portal-wlr
+	sudo pacman -S --needed sway swaylock swayidle swaybg xdg-desktop-portal-wlr
 }
 
 install_development_packages() {
 	echo "Installing software development packages"
     echo "Techs: .NET, Node.JS, Docker, Kubernetes, Java"
-	sudo pacman -S \
+	sudo pacman -S --needed \
         nodejs npm \
-
-        # Docker/Kubernetes
         kubectl k9s docker docker-compose docker-buildx \
-
-        # .NET
         aspnet-runtime aspnet-runtime-6.0 aspnet-runtime-7.0 \
 		dotnet-sdk dotnet-sdk-6.0 dotnet-sdk-7.0 \
-
-        # Java
         jre-openjdk
 }
 
@@ -88,7 +82,7 @@ install_wifi_card_drivers() {
 
 install_aur_packages() {
 	echo "Installing AUR packages"
-	yay -S snapd teams-for-linux-appimage google-chrome microsoft-edge-stable-bin spotify-tui \
+	yay -S snapd google-chrome microsoft-edge-stable-bin spotify-tui \
 		visual-studio-code-bin 1password cura-bin azure-cli nordvpn-bin catppuccin-gtk-theme-mocha \
 		wowup-cf-bin
 }
@@ -133,8 +127,13 @@ install_extras() {
 }
 
 install_yay() {
+    if command -v yay &> /dev/null; then
+        echo "yay is already installed. skipping"
+        return
+    fi
+
 	echo "Installing yay"
-	pacman -S --needed git base-devel
+	sudo pacman -S --needed git base-devel
 	mkdir -p ~/git/aur
 	cd ~/git/aur || echo "Could not create AUR folder. Exiting" && exit
 	git clone https://aur.archlinux.org/yay.git
@@ -150,6 +149,7 @@ install_desktop_packages() {
 	install_yay
 	install_nvidia_driver_packages_proprietary
 	install_i3_packages
+    install_sway_packages
 	install_aur_packages
 	install_extras
 }
@@ -166,6 +166,11 @@ install_laptop_packages() {
 }
 
 subcommand=$1
+
+if [ "$subcommand" = "" ]; then
+    echo "Please provide a sub command"
+    exit
+fi
 
 install_"${subcommand}"
 
