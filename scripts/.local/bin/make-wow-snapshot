@@ -13,8 +13,10 @@ if [ ! -d node_modules ]; then
 fi
 
 
-if ! command -v linux-scripts &> /dev/null; then
-    bun link
-fi
+# if ! command -v linux-scripts &> /dev/null; then
+#     bun link
+# fi
+#
+# linux-scripts make-wow-snapshot
 
-linux-scripts make-wow-snapshot
+bun src/index.ts make-wow-snapshot
