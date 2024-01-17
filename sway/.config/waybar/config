@@ -97,7 +97,7 @@
     "custom/logo": {
         "format": "  ",
         "tooltip": false,
-        "on-click": "rofi-launch &"
+        "on-click": "wofi --show drun &"
     },
     "battery": {
         "format": "{capacity}% {icon}",
