@@ -29,6 +29,7 @@ alias cdflash='cd $ELKJOP_GIT_REPOSITORIES/flash'
 alias elkjop='cd $ELKJOP_GIT_REPOSITORIES'
 alias webcam='qv4l2'
 alias vim='nvim'
+alias cnvim='cd ~/git/github.com/Ankvi/neovim-config'
 alias dotfiles='cd ~/git/github.com/Ankvi/dotfiles'
 
 alias warcraft='cd /home/andreas/Games/battlenet/drive_c/Program\ Files\ \(x86\)/World\ of\ Warcraft'
