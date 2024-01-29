@@ -9,7 +9,7 @@ timestamp = datetime.now()
 SATURDAY = 5
 
 # Define programs
-TEAMS_APPIMAGE = "/opt/appimages/teams-for-linux.AppImage"
+TEAMS = "/opt/teams-for-linux/teams-for-linux"
 SLACK = "slack"
 
 def is_process_running(name):
@@ -41,7 +41,7 @@ def start_if_not_running(name, command = None):
 if timestamp.weekday() < SATURDAY and timestamp.hour < 17:
     print("It's a work day, opening work programs")
 
-    start_appimage_if_not_running(TEAMS_APPIMAGE)
+    start_appimage_if_not_running(TEAMS)
     start_if_not_running(SLACK)
 else:
     print("You're not supposed to work at this hour. STOP IT")
