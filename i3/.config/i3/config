@@ -50,7 +50,7 @@ bindsym $mod+t exec $term
 bindsym $mod+space exec --no-startup-id rofi -show combi
 
 # Screenshotting
-bindsym $mod+Shift+s exec --no-startup-id flameshot gui
+bindsym $mod+Shift+s exec --no-startup-id QT_QPA_PLATFORM="" flameshot gui
 
 # kill focused window
 bindsym $mod+Shift+q kill
