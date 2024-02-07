@@ -2,7 +2,7 @@
 # Define the list of directories to
 # install
 ########################################
-COMMON=bash spotifyd startup webcam wallpapers vim alacritty dunst git lazygit scripts gtk pipewire
+COMMON=general spotifyd startup webcam wallpapers vim alacritty dunst git lazygit scripts gtk pipewire
 WORK=$(COMMON) sway
 DESKTOP=$(COMMON) arduino cura i3 sway
 
@@ -55,23 +55,6 @@ stow/work/adopt:
 
 unstow:
 	stow -t $(HOME) -v --delete */
-
-
-########################################
-# Ignoring changes to certain files that
-# will contain secrets.
-# Do this before stowing files
-########################################
-
-untrack-files-with-secrets:
-	git update-index --assume-unchanged nuget/.nuget/NuGet/NuGet.Config
-	git update-index --assume-unchanged yarn/.yarnrc.yml
-	git update-index --assume-unchanged spotifyd/.config/spotifyd/spotifyd.conf
-
-track-files-with-secrets:
-	git update-index --no-assume-unchanged nuget/.nuget/NuGet/NuGet.Config
-	git update-index --no-assume-unchanged yarn/.yarnrc.yml
-	git update-index --no-assume-unchanged spotifyd/.config/spotifyd/spotifyd.conf
 
 ########################################
 # (Re)activate polybar
