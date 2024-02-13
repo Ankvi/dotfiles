@@ -7,7 +7,7 @@ install_base_packages() {
 		ttf-jetbrains-mono-nerd dkms linux-headers flameshot thunderbird wmctrl \
 		pcmanfm-gtk3 ripgrep lazygit bashtop numlockx dunst alacritty polkit xdg-desktop-portal \
 		xdg-desktop-portal-gtk pipewire-pulse pamixer pavucontrol grub efibootmgr \
-		bluez bluez-utils firefox calc gnome-themes-extra acpid fuse2 fuse3
+		bluez bluez-utils firefox calc gnome-themes-extra acpid fuse2 fuse3 fd
 }
 
 install_intel_cpu_packages() {
