@@ -14,7 +14,7 @@
     "modules-right": [
         "tray",
         "memory",
-        "network",
+        // "network",
         "pulseaudio",
         "battery",
         "custom/power"
@@ -67,7 +67,7 @@
             "󰤨"
         ],
         "format-ethernet": "󰀂",
-        "format-alt": "󱛇",
+        // "format-alt": "󱛇",
         "format-disconnected": "󰖪",
         "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
@@ -92,6 +92,7 @@
             ]
         },
         "on-click": "pamixer -t",
+        "on-click-right": "pavucontrol &",
         "scroll-step": 1
     },
     "custom/logo": {
@@ -138,6 +139,6 @@
     "custom/power": {
         "format": "󰤆",
         "tooltip": false,
-        "on-click": "rofi-power-menu &"
+        "on-click": "linux-scripts dmenu powermenu &"
     }
 }
