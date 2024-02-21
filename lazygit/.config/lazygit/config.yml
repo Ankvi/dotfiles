@@ -5,3 +5,11 @@ keybinding:
   universal:
     nextTab: 'æ'
     prevTab: 'ø'
+
+customCommands:
+  - key: '<f1>'
+    context: global
+    command: 'git fetch --prune'
+  - key: '<f5>'
+    context: global
+    command: 'git push --force-with-lease'
