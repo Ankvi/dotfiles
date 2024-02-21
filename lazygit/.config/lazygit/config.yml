@@ -28,6 +28,10 @@ customCommands:
             description: 'a hotfix branch'
             value: 'hotfix'
 
+          - name: 'bug'
+            description: 'a bug branch'
+            value: 'bug'
+
           - name: 'cleanup'
             description: 'a cleanup branch'
             value: 'cleanup'
