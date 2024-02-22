@@ -53,7 +53,7 @@ customCommands:
       - type: 'input'
         title: 'What Jira ticket is the branch for?'
         key: 'JiraTicket'
-        initialValue: '00000'
+        initialValue: ''
       - type: 'input'
         title: 'What is the branch name?'
         key: 'BranchName'
