@@ -1,5 +1,8 @@
 root = true
 
+[*.sln]
+indent_size = 2
+
 [*.cs]
 dotnet_diagnostic.IDE0130.severity = warning
 dotnet_diagnostic.IDE0001.severity = warning
