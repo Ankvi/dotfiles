@@ -10,9 +10,13 @@ customCommands:
   - key: '<f1>'
     context: global
     command: 'git fetch --prune'
+    loadingText: 'Pruning repository...'
+    description: 'Removes remote-tracking references that no longer exists'
   - key: '<f5>'
     context: global
     command: 'git push --force-with-lease'
+    loadingText: 'Pushing...'
+    description: 'Force push with lease (e.g. after a rebase)'
   - key: 'n'
     context: localBranches
     prompts:
