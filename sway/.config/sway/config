@@ -13,8 +13,6 @@ set $mod Mod4
 set $alt Mod1
 set $altgr Mod5
 set $term alacritty
-set $bg $HOME/Pictures/wallpapers/background.png
-set $lock 'i3-sway-ipc-bun lock-screen'
 
 include /etc/sway/config.d/*
 include $HOME/.config/sway/config.d/*
@@ -26,12 +24,6 @@ font pango:monospace 8
 set $refresh_i3status killall -SIGUSR1 i3status
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod normal
-
-# Set idle times
-exec swayidle -w \
-    timeout 600 $lock \
-    timeout 1200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-    before-sleep $lock
 
 ################################################
 # HIDE i3 BAR
@@ -52,8 +44,9 @@ gaps outer 0
 # BORDERS
 ################################################
 
-default_floating_border pixel 0
-default_border pixel 0
+default_floating_border pixel 1
+default_border pixel 1 
+# smart_borders on
 
 ################################################
 # SETTINGS, SERVICES, DAEMONS, ETC
@@ -89,5 +82,3 @@ exec --no-startup-id nm-applet
 
 exec --no-startup-id 1password --silent
 exec --no-startup-id start-work-applications
-
-
