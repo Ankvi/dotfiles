@@ -24,6 +24,7 @@ export PATH=$PATH:/snap/bin
 
 # DOTNET
 export DOTNET_ROOT=/usr/share/dotnet/
+export PATH="$PATH:/home/andreas/.dotnet/tools"
 
 # GENERAL
 export PATH=$PATH:$HOME/bin
