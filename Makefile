@@ -2,9 +2,9 @@
 # Define the list of directories to
 # install
 ########################################
-COMMON=general spotifyd startup webcam wallpapers alacritty dunst git lazygit scripts gtk pipewire
+COMMON=general spotifyd startup webcam wallpapers alacritty dunst git lazygit scripts gtk pipewire tmux
 WORK=$(COMMON) sway
-DESKTOP=$(COMMON) arduino cura i3 sway
+DESKTOP=$(COMMON) arduino cura i3
 
 
 ########################################
