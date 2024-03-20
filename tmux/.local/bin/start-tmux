@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+SESSION='work'
+GIT_FOLDER="$HOME/git/github/elkjopnordic"
+
+start() {
+	tmux new-session -d -s $SESSION
+
+	tmux rename-window -t $SESSION:0 'flash'
+	tmux send-keys -t $SESSION:0 'cdflash' C-m
+
+	tmux new-window -t $SESSION:1 -n 'FinanceCalculator'
+	tmux send-keys -t $SESSION:1 'cdfincalc' C-m
+
+	tmux new-window -t $SESSION:1 -n 'FinancingApplicationService'
+	tmux send-keys -t $SESSION:1 "cd $GIT_FOLDER/FINS/FinancingApplicationService" C-m
+
+	tmux new-window -t $SESSION:1 -n 'neovim-config'
+	tmux send-keys -t $SESSION:1 'cnvim' C-m
+
+	tmux new-window -t $SESSION:1 -n 'dotfiles'
+	tmux send-keys -t $SESSION:1 'dotfiles' C-m
+
+	tmux attach-session -t $SESSION
+}
+
+tmux attach-session -t $SESSION || start
