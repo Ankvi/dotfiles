@@ -2,8 +2,9 @@
 {
     "layer": "top",
     "position": "top",
-    "spacing": 0,
-    "height": 44,
+    "spacing": 10,
+    "margin": "6px 8px 0px 8px",
+    "height": 30,
     "modules-left": [
         "custom/logo",
         "sway/workspaces"

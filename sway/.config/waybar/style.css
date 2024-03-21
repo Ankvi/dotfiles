@@ -9,7 +9,7 @@
 }
 
 window#waybar {
-  background-color: @base;
+  background-color: transparent;
   transition-property: background-color;
   transition-duration: 0.5s;
 }
@@ -19,22 +19,27 @@ window#waybar.hidden {
 }
 
 #workspaces {
-  background-color: transparent;
+  border-radius: 15px;
+  background-color: @base;
 }
 
 #workspaces button {
   all: initial; /* Remove GTK theme values (waybar #1351) */
   min-width: 0; /* Fix weird spacing in materia (waybar #450) */
-  box-shadow: inset 0 -3px transparent; /* Use box-shadow instead of border so the text isn't offset */
-  padding: 6px 18px;
-  margin: 6px 3px;
-  border-radius: 4px;
-  background-color: @base;
+  padding: 0px 12px;
   color: @text;
 }
 
-#workspaces button.visible {
-  border: 1px solid @text;
+#workspaces button:first-child {
+    padding-left: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+#workspaces button:last-child {
+    padding-right: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 #workspaces button.focused {
@@ -43,53 +48,55 @@ window#waybar.hidden {
 }
 
 #workspaces button:hover {
- box-shadow: inherit;
- text-shadow: inherit;
  color: @base;
  background-color: @text;
 }
 
 #workspaces button.urgent {
-  background-color: #f38ba8;
+  background-color: @red;
+  color: @base;
 }
 
 #memory,
-#custom-power,
 #battery,
 #backlight,
 #pulseaudio,
 #network,
 #clock,
 #tray {
-  border-radius: 4px;
-  margin: 6px 3px;
-  padding: 6px 12px;
+  border-radius: 15px;
+  padding: 6px 15px;
   background-color: @base;
   color: @mantle;
 }
 
 #custom-power {
-  margin-right: 6px;
+  border-radius: 15px;
+  padding: 6px 12px;
+  background-color: @base;
+  color: @mantle;
 }
 
 #custom-logo {
   padding-right: 7px;
-  padding-left: 7px;
-  margin-left: 5px;
+  /* padding-left: 7px; */
+  /* margin-left: 5px; */
   font-size: 15px;
-  border-radius: 8px 0px 0px 8px;
+  /* border-radius: 8px 0px 0px 8px; */
   color: #1793d1;
 }
 
 #memory {
-  background-color: #fab387;
+  background-color: @peach;
 }
+
 #battery {
-  background-color: #f38ba8;
+  background-color: @red;
 }
+
 @keyframes blink {
   to {
-    background-color: #f38ba8;
+    background-color: @red;
     color: @mantle;
   }
 }
@@ -123,7 +130,6 @@ window#waybar.hidden {
 }
 
 #clock {
-  /* font-family: JetBrainsMono Nerd Font; */
   background-color: #cba6f7;
 }
 
