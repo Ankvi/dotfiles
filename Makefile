@@ -4,7 +4,7 @@
 ########################################
 COMMON=general spotifyd startup webcam wallpapers alacritty dunst git lazygit scripts gtk pipewire tmux
 WORK=$(COMMON) sway
-DESKTOP=$(COMMON) arduino cura i3
+DESKTOP=$(COMMON) arduino cura i3 hyprland
 
 
 ########################################

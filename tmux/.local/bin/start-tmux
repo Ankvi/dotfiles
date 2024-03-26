@@ -19,7 +19,7 @@ start() {
 	tmux send-keys -t $SESSION:4 'cnvim' C-m
 
 	tmux new-window -t $SESSION:5 -n 'dotfiles'
-	tmux send-keys -t $SESSION:5 'dotfiles' C-m
+	tmux send-keys -t $SESSION:5 'dotfiles; clear' C-m
 
 	tmux attach-session -t $SESSION
 }
