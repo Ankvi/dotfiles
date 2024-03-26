@@ -47,6 +47,11 @@ window#waybar.hidden {
   background-color: @text;
 }
 
+#workspaces button.active {
+  color: @base;
+  background-color: @text;
+}
+
 #workspaces button:hover {
  color: @base;
  background-color: @text;
