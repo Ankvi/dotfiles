@@ -7,16 +7,16 @@ start() {
 	tmux new-session -d -s $SESSION
 
 	tmux rename-window -t $SESSION:1 'flash'
-	tmux send-keys -t $SESSION:1 'cdflash' C-m
+	tmux send-keys -t $SESSION:1 'cdflash; clear' C-m
 
 	tmux new-window -t $SESSION:2 -n 'FinanceCalculator'
-	tmux send-keys -t $SESSION:2 'cdfincalc' C-m
+	tmux send-keys -t $SESSION:2 'cdfincalc; clear' C-m
 
 	tmux new-window -t $SESSION:3 -n 'FinancingApplicationService'
-	tmux send-keys -t $SESSION:3 "cd $GIT_FOLDER/FINS/FinancingApplicationService" C-m
+	tmux send-keys -t $SESSION:3 "cd $GIT_FOLDER/FINS/FinancingApplicationService; clear" C-m
 
 	tmux new-window -t $SESSION:4 -n 'neovim-config'
-	tmux send-keys -t $SESSION:4 'cnvim' C-m
+	tmux send-keys -t $SESSION:4 'cnvim; clear' C-m
 
 	tmux new-window -t $SESSION:5 -n 'dotfiles'
 	tmux send-keys -t $SESSION:5 'dotfiles; clear' C-m
