@@ -2,12 +2,13 @@
 
 install_base_packages() {
 	echo "Installing base packages"
-	sudo pacman -S --needed base-devel networkmanager networkmanager-dmenu neofetch vi vim neovim \
+	sudo pacman -S --needed base-devel networkmanager neofetch vi vim neovim \
 		man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji gtk4 \
 		ttf-jetbrains-mono-nerd dkms linux-headers flameshot thunderbird wmctrl \
 		pcmanfm-gtk3 ripgrep lazygit bashtop numlockx dunst alacritty polkit xdg-desktop-portal \
 		xdg-desktop-portal-gtk pipewire-pulse pamixer pavucontrol grub efibootmgr \
-		bluez bluez-utils firefox calc gnome-themes-extra acpid fuse2 fuse3 fd wezterm
+		bluez bluez-utils firefox calc gnome-themes-extra acpid fuse2 fuse3 fd wezterm \
+        gvfs
 }
 
 install_intel_cpu_packages() {
@@ -65,6 +66,13 @@ install_sway_packages() {
 	sudo pacman -S --needed sway swaylock swayidle swaybg xdg-desktop-portal-wlr
 }
 
+install_hyprland_packages() {
+    echo "Installing hyprland packages"
+
+    install_wayland_packages
+    sudo pacman -S --needed hyprland libva qt5-wayland qt5ct
+}
+
 install_development_packages() {
 	echo "Installing software development packages"
     echo "Techs: .NET, Node.JS, Docker, Kubernetes, Java"
@@ -82,9 +90,9 @@ install_wifi_card_drivers() {
 
 install_aur_packages() {
 	echo "Installing AUR packages"
-	yay -S snapd google-chrome microsoft-edge-stable-bin spotify-tui \
+	yay -S snapd google-chrome microsoft-edge-stable-bin \
 		visual-studio-code-bin 1password cura-bin azure-cli nordvpn-bin catppuccin-gtk-theme-mocha \
-		wowup-cf-bin
+		wowup-cf-bin networkmanager-dmenu-git
 }
 
 install_x11_aur_packages() {
@@ -148,8 +156,7 @@ install_desktop_packages() {
 	install_development_packages
 	install_yay
 	install_nvidia_driver_packages_proprietary
-	install_i3_packages
-    install_sway_packages
+    
 	install_aur_packages
 	install_extras
 }
