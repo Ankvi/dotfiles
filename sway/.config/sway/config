@@ -12,7 +12,7 @@
 set $mod Mod4
 set $alt Mod1
 set $altgr Mod5
-set $term alacritty
+set $term wezterm
 
 include /etc/sway/config.d/*
 include $HOME/.config/sway/config.d/*
