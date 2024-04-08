@@ -52,6 +52,9 @@ customCommands:
             value: FINS
           - name: ITDS
             value: ITDS
+          - name: Flash
+            value: FLASH
+            description: Flash automation
           - name: Others
             value: OTHER
       - type: 'input'
