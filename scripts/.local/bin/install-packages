@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-install_base_packages() {
+install_base() {
 	echo "Installing base packages"
 	sudo pacman -S --needed base-devel networkmanager neofetch vi vim neovim \
 		man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji gtk4 \
@@ -8,72 +8,72 @@ install_base_packages() {
 		pcmanfm-gtk3 ripgrep lazygit bashtop numlockx dunst alacritty polkit xdg-desktop-portal \
 		xdg-desktop-portal-gtk pipewire-pulse pamixer pavucontrol grub efibootmgr \
 		bluez bluez-utils firefox calc gnome-themes-extra acpid fuse2 fuse3 fd wezterm \
-        gvfs otf-ipafont
+        gvfs otf-ipafont usbutils
 }
 
-install_intel_cpu_packages() {
+install_intel_cpu() {
 	echo "Installing Intel CPU packages"
 	sudo pacman -S --needed intel-ucode
 }
 
-install_keyring_packages() {
+install_keyring() {
 	echo "Installing keyring packages"
 	sudo pacman -S --needed gnome-keyring seahorse
 }
 
-install_python_packages() {
+install_python() {
 	echo "Installing python packages"
 	sudo pacman -S --needed python-dotenv python-dbus python-os python-requests \
 		python-i3ipc python-psutil
 }
 
-install_nvidia_driver_packages_proprietary() {
+install_nvidia_driver_proprietary() {
 	echo "Installing proprietary Nvidia packages"
 	sudo pacman -S --needed nvidia nvidia-utils
 }
 
-install_nvidia_driver_packages_open_source() {
+install_nvidia_driver_open_source() {
 	echo "Installing open sourced Nvidia packages"
 	sudo pacman -S --needed xf86-video-nouveau mesa
 }
 
-install_intel_driver_packages() {
+install_intel_driver() {
 	echo "Installing Intel GPU packages"
 	sudo pacman -S --needed mesa
 }
 
-install_x11_packages() {
+install_x11() {
 	echo "Installing X11 packages"
 	sudo pacman -S --needed xorg-server xorg-xinit xorg-xinput xclip xrandr arandr autorandr xorg-xev
 }
 
-install_i3_packages() {
+install_i3() {
 	echo "Installing i3-wm packages"
-	install_x11_packages
+	install_x11
 
 	sudo pacman -S --needed i3-wm i3lock xss-lock breeze-gtk feh picom polybar
 }
 
-install_wayland_packages() {
+install_wayland() {
 	echo "Installing wayland packages"
 	sudo pacman -S --needed xorg-xwayland wl-clipboard grim wofi slurp waybar
 }
 
-install_sway_packages() {
+install_sway() {
 	echo "Installing sway wm packages"
-	install_wayland_packages
+	install_wayland
 
 	sudo pacman -S --needed sway swaylock swayidle swaybg xdg-desktop-portal-wlr
 }
 
-install_hyprland_packages() {
+install_hyprland() {
     echo "Installing hyprland packages"
 
-    install_wayland_packages
-    sudo pacman -S --needed hyprland libva qt5-wayland qt5ct
+    install_wayland
+    sudo pacman -S --needed hyprland libva qt6-wayland qt6ct
 }
 
-install_development_packages() {
+install_development_tools() {
 	echo "Installing software development packages"
     echo "Techs: .NET, Node.JS, Docker, Kubernetes, Java"
 	sudo pacman -S --needed \
@@ -149,26 +149,26 @@ install_yay() {
 	makepkg -si
 }
 
-install_desktop_packages() {
+install_desktop() {
 	echo "Installing desktop packages"
-	install_base_packages
-	install_intel_cpu_packages
-	install_development_packages
+	install_base
+	install_intel_cpu
+	install_development_tools
 	install_yay
-	install_nvidia_driver_packages_proprietary
+	install_nvidia_driver_proprietary
     
 	install_aur_packages
 	install_extras
 }
 
-install_laptop_packages() {
+install_laptop() {
 	echo "Installing laptop packages"
-	install_base_packages
-	install_intel_cpu_packages
-	install_development_packages
-	install_intel_driver_packages
+	install_base
+	install_intel_cpu
+	install_development_tools
+	install_intel_driver
 	install_yay
-	install_sway_packages
+	install_sway
 	install_extras
 }
 
