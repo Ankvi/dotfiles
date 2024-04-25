@@ -8,7 +8,7 @@ install_base() {
 		pcmanfm-gtk3 ripgrep lazygit bashtop numlockx dunst alacritty polkit xdg-desktop-portal \
 		xdg-desktop-portal-gtk pipewire-pulse pamixer pavucontrol grub efibootmgr \
 		bluez bluez-utils firefox calc gnome-themes-extra acpid fuse2 fuse3 fd wezterm \
-        gvfs otf-ipafont usbutils
+        gvfs otf-ipafont usbutils fzf bat
 }
 
 install_intel_cpu() {
@@ -29,7 +29,7 @@ install_python() {
 
 install_nvidia_driver_proprietary() {
 	echo "Installing proprietary Nvidia packages"
-	sudo pacman -S --needed nvidia nvidia-utils
+	sudo pacman -S --needed nvidia-dkms nvidia-utils
 }
 
 install_nvidia_driver_open_source() {
