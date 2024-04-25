@@ -55,6 +55,8 @@ customCommands:
           - name: Flash
             value: FLASH
             description: Flash automation
+          - name: Customer Identity
+            value: CID
           - name: Others
             value: OTHER
       - type: 'input'
