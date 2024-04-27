@@ -1,56 +1,8 @@
 #!/usr/bin/env bash
 
-SESSION='work'
-GIT_FOLDER="$HOME/git/github.com/elkjopnordic"
-
 start() {
-    echo "Starting tmux session: $SESSION"
-	tmux new-session -d -s $SESSION
-
-	tmux send-keys -t $SESSION:1 'cdflash; clear' C-m
-
-	tmux new-window -t $SESSION:2
-	tmux send-keys -t $SESSION:2 'cdfincalc; clear' C-m
-
-	tmux new-window -t $SESSION:3
-	tmux send-keys -t $SESSION:3 "cd $GIT_FOLDER/FINS/FinancingApplicationService; clear" C-m
-
-	tmux new-window -t $SESSION:4
-	tmux send-keys -t $SESSION:4 'cnvim; clear' C-m
-
-	tmux new-window -t $SESSION:5
-	tmux send-keys -t $SESSION:5 'dotfiles; clear' C-m
-
-	tmux attach-session -t $SESSION
+    linux-scripts tmux start-sessions
+    tmux attach
 }
 
-attach_or_start() {
-    tmux attach-session -t $SESSION || start
-}
-
-restart() {
-    echo "Restarting tmux session: $SESSION"
-    tmux kill-server
-    start
-}
-
-operation=""
-
-while getopts "r" option
-do
-    case $option in
-        r)
-            operation="restart"
-            ;;
-        *)
-            echo "Invalid option"
-            exit 1
-            ;;
-    esac
-done
-
-if [ "$operation" == "restart" ]; then
-    restart
-else
-    attach_or_start
-fi
+tmux attach || start
