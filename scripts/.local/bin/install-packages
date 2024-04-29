@@ -42,18 +42,6 @@ install_intel_driver() {
 	sudo pacman -S --needed mesa
 }
 
-install_x11() {
-	echo "Installing X11 packages"
-	sudo pacman -S --needed xorg-server xorg-xinit xorg-xinput xclip xrandr arandr autorandr xorg-xev
-}
-
-install_i3() {
-	echo "Installing i3-wm packages"
-	install_x11
-
-	sudo pacman -S --needed i3-wm i3lock xss-lock breeze-gtk feh picom polybar
-}
-
 install_wayland() {
 	echo "Installing wayland packages"
 	sudo pacman -S --needed xorg-xwayland wl-clipboard grim wofi slurp waybar
@@ -91,20 +79,19 @@ install_wifi_card_drivers() {
 install_aur_packages() {
 	echo "Installing AUR packages"
 	yay -S snapd google-chrome microsoft-edge-stable-bin \
-		visual-studio-code-bin 1password cura-bin azure-cli nordvpn-bin catppuccin-gtk-theme-mocha \
+		visual-studio-code-bin 1password azure-cli nordvpn-bin catppuccin-gtk-theme-mocha \
 		wowup-cf-bin networkmanager-dmenu-git
 }
 
-install_x11_aur_packages() {
-	echo "Installing X11 AUR packages"
-	install_aur_packages
-	yay -S x11-emoji-picker-git
-}
-
-install_wayland_aur_pacakges() {
+install_wayland_aur_packages() {
 	echo "Installing wayland AUR packages"
 	install_aur_packages
-	yay -S wdisplays
+	yay -S wdisplays wofi-emoji
+}
+
+install_cura() {
+    echo "Installing Cura"
+    yay -S cura-bin
 }
 
 install_arduino() {
@@ -155,9 +142,10 @@ install_desktop() {
 	install_intel_cpu
 	install_development_tools
 	install_yay
+
 	install_nvidia_driver_proprietary
     
-	install_aur_packages
+    install_wayland_aur_packages
 	install_extras
 }
 
@@ -166,9 +154,12 @@ install_laptop() {
 	install_base
 	install_intel_cpu
 	install_development_tools
+    install_yay
+
 	install_intel_driver
-	install_yay
+    
 	install_sway
+    install_wayland_aur_packages
 	install_extras
 }
 
