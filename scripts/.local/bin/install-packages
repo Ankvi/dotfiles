@@ -4,8 +4,8 @@ install_base() {
 	echo "Installing base packages"
 	sudo pacman -S --needed base-devel networkmanager neofetch vi vim neovim \
 		man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji gtk4 \
-		ttf-jetbrains-mono-nerd dkms linux-headers flameshot thunderbird wmctrl \
-		pcmanfm-gtk3 ripgrep lazygit bashtop numlockx dunst alacritty polkit xdg-desktop-portal \
+		ttf-jetbrains-mono-nerd flameshot thunderbird wmctrl \
+		pcmanfm-gtk3 ripgrep lazygit bashtop dunst alacritty polkit xdg-desktop-portal \
 		xdg-desktop-portal-gtk pipewire-pulse pamixer pavucontrol grub efibootmgr \
 		bluez bluez-utils firefox calc gnome-themes-extra acpid fuse2 fuse3 fd wezterm \
         gvfs otf-ipafont usbutils fzf bat
@@ -29,7 +29,7 @@ install_python() {
 
 install_nvidia_driver_proprietary() {
 	echo "Installing proprietary Nvidia packages"
-	sudo pacman -S --needed nvidia-dkms nvidia-utils
+	sudo pacman -S --needed dkms linux-headers nvidia-dkms nvidia-utils
 }
 
 install_nvidia_driver_open_source() {
@@ -80,13 +80,17 @@ install_aur_packages() {
 	echo "Installing AUR packages"
 	yay -S snapd google-chrome microsoft-edge-stable-bin \
 		visual-studio-code-bin 1password azure-cli nordvpn-bin catppuccin-gtk-theme-mocha \
-		wowup-cf-bin networkmanager-dmenu-git
+		networkmanager-dmenu-git
 }
 
 install_wayland_aur_packages() {
 	echo "Installing wayland AUR packages"
 	install_aur_packages
 	yay -S wdisplays wofi-emoji
+}
+
+install_gaming_packages() {
+    yay -S wowup-cf-bin
 }
 
 install_cura() {
@@ -146,6 +150,8 @@ install_desktop() {
 	install_nvidia_driver_proprietary
     
     install_wayland_aur_packages
+
+    install_gaming_packages
 	install_extras
 }
 
