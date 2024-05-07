@@ -14,3 +14,5 @@ dotnet_diagnostic.IDE0160.severity = none
 dotnet_diagnostic.IDE0008.severity = none
 dotnet_diagnostic.IDE0058.severity = none
 
+[*.md]
+indent_size = 2
