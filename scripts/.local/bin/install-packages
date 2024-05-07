@@ -69,7 +69,7 @@ install_development_tools() {
         kubectl k9s docker docker-compose docker-buildx \
         aspnet-runtime aspnet-runtime-6.0 aspnet-runtime-7.0 \
 		dotnet-sdk dotnet-sdk-6.0 dotnet-sdk-7.0 \
-        jre-openjdk
+        jre-openjdk azure-cli
 }
 
 install_wifi_card_drivers() {
@@ -79,7 +79,7 @@ install_wifi_card_drivers() {
 install_aur_packages() {
 	echo "Installing AUR packages"
 	yay -S snapd google-chrome microsoft-edge-stable-bin \
-		visual-studio-code-bin 1password azure-cli nordvpn-bin catppuccin-gtk-theme-mocha \
+		visual-studio-code-bin 1password nordvpn-bin catppuccin-gtk-theme-mocha \
 		networkmanager-dmenu-git
 }
 
