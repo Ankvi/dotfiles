@@ -24,7 +24,7 @@ export PATH=$PATH:/snap/bin
 
 # DOTNET
 export DOTNET_ROOT=/usr/share/dotnet/
-export PATH="$PATH:/home/andreas/.dotnet/tools"
+export PATH="$PATH:$HOME/.dotnet/tools"
 
 # GENERAL
 export PATH=$PATH:$HOME/bin
@@ -37,6 +37,14 @@ export PATH=$PATH:$HOME/.cargo/bin
 
 export GITHUB_USERNAME=Ankvi
 export NODE_OPTIONS="--max-old-space-size=8192"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
+if test -f "$HOME/.cargo/env"; then
+    . "$HOME/.cargo/env"
+fi
 
 if test -f /usr/share/bash-completion/bash_completion; then
     . /usr/share/bash-completion/bash_completion
@@ -52,12 +60,16 @@ export POLYBAR_CONFIG_PATH="$HOME/.polybar"
 export GTK_THEME='Catppuccin-Mocha-Standard-Lavender-Dark:dark'
 
 # pnpm
-export PNPM_HOME="/home/andreas/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="$HOME/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 # Enable the subsequent settings only in interactive sessions
 case $- in
@@ -203,10 +215,6 @@ source "$OSH"/oh-my-bash.sh
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH=$BUN_INSTALL/bin:$PATH
-. "$HOME/.cargo/env"
 
 eval "$(fzf --bash)"
 
@@ -217,3 +225,4 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
