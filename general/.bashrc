@@ -42,6 +42,11 @@ export NODE_OPTIONS="--max-old-space-size=8192"
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 
+# NVM
+if test -f /usr/share/nvm/init-nvm.sh; then
+    . /usr/share/nvm/init-nvm.sh
+fi
+
 if test -f "$HOME/.cargo/env"; then
     . "$HOME/.cargo/env"
 fi
