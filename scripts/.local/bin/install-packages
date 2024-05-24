@@ -72,6 +72,8 @@ install_development_tools() {
         aspnet-runtime aspnet-runtime-6.0 aspnet-runtime-7.0 \
 		dotnet-sdk dotnet-sdk-6.0 dotnet-sdk-7.0 \
         jre-openjdk azure-cli
+
+    yay -S nvm
 }
 
 install_wifi_card_drivers() {
