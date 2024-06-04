@@ -62,7 +62,7 @@ fi
 export OPENCV_LOG_LEVEL=ERROR
 export POLYBAR_CONFIG_PATH="$HOME/.polybar"
 
-export GTK_THEME='Catppuccin-Mocha-Standard-Lavender-Dark:dark'
+export GTK_THEME='catppuccin-mocha-lavender-standard+default:dark'
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
