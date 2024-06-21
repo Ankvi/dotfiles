@@ -62,6 +62,7 @@ exec_always --no-startup-id waybar-start
 # exec_always --no-startup-id i3-sway-ipc-bun window-dimming start &
 
 exec --no-startup-id nm-applet
+exec pcmanfm --daemon-mode
 
 ################################################
 # DROPDOWN TERMINAL

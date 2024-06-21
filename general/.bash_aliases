@@ -24,9 +24,9 @@ alias unmount-rpi='sudo umount LABEL="CIRCUITPY"'
 
 # OTHER SHIT
 alias list-used-ports='sudo lsof -i -P -n | grep LISTEN'
-alias cdfincalc='cd $ELKJOP_GIT_REPOSITORIES/FINS/FinanceCalculator'
-alias cdflash='cd $ELKJOP_GIT_REPOSITORIES/flash'
 alias elkjop='cd $ELKJOP_GIT_REPOSITORIES'
+alias cdflash='cd $ELKJOP_GIT_REPOSITORIES/flash'
+alias cdcid='cd $ELKJOP_GIT_REPOSITORIES/CID'
 alias webcam='qv4l2'
 alias vim='nvim'
 alias cnvim='cd ~/git/github.com/Ankvi/neovim-config'
