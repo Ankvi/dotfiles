@@ -1,28 +1,47 @@
 * {
 	background-image: none;
 	box-shadow: none;
+    font-size: 1rem;
+    margin: 0px;
 }
+
+@import "../waybar/catppuccin-mocha.css";
 
 window {
 	background-color: rgba(12, 12, 12, 0.9);
 }
 
 button {
-    border-radius: 0;
-    border-color: black;
-	text-decoration-color: #FFFFFF;
-    color: #FFFFFF;
-	background-color: #1E1E1E;
-	border-style: solid;
-	border-width: 1px;
+    border: none;
+	text-decoration-color: @text;
+    color: @text;
+	background-color: @base;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: 25%;
+	background-size: 5rem;
+    animation: gradient_f 20s ease-in infinite;
+    border-radius: 0px;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
 }
 
-button:focus, button:active, button:hover {
-	background-color: #3700B3;
+button:focus, button:active {
+	text-decoration-color: @base;
+    color: @base;
+	background-color: @lavender;
 	outline-style: none;
+}
+
+button:hover {
+	text-decoration-color: @base;
+    color: @base;
+	background-color: @lavender;
+	outline-style: none;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,0.0,.28,1.682);
+    background-size: 6rem;
+    margin-top: 7rem;
+    margin-bottom: 7rem;
 }
 
 #lock {

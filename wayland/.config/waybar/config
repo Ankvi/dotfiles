@@ -158,6 +158,6 @@
     "custom/power": {
         "format": "󰤆",
         "tooltip": false,
-        "on-click": "linux-scripts dmenu powermenu &"
+        "on-click": "launch-logout &"
     }
 }
