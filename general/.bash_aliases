@@ -31,6 +31,7 @@ alias webcam='qv4l2'
 alias vim='nvim'
 alias cnvim='cd ~/git/github.com/Ankvi/neovim-config'
 alias dotfiles='cd ~/git/github.com/Ankvi/dotfiles'
+alias pselect='cd $(linux-scripts projects list | fzf)'
 
 alias warcraft='cd /home/andreas/Games/battlenet/drive_c/Program\ Files\ \(x86\)/World\ of\ Warcraft'
 
