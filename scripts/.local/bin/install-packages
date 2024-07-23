@@ -47,6 +47,8 @@ install_intel_driver() {
 install_wayland() {
 	echo "Installing wayland packages"
 	sudo pacman -S --needed xorg-xwayland wl-clipboard grim wofi slurp waybar
+    
+    install_wayland_aur_packages
 }
 
 install_sway() {
@@ -90,13 +92,7 @@ install_aur_packages() {
 install_wayland_aur_packages() {
 	echo "Installing wayland AUR packages"
 	install_aur_packages
-	yay -S wdisplays wofi-emoji
-}
-
-install_hyprland_nvidia_packages() {
-    echo "Installing Hyprland Nvidia AUR packages"
-
-    yay -S wlroots-nvidia
+	yay -S wdisplays wofi-emoji wlogout
 }
 
 install_gaming_packages() {
@@ -159,10 +155,7 @@ install_desktop() {
 
     install_nvidia_driver_proprietary
     install_hyprland
-    install_hyprland_nvidia_packages
     
-    install_wayland_aur_packages
-
     install_gaming_packages
 	install_extras
 }
@@ -177,7 +170,6 @@ install_laptop() {
 	install_intel_driver
     
 	install_sway
-    install_wayland_aur_packages
 	install_extras
 }
 
