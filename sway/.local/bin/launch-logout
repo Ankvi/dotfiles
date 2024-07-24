@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+CURRENT_SCREEN_WIDTH=$(swaymsg -t get_outputs --raw | jq -r '[.[] | select(.focused)] | first | .rect.width')
+
+MAX_WIDTH=1200
+X_MARGIN=$(((CURRENT_SCREEN_WIDTH-MAX_WIDTH)/2))
+
+wlogout -b 6 --margin-left $X_MARGIN --margin-right $X_MARGIN
