@@ -60,6 +60,7 @@ window#waybar.hidden {
   background-color: @red;
   color: @base;
 }
+
 #memory,
 #battery,
 #backlight,
@@ -143,7 +144,6 @@ window#waybar.hidden {
 #network {
   color: @teal;
   border-color: @teal;
-  padding-right: 17px;
 }
 
 #clock {
