@@ -62,7 +62,9 @@ install_hyprland() {
     echo "Installing hyprland packages"
 
     install_wayland
-    sudo pacman -S --needed hyprland libva qt6-wayland qt6ct
+    sudo pacman -S --needed \
+        hyprland libva qt6-wayland qt6ct \
+        hypridle
 }
 
 install_development_tools() {
@@ -73,7 +75,12 @@ install_development_tools() {
         kubectl k9s docker docker-compose docker-buildx \
         aspnet-runtime aspnet-runtime-6.0 aspnet-runtime-7.0 \
 		dotnet-sdk dotnet-sdk-6.0 dotnet-sdk-7.0 \
-        jre-openjdk azure-cli
+        jre-openjdk azure-cli \
+        rust-analyzer
+
+    echo "Installing tauri app related packages"
+    sudo pacman -S --needed \
+        webkit2gtk
 
     yay -S nvm
 }
