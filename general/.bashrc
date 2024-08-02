@@ -30,7 +30,7 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$BIN_FOLDER
 
-export TERM=alacritty
+export TERM=screen-256color
 
 # RUST
 export PATH=$PATH:$HOME/.cargo/bin
