@@ -1,51 +1,51 @@
 os:
-  editPreset: 'nvim'
+  editPreset: "nvim"
 
 keybinding:
   universal:
-    nextTab: 'æ'
-    prevTab: 'ø'
+    nextTab: "æ"
+    prevTab: "ø"
 
 customCommands:
-  - key: '<f1>'
+  - key: "<f1>"
     context: global
-    command: 'git fetch --prune'
-    loadingText: 'Pruning repository...'
-    description: 'Removes remote-tracking references that no longer exists'
-  - key: '<f5>'
+    command: "git fetch --prune"
+    loadingText: "Pruning repository..."
+    description: "Removes remote-tracking references that no longer exists"
+  - key: "<f5>"
     context: global
-    command: 'git push --force-with-lease'
-    loadingText: 'Pushing...'
-    description: 'Force push with lease (e.g. after a rebase)'
-  - key: 'n'
+    command: "git push --force-with-lease"
+    loadingText: "Pushing..."
+    description: "Force push with lease (e.g. after a rebase)"
+  - key: "n"
     context: localBranches
     prompts:
-      - type: 'menu'
-        title: 'What kind of branch is it?'
-        key: 'BranchType'
+      - type: "menu"
+        title: "What kind of branch is it?"
+        key: "BranchType"
         options:
-          - name: 'feature'
-            description: 'a feature branch'
-            value: 'feature'
+          - name: "feature"
+            description: "a feature branch"
+            value: "feature"
 
-          - name: 'hotfix'
-            description: 'a hotfix branch'
-            value: 'hotfix'
+          - name: "hotfix"
+            description: "a hotfix branch"
+            value: "hotfix"
 
-          - name: 'bug'
-            description: 'a bug branch'
-            value: 'bug'
+          - name: "bug"
+            description: "a bug branch"
+            value: "bug"
 
-          - name: 'cleanup'
-            description: 'a cleanup branch'
-            value: 'cleanup'
+          - name: "cleanup"
+            description: "a cleanup branch"
+            value: "cleanup"
 
-          - name: 'improvement'
-            description: 'a improvement branch'
-            value: 'improvement'
-      - type: 'menu'
-        title: 'Which team is the task for?'
-        key: 'Team'
+          - name: "improvement"
+            description: "a improvement branch"
+            value: "improvement"
+      - type: "menu"
+        title: "Which team is the task for?"
+        key: "Team"
         options:
           - name: FINS
             description: Financial Services
@@ -59,13 +59,16 @@ customCommands:
             value: CID
           - name: Others
             value: OTHER
-      - type: 'input'
-        title: 'What Jira ticket is the branch for?'
-        key: 'JiraTicket'
-        initialValue: ''
-      - type: 'input'
-        title: 'What is the branch name?'
-        key: 'BranchName'
-        initialValue: ''
-    command: 'git checkout -b {{.Form.BranchType}}/{{.Form.Team}}-{{.Form.JiraTicket}}-{{.Form.BranchName}}'
-    loadingText: 'Creating branch' 
+          - name: FixIT ticket
+            description: Support tickets
+            value: FIXIT
+      - type: "input"
+        title: "What Jira ticket is the branch for?"
+        key: "JiraTicket"
+        initialValue: ""
+      - type: "input"
+        title: "What is the branch name?"
+        key: "BranchName"
+        initialValue: ""
+    command: "git checkout -b {{.Form.BranchType}}/{{.Form.Team}}-{{.Form.JiraTicket}}-{{.Form.BranchName}}"
+    loadingText: "Creating branch"
