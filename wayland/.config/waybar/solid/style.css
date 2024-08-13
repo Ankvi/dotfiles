@@ -1,0 +1,49 @@
+@import url("../../gtk-3.0/catppuccin-mocha.css");
+
+* {
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 13px;
+}
+
+window {
+  background-color: @mantle;
+  border-bottom: 2px solid @peach;
+}
+
+button {
+  all: initial;
+}
+
+tooltip {
+  /* border-radius: 8px; */
+  padding: 15px;
+  background-color: @base;
+  color: @text;
+  border: 1px solid @text;
+}
+
+tooltip label {
+  padding: 5px;
+  background-color: @base;
+}
+
+#memory,
+#battery,
+#backlight,
+#pulseaudio,
+#network,
+#clock,
+#tray,
+#custom-power,
+#custom-logo {
+  padding: 3px 3px;
+}
+
+#workspaces button {
+  padding: 3px 10px;
+}
+
+#workspaces button.active {
+  padding: 1px 10px 3px 10px;
+  border-top: 2px solid @peach;
+}
