@@ -19,3 +19,6 @@ dotnet_diagnostic.IDE0058.severity = none
 
 [*.md]
 indent_size = 2
+
+[Makefile]
+indent_style = tab
