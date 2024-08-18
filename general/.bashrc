@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 export GIT_REPOSITORIES="$HOME/git"
-export GIT_EDITOR='\vim'
-export EDITOR='vim'
+export GIT_EDITOR='nvim'
+export EDITOR='nvim'
 export OPENER='rifle'
 export ELKJOP_GIT_REPOSITORIES="$GIT_REPOSITORIES/github.com/elkjopnordic"
 
@@ -44,19 +44,19 @@ export PATH=$BUN_INSTALL/bin:$PATH
 
 # NVM
 if test -f /usr/share/nvm/init-nvm.sh; then
-    . /usr/share/nvm/init-nvm.sh
+	. /usr/share/nvm/init-nvm.sh
 fi
 
 if test -f "$HOME/.cargo/env"; then
-    . "$HOME/.cargo/env"
+	. "$HOME/.cargo/env"
 fi
 
 if test -f /usr/share/bash-completion/bash_completion; then
-    . /usr/share/bash-completion/bash_completion
+	. /usr/share/bash-completion/bash_completion
 fi
 
 if test -f "$LOCAL_FOLDER/share/window-manager-config.sh"; then
-    . "$LOCAL_FOLDER/share/window-manager-config.sh"
+	. "$LOCAL_FOLDER/share/window-manager-config.sh"
 fi
 
 export OPENCV_LOG_LEVEL=ERROR
@@ -67,8 +67,8 @@ export GTK_THEME='catppuccin-mocha-lavender-standard+default:dark'
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
@@ -78,15 +78,15 @@ export PATH="$HOME/.rd/bin:$PATH"
 
 # Enable the subsequent settings only in interactive sessions
 case $- in
-  *i*) ;;
-    *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # Path to your oh-my-bash installation.
 export OSH="$HOME/.oh-my-bash"
 
 if ! [ -d "$OSH" ]; then
-    return
+	return
 fi
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -163,7 +163,7 @@ OMB_USE_SUDO=true
 # Example format: completions=(ssh git bundler gem pip pip3)
 # Add wisely, as too many completions slow down shell startup.
 completions=(
-  git
+	git
 )
 
 # Which aliases would you like to load? (aliases can be found in ~/.oh-my-bash/aliases/*)
@@ -171,7 +171,7 @@ completions=(
 # Example format: aliases=(vagrant composer git-avh)
 # Add wisely, as too many aliases slow down shell startup.
 aliases=(
-  general
+	general
 )
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
@@ -179,8 +179,8 @@ aliases=(
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  bashmarks
+	git
+	bashmarks
 )
 
 # Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
@@ -220,14 +220,12 @@ source "$OSH"/oh-my-bash.sh
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 
-
 eval "$(fzf --bash)"
 
 _fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
+	fd --hidden --follow --exclude ".git" . "$1"
 }
 
 _fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" . "$1"
+	fd --type d --hidden --follow --exclude ".git" . "$1"
 }
-
