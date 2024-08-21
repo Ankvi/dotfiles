@@ -6,6 +6,10 @@ export EDITOR='nvim'
 export OPENER='rifle'
 export ELKJOP_GIT_REPOSITORIES="$GIT_REPOSITORIES/github.com/elkjopnordic"
 
+# Man pages
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+
 # ALIASES
 . "$HOME"/.bash_aliases
 
