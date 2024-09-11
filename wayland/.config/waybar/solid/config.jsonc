@@ -7,7 +7,8 @@
     "modules-left": [
         "custom/logo",
         "sway/workspaces",
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "hyprland/window"
     ],
     "modules-center": [
         "clock"
@@ -53,6 +54,14 @@
             "9": "9",
             "10": "0",
         }
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "rewrite": {
+            "tmux \\| (.*)": "  $1",
+            "(.*) - Brave": " $1"
+        },
+        "separate-outputs": true
     },
     "memory": {
         "interval": 5,
@@ -151,5 +160,15 @@
         "format": " 󰤆 ",
         "tooltip": false,
         "on-click": "launch-logout &"
-    }
+    },
+    // Right Arrows
+    "custom/right1": {
+        "format": "",
+        "tooltip": false
+    },
+    // Left Arrows
+    "custom/left1": {
+        "format": "",
+        "tooltip": false
+    },
 }
