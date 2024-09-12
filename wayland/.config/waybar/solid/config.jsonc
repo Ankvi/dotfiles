@@ -7,6 +7,7 @@
     "modules-left": [
         "custom/logo",
         "sway/workspaces",
+        "sway/window",
         "hyprland/workspaces",
         "hyprland/window"
     ],
@@ -56,6 +57,14 @@
         }
     },
     "hyprland/window": {
+        "format": "{}",
+        "rewrite": {
+            "tmux \\| (.*)": "  $1",
+            "(.*) - Brave": " $1"
+        },
+        "separate-outputs": true
+    },
+    "sway/window": {
         "format": "{}",
         "rewrite": {
             "tmux \\| (.*)": "  $1",
