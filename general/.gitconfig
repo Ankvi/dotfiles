@@ -1,0 +1,7 @@
+[user]
+	email = kvistcake@gmail.com
+	name = Andreas Kvist
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
