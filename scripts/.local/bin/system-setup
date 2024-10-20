@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
 sudo timedatectl set-ntp true
+
+# Set default shell to zsh
+# chsh -s $(which zsh)
