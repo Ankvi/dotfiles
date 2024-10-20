@@ -1,3 +1,16 @@
+[alias]
+    c = commit
+    ca = commit --amend
+    cb = branch --show-current
+    pub = push -u origin/$(git cb)
+    ra = rebase --abort
+    rc = rebase --continue
+    s = status
+    sp = stash pop
+    p = push
+    pf = push --force
+    pfwl = push --force-with-lease
+    u = pull
 [user]
 	email = kvistcake@gmail.com
 	name = Andreas Kvist
