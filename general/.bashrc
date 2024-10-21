@@ -92,7 +92,6 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
-# export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(fzf --bash)"
 
 _fzf_compgen_path() {
