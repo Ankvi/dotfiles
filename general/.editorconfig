@@ -17,6 +17,9 @@ dotnet_diagnostic.IDE0005.severity = warning
 dotnet_diagnostic.IDE0160.severity = none
 dotnet_diagnostic.IDE0008.severity = none
 dotnet_diagnostic.IDE0058.severity = none
+dotnet_diagnostic.IDE0290.severity = none
+dotnet_diagnostic.IDE0062.severity = none
+dotnet_diagnostic.IDE0320.severity = none
 
 [*.md]
 indent_size = 2
