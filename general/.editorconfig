@@ -20,6 +20,11 @@ dotnet_diagnostic.IDE0058.severity = none
 dotnet_diagnostic.IDE0290.severity = none
 dotnet_diagnostic.IDE0062.severity = none
 dotnet_diagnostic.IDE0320.severity = none
+dotnet_diagnostic.IDE0022.severity = none
+csharp_style_prefer_primary_constructors = false
+
+# IDE0320: Make anonymous function static
+csharp_prefer_static_anonymous_function = false
 
 [*.md]
 indent_size = 2
