@@ -21,6 +21,7 @@ dotnet_diagnostic.IDE0290.severity = none
 dotnet_diagnostic.IDE0062.severity = none
 dotnet_diagnostic.IDE0320.severity = none
 dotnet_diagnostic.IDE0022.severity = none
+dotnet_diagnostic.CA1848.severity = none
 csharp_style_prefer_primary_constructors = false
 
 # IDE0320: Make anonymous function static
