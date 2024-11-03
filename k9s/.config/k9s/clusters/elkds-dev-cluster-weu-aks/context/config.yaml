@@ -1,0 +1,10 @@
+k9s:
+  cluster: elkds-dev-cluster-weu-aks
+  namespace:
+    lockFavorites: false
+    active: iac-flash
+  view:
+    active: ns
+  featureGates:
+    nodeShell: false
+  portForwardAddress: localhost
