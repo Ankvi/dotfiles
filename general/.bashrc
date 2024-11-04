@@ -92,6 +92,8 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
 eval "$(fzf --bash)"
 
 _fzf_compgen_path() {
