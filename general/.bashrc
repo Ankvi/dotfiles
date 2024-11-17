@@ -33,8 +33,9 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 # GENERAL
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$BIN_FOLDER
-
 export TERM=screen-256color
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000000
 
 # RUST
 export PATH=$PATH:$HOME/.cargo/bin
@@ -45,11 +46,6 @@ export NODE_OPTIONS="--max-old-space-size=8192"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
-
-# NVM
-# if test -f /usr/share/nvm/init-nvm.sh; then
-#     . /usr/share/nvm/init-nvm.sh
-# fi
 
 if test -f "$HOME/.cargo/env"; then
     . "$HOME/.cargo/env"
@@ -107,5 +103,5 @@ _fzf_compgen_dir() {
 eval "$(starship init bash)"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
