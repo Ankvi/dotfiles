@@ -8,7 +8,7 @@ install_base() {
         pcmanfm-gtk3 ripgrep lazygit bashtop dunst alacritty polkit xdg-desktop-portal \
         xdg-desktop-portal-gtk pipewire-pulse pamixer pavucontrol grub efibootmgr \
         bluez bluez-utils firefox calc gnome-themes-extra acpid fuse2 fuse3 fd wezterm \
-        gvfs otf-ipafont usbutils fzf bat keyd lsof starship jq
+        gvfs otf-ipafont usbutils fzf bat keyd lsof starship jq udisks2
 }
 
 install_intel_cpu() {
