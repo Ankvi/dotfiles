@@ -4,3 +4,9 @@ set completion-ignore-case on
 "\e[B": history-search-forward
 "\e[C": forward-char
 "\e[D": backward-char
+
+# Ctrl-Backspace: delete previous word
+"\C-H": shell-backward-kill-word
+
+# Ctrl-Delete: delete next word
+"\e[3;5~": shell-kill-word
