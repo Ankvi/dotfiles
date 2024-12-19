@@ -131,11 +131,17 @@ install_pulumi() {
     curl -fsSL https://get.pulumi.com | sh
 }
 
+install_deno() {
+    echo "Installing deno"
+    curl -fsSL https://deno.land/install.sh | sh
+}
+
 install_extras() {
     install_arduino
     install_rust
     install_bun
     install_pulumi
+    install_deno
 }
 
 install_yay() {
