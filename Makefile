@@ -2,7 +2,7 @@
 # Define the list of directories to
 # install
 ########################################
-COMMON=general gtk spotifyd startup webcam wallpapers alacritty dunst k9s lazygit scripts pipewire tmux wayland wezterm yazi
+COMMON=general gtk spotifyd startup webcam wallpapers alacritty dunst k9s lazygit scripts pipewire tmux wayland wezterm yazi terminals
 WORK=$(COMMON) sway
 DESKTOP=$(COMMON) arduino cura hyprland
 
