@@ -46,7 +46,7 @@ install_intel_driver() {
 
 install_wayland() {
     echo "Installing wayland packages"
-    sudo pacman -S --needed xorg-xwayland wl-clipboard grim wofi slurp waybar
+    sudo pacman -S --needed xorg-xwayland wl-clipboard grim wofi slurp waybar rofi-wayland swappy
 
     install_wayland_aur_packages
 }
