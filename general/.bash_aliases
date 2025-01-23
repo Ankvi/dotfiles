@@ -37,3 +37,5 @@ alias warcraft='cd /home/andreas/Games/battlenet/drive_c/Program\ Files\ \(x86\)
 
 alias connect-headset='bluetoothctl connect 88:C9:E8:62:4A:BC'
 alias disconnect-headset='bluetoothctl disconnect 88:C9:E8:62:4A:BC'
+
+alias plex-open='xdg-open http://127.0.0.1:32400/web'
