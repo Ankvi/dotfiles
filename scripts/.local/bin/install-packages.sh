@@ -75,6 +75,7 @@ install_development_tools() {
         kubectl k9s docker docker-compose docker-buildx \
         aspnet-runtime aspnet-runtime-6.0 aspnet-runtime-7.0 \
         dotnet-sdk dotnet-sdk-6.0 dotnet-sdk-7.0 \
+        dotnet-sdk-8.0 aspnet-runtime-8.0 \
         jre-openjdk azure-cli \
         rust-analyzer
 
