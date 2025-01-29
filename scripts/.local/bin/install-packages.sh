@@ -94,7 +94,7 @@ install_aur_packages() {
     echo "Installing AUR packages"
     yay -S microsoft-edge-stable-bin \
         visual-studio-code-bin 1password catppuccin-gtk-theme-mocha \
-        networkmanager-dmenu-git
+        networkmanager-dmenu-git lazydocker
 }
 
 install_wayland_aur_packages() {
