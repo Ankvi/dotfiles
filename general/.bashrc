@@ -64,7 +64,7 @@ export OPENCV_LOG_LEVEL=ERROR
 export GTK_THEME='catppuccin-mocha-lavender-standard+default:dark'
 
 # pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
+export PNPM_HOME="/home/andreas/.local/share/pnpm"
 case ":$PATH:" in
 *":$PNPM_HOME:"*) ;;
 *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -107,3 +107,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 . "/home/andreas/.deno/env"
 source /home/andreas/.local/share/bash-completion/completions/deno.bash
+
