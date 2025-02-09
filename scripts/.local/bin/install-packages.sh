@@ -2,7 +2,7 @@
 
 install_base() {
     echo "Installing base packages"
-    sudo pacman -S --needed base-devel networkmanager neofetch vi vim neovim \
+    sudo pacman -S --needed base-devel networkmanager neofetch vi vim \
         man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji gtk4 \
         ttf-jetbrains-mono-nerd flameshot thunderbird wmctrl \
         pcmanfm-gtk3 ripgrep lazygit bashtop dunst alacritty polkit xdg-desktop-portal \

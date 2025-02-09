@@ -1,0 +1,11 @@
+cmake
+curl
+vi
+vim
+ripgrep
+bashtop
+fzf
+bat
+lsof
+jq
+
