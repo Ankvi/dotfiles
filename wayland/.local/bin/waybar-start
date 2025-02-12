@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CONFIG_FOLDER="$HOME/.config/waybar/solid"
+CONFIG_FOLDER="$HOME/.config/waybar"
 CONFIG="$CONFIG_FOLDER/config.jsonc"
 STYLE="$CONFIG_FOLDER/style.css"
 
