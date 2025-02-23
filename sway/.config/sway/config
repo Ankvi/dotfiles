@@ -83,3 +83,4 @@ exec pcmanfm --daemon-mode
 
 exec --no-startup-id 1password --silent
 exec --no-startup-id start-work-applications
+exec --no-startup-id timetracking start
