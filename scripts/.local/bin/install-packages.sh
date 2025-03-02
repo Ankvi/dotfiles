@@ -2,7 +2,7 @@
 
 install_base() {
   echo "Installing base packages"
-  sudo pacman -S --needed base-devel networkmanager neofetch vi vim \
+  sudo pacman -S --needed base-devel networkmanager vi vim \
     man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji gtk4 \
     ttf-jetbrains-mono-nerd flameshot thunderbird wmctrl \
     pcmanfm-gtk3 ripgrep lazygit bashtop dunst alacritty polkit xdg-desktop-portal \
@@ -71,7 +71,6 @@ install_development_tools() {
   echo "Installing software development packages"
   echo "Techs: .NET, Node.JS, Docker, Kubernetes, Java"
   sudo pacman -S --needed \
-    nodejs npm \
     kubectl k9s docker docker-compose docker-buildx \
     aspnet-runtime aspnet-runtime-6.0 aspnet-runtime-7.0 \
     dotnet-sdk dotnet-sdk-6.0 dotnet-sdk-7.0 \
@@ -87,7 +86,7 @@ install_development_tools() {
 }
 
 install_wifi_card_drivers() {
-  yay -S rtl8812au-aircrack-ng-dkms-git
+  yay -S rtw88-dkms-git
 }
 
 install_aur_packages() {
