@@ -10,6 +10,7 @@ fzf
 grim
 jq
 lsof
+luarocks
 ripgrep
 seahorse
 slurp
