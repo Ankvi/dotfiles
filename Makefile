@@ -5,7 +5,7 @@
 COMMON=general gtk spotifyd startup webcam wallpapers alacritty dunst k9s lazygit scripts pipewire tmux wayland yazi terminals
 WORK=$(COMMON) sway
 DESKTOP=$(COMMON) arduino cura hyprland
-
+WSL=tmux general lazygit yazi k9s
 
 ########################################
 # Stow dotfiles
@@ -19,6 +19,9 @@ stow: stow/base
 
 stow/work: stow/base
 	stow -t $(HOME) -v $(WORK)
+
+stow/wsl:
+	stow -t $(HOME) -v $(WSL) 
 
 restow:
 	stow -R -t $(HOME) -v $(DESKTOP)
@@ -47,6 +50,9 @@ stow/adopt:
 
 stow/work/adopt:
 	stow -t $(HOME) -v --adopt $(WORK)
+
+stow/wsl/adopt:
+	stow -t $(HOME) -v --adopt $(WSL)
 
 
 ########################################
