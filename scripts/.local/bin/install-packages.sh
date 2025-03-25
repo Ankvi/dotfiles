@@ -3,12 +3,12 @@
 install_base() {
   echo "Installing base packages"
   sudo pacman -S --needed base-devel networkmanager vi vim \
-    man-db man-pages texinfo git stow spotifyd piper discord noto-fonts-emoji gtk4 \
-    ttf-jetbrains-mono-nerd flameshot thunderbird wmctrl \
+    man-db man-pages texinfo git stow piper discord noto-fonts-emoji gtk4 \
+    ttf-jetbrains-mono-nerd tmux \
     pcmanfm-gtk3 ripgrep lazygit bashtop dunst alacritty polkit xdg-desktop-portal \
     xdg-desktop-portal-gtk pipewire-pulse pamixer pavucontrol grub efibootmgr \
-    bluez bluez-utils firefox calc gnome-themes-extra acpid fuse2 fuse3 fd wezterm \
-    gvfs otf-ipafont usbutils fzf bat keyd lsof starship jq udisks2
+    bluez bluez-utils firefox calc gnome-themes-extra acpid fuse2 fuse3 fd \
+    gvfs usbutils fzf bat lsof starship jq udisks2
 }
 
 install_intel_cpu() {
@@ -55,7 +55,8 @@ install_sway() {
   echo "Installing sway wm packages"
   install_wayland
 
-  sudo pacman -S --needed sway swaylock swayidle swaybg xdg-desktop-portal-wlr
+  sudo pacman -S --needed sway swaylock swayidle swaybg
+  #xdg-desktop-portal-wlr
 }
 
 install_hyprland() {
@@ -76,7 +77,8 @@ install_development_tools() {
     dotnet-sdk dotnet-sdk-6.0 dotnet-sdk-7.0 \
     dotnet-sdk-8.0 aspnet-runtime-8.0 \
     jre-openjdk azure-cli \
-    rust-analyzer
+    rust-analyzer \
+    lua lua51 luarocks
 
   echo "Installing tauri app related packages"
   sudo pacman -S --needed \
@@ -134,6 +136,10 @@ install_pulumi() {
 install_deno() {
   echo "Installing deno"
   curl -fsSL https://deno.land/install.sh | sh
+}
+
+install_nvm() {
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
 }
 
 install_extras() {
