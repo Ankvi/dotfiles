@@ -4,7 +4,7 @@ install_base() {
   echo "Installing base packages"
   sudo pacman -S --needed base-devel networkmanager vi vim \
     man-db man-pages texinfo git stow piper discord noto-fonts-emoji gtk4 \
-    ttf-jetbrains-mono-nerd tmux \
+    ttf-jetbrains-mono-nerd tmux yazi \
     pcmanfm-gtk3 ripgrep lazygit bashtop dunst alacritty polkit xdg-desktop-portal \
     xdg-desktop-portal-gtk pipewire-pulse pamixer pavucontrol grub efibootmgr \
     bluez bluez-utils firefox calc gnome-themes-extra acpid fuse2 fuse3 fd \
