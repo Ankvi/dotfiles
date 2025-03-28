@@ -4,7 +4,7 @@ install_base() {
   echo "Installing base packages"
   sudo pacman -S --needed base-devel networkmanager vi vim \
     man-db man-pages texinfo git stow piper discord noto-fonts-emoji gtk4 \
-    ttf-jetbrains-mono-nerd tmux yazi \
+    ttf-jetbrains-mono-nerd tmux yazi spotify-launcher \
     pcmanfm-gtk3 ripgrep lazygit bashtop dunst alacritty polkit xdg-desktop-portal \
     xdg-desktop-portal-gtk pipewire-pulse pamixer pavucontrol grub efibootmgr \
     bluez bluez-utils firefox calc gnome-themes-extra acpid fuse2 fuse3 fd \
@@ -46,7 +46,7 @@ install_intel_driver() {
 
 install_wayland() {
   echo "Installing wayland packages"
-  sudo pacman -S --needed xorg-xwayland wl-clipboard grim wofi slurp waybar rofi-wayland swappy
+  sudo pacman -S --needed xorg-xwayland wl-clipboard grim slurp waybar rofi-wayland swappy rofi-emoji
 
   install_wayland_aur_packages
 }
@@ -55,8 +55,8 @@ install_sway() {
   echo "Installing sway wm packages"
   install_wayland
 
-  sudo pacman -S --needed sway swaylock swayidle swaybg
-  #xdg-desktop-portal-wlr
+  sudo pacman -S --needed sway swaylock swayidle swaybg \
+    xdg-desktop-portal-wlr
 }
 
 install_hyprland() {
@@ -95,13 +95,13 @@ install_aur_packages() {
   echo "Installing AUR packages"
   yay -S microsoft-edge-stable-bin \
     visual-studio-code-bin 1password catppuccin-gtk-theme-mocha \
-    networkmanager-dmenu-git lazydocker docker-credential-pass
+    lazydocker docker-credential-pass
 }
 
 install_wayland_aur_packages() {
   echo "Installing wayland AUR packages"
   install_aur_packages
-  yay -S wdisplays wofi-emoji wlogout
+  yay -S wdisplays wlogout
 }
 
 install_gaming_packages() {
