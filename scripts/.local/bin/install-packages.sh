@@ -95,7 +95,7 @@ install_aur_packages() {
   echo "Installing AUR packages"
   yay -S microsoft-edge-stable-bin \
     visual-studio-code-bin 1password catppuccin-gtk-theme-mocha \
-    lazydocker docker-credential-pass
+    lazydocker docker-credential-pass postman-bin
 }
 
 install_wayland_aur_packages() {
