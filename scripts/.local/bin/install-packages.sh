@@ -27,6 +27,10 @@ install_python() {
     python-i3ipc python-psutil
 }
 
+install_laptop_sound_driver() {
+  sudo pacman -S --needed sof-firmware
+}
+
 install_nvidia_driver_proprietary() {
   echo "Installing proprietary Nvidia packages"
 
