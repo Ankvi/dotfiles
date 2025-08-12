@@ -57,6 +57,8 @@ customCommands:
             description: Flash automation
           - name: Customer Identity
             value: CID
+          - name: BCDEV
+            value: BCDEV
           - name: Others
             value: OTHER
           - name: FixIT ticket
