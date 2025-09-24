@@ -86,8 +86,10 @@ alias ......="cd ../../../../.."
 
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
-autoload -U compinit
-compinit
+source $HOME/.zsh_aliases
+
+# autoload -U compinit
+# compinit
 
 source <(fzf --zsh)
 
@@ -99,8 +101,19 @@ _fzf_compgen_dir() {
     fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
-eval "$(starship init bash)"
+#eval "$(starship init bash)"
+eval "$(starship init zsh)"
+# source <(starship init zsh)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 . "/home/andreas/.deno/env"
+
+export ZSH="$HOME/.oh-my-zsh"
+# ZSH_THEME="robbyrussell"
+plugins=(
+  git
+  bun
+)
+
+source $ZSH/oh-my-zsh.sh
