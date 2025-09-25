@@ -33,7 +33,7 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 # GENERAL
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$BIN_FOLDER
-export TERM=screen-256color
+export TERM=xterm-256color
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000000
 
@@ -112,8 +112,18 @@ export NVM_DIR="$HOME/.nvm"
 export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
 plugins=(
-  git
   bun
+  deno
+  gh
+  git
+  golang
+  k9s
+  kubectl
+  man
+  node
+  npm
+  nvm
+  postgres
 )
 
 source $ZSH/oh-my-zsh.sh
