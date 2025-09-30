@@ -2,7 +2,7 @@
 
 install_base() {
   echo "Installing base packages"
-  sudo pacman -S --needed base-devel networkmanager vi vim \
+  sudo pacman -S --needed base-devel networkmanager vi vim zsh \
     man-db man-pages texinfo git stow piper discord noto-fonts-emoji gtk4 \
     ttf-jetbrains-mono-nerd tmux yazi spotify-launcher gtk3 gtk2 \
     pcmanfm-gtk3 ripgrep lazygit bashtop dunst alacritty polkit xdg-desktop-portal \
