@@ -33,7 +33,7 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 # GENERAL
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$BIN_FOLDER
-export TERM=xterm-256color
+# export TERM=xterm-256color
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000000
 
