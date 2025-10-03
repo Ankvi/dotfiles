@@ -38,3 +38,5 @@ alias connect-headset='bluetoothctl connect 88:C9:E8:62:4A:BC'
 alias disconnect-headset='bluetoothctl disconnect 88:C9:E8:62:4A:BC'
 
 alias plex-open='xdg-open http://127.0.0.1:32400/web'
+
+alias copy-cosmos-token='az account get-access-token --scope https://token.postgres.cosmos.azure.com/.default | jq -r ".accessToken" | wl-copy'
