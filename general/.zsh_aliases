@@ -35,7 +35,9 @@ alias pselect='eval "$(linux-scripts projects select)"'
 alias warcraft='cd /home/andreas/Games/battlenet/drive_c/Program\ Files\ \(x86\)/World\ of\ Warcraft'
 
 alias connect-headset='bluetoothctl connect 88:C9:E8:62:4A:BC'
+alias connect-bose='bluetoothctl connect E4:58:BC:BD:B0:5D'
 alias disconnect-headset='bluetoothctl disconnect 88:C9:E8:62:4A:BC'
+alias disconnect-bose='bluetoothctl disconnect E4:58:BC:BD:B0:5D'
 
 alias plex-open='xdg-open http://127.0.0.1:32400/web'
 
