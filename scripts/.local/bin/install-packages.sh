@@ -105,7 +105,7 @@ install_aur_packages() {
 install_wayland_aur_packages() {
   echo "Installing wayland AUR packages"
   install_aur_packages
-  yay -S wdisplays wlogout
+  yay -S wdisplays wlogout wayscriber-bin
 }
 
 install_gaming_packages() {
