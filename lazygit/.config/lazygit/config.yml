@@ -43,6 +43,10 @@ customCommands:
           - name: "improvement"
             description: "a improvement branch"
             value: "improvement"
+
+          - name: "chore"
+            description: "a chore branch"
+            value: "chore"
       - type: "menu"
         title: "Which team is the task for?"
         key: "Team"
