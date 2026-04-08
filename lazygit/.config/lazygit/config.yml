@@ -18,6 +18,63 @@ customCommands:
     loadingText: "Pushing..."
     description: "Force push with lease (e.g. after a rebase)"
   - key: "n"
+    context: worktrees
+    prompts:
+      - type: "menu"
+        title: "What kind of branch is it?"
+        key: "BranchType"
+        options:
+          - name: "feature"
+            description: "a feature branch"
+            value: "feature"
+
+          - name: "hotfix"
+            description: "a hotfix branch"
+            value: "hotfix"
+
+          - name: "bug"
+            description: "a bug branch"
+            value: "bug"
+
+          - name: "cleanup"
+            description: "a cleanup branch"
+            value: "cleanup"
+
+          - name: "improvement"
+            description: "a improvement branch"
+            value: "improvement"
+
+          - name: "chore"
+            description: "a chore branch"
+            value: "chore"
+      - type: "menu"
+        title: "Which team is the task for?"
+        key: "Team"
+        options:
+          - name: ITDS
+            value: ITDS
+          - name: Flash
+            value: FLASH
+            description: Flash automation
+          - name: Customer Identity
+            value: CID
+          - name: BCDEV
+            value: BCDEV
+          - name: Others
+            value: OTHER
+          - name: FixIT ticket
+            description: Support tickets
+            value: FIXIT
+      - type: "input"
+        title: "What Jira ticket is the branch for?"
+        key: "JiraTicket"
+        initialValue: ""
+      - type: "input"
+        title: "What is the branch name?"
+        key: "BranchName"
+        initialValue: ""
+    command: "git worktree add -b {{.Form.BranchType}}/{{.Form.Team}}-{{.Form.JiraTicket}}-{{.Form.BranchName}} .worktrees/{{.Form.BranchType}}/{{.Form.Team}}-{{.Form.JiraTicket}}-{{.Form.BranchName}}"
+  - key: "n"
     context: localBranches
     prompts:
       - type: "menu"
