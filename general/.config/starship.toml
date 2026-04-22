@@ -11,6 +11,9 @@ command_timeout = 1000
 [git_branch]
 format =  '[$symbol$branch(:$remote_branch)]($style)'
 
+[pulumi]
+disabled = true
+
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
 flamingo = "#f2cdcd"
