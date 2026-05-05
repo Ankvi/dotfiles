@@ -25,10 +25,20 @@ Use command:
 acli jira workitem view {{ISSUE_KEY}}
 ```
 
-## Assigning tickets to current user
+## Start working on a ticket
 
-Use command:
+Whenever starting work on a Jira ticket,
+use [start-ticket.sh script](./scripts/start-ticket.sh)
 
-```bash
-acli jira workitem assign --key {{ISSUE_KEY}} --assignee @me
-```
+## Reading a Confluence page
+
+Use when:
+
+- A Confluence page is referenced a ticket
+- The content of a Confluence page is requested
+
+Use [read-confluence-page.sh script](./scripts/read-confluence-page.sh)
+
+Pass Confluence page ID as the first argument
+
+## Reading Confluence pages
